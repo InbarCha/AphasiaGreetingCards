@@ -3,7 +3,7 @@
 <head>
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>@ViewData["Title"] - GreetingCardsGenerator</title>
+    <title>@ViewData["Title"] - Greeting Cards for Aphasics</title>
 
     <environment include="Development">
         <meta charset="utf-8">
@@ -27,13 +27,13 @@
 
     <div id="greetings_card_display" class="jumbotron jumbotron-fluid text-center">
         <div id="primaryDisplayBorder">
-            <div id="primaryDisplayContent"> Greeting-Cards Generator </div>
+            <div id="primaryDisplayContent"> Greeting Gards for Aphasics </div>
             <p>Create a specialized Greeting Card, in varied and colorful themes!</p>
         </div>
     </div>
 
     <div id="navbarDiv">
-        <nav class="navbar navbar-expand-md bg-dark">
+        <nav class="navbar navbar-expand-lg bg-dark navbar-dark">
             <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#collapsibleNavbar">
                 <span class="navbar-toggler-icon"></span>
             </button>
@@ -43,10 +43,13 @@
                         <a class="nav-link" asp-area="" asp-controller="Home" asp-action="Index">Home</a>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link" a asp-area="" asp-controller="Home" asp-action="About">About</a>
+                        <a class="nav-link" asp-area="" asp-controller="Home" asp-action="CardAdder">Add New Greeting Card </a>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link" asp-area="" asp-controller="Home" asp-action="Contact">Contact</a>
+                        <a class="nav-link" a asp-area="" asp-controller="Home" asp-action="GreetingCards">Greeting Cards Stock</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" asp-area="" asp-controller="Home" asp-action="SentimentSentences">Sentiment Sentences </a>
                     </li>
                 </ul>
             </div>

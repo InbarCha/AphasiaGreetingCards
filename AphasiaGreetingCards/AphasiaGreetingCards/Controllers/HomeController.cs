@@ -15,16 +15,23 @@ namespace AphasiaGreetingCards.Controllers
             return View();
         }
 
-        public IActionResult About()
+        public IActionResult GreetingCards()
         {
-            ViewData["Message"] = "Your application description page.";
+            ViewData["Message"] = "Specialized Greeting Cards";
 
             return View();
         }
 
-        public IActionResult Contact()
+        public IActionResult SentimentSentences()
         {
-            ViewData["Message"] = "Your contact page.";
+            ViewData["Message"] = "Specialized Sentiment Sentences";
+
+            return View();
+        }
+
+        public IActionResult CardAdder()
+        {
+            ViewData["Message"] = "Add a greeting card";
 
             return View();
         }
