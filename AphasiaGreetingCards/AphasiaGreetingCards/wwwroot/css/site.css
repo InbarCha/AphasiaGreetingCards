@@ -73,8 +73,21 @@
     padding: 0;
 }
 
+#welcomeP {
+    font-family: Museo;
+}
+
+#purose {
+    margin-left: 20vw;
+    margin-right: 20vw;
+    border-width: 7px !important;
+}
+
+
 @font-face {
     font-family: "Museo";
     src: url("//db.onlinewebfonts.com/t/460e8698563db983434874f8f371a7d1.eot");
     src: url("//db.onlinewebfonts.com/t/460e8698563db983434874f8f371a7d1.eot?#iefix") format("embedded-opentype"), url("//db.onlinewebfonts.com/t/460e8698563db983434874f8f371a7d1.woff2") format("woff2"), url("//db.onlinewebfonts.com/t/460e8698563db983434874f8f371a7d1.woff") format("woff"), url("//db.onlinewebfonts.com/t/460e8698563db983434874f8f371a7d1.ttf") format("truetype"), url("//db.onlinewebfonts.com/t/460e8698563db983434874f8f371a7d1.svg#Museo") format("svg");
 }
+
+
