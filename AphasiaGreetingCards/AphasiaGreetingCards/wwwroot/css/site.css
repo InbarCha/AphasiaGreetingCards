@@ -1,0 +1,81 @@
+﻿@import url(//db.onlinewebfonts.com/c/460e8698563db983434874f8f371a7d1?family=Museo);
+
+#greetings_card_display {
+    font-family: Museo;
+    font-size: xx-large;
+    background-image: url('/images/gradient.jpg');
+    background-size: cover;
+    align-content: center;
+    color: aliceblue;
+    margin-bottom: 0;
+}
+
+    #greetings_card_display p {
+        font-style: italic;
+    }
+
+
+#primaryDisplayContent {
+    font-size: 6ex;
+}
+
+
+.container {
+    padding-right: 0;
+    padding-left: 0;
+    margin-right: 0;
+    margin-left: 0;
+    max-width: none;
+}
+
+#ContentContainer {
+    padding-left: 20px;
+    padding-right: 20px;
+    margin-top: 30px;
+}
+
+.jumbotron {
+    height: 500px;
+    position: relative;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+}
+
+.navbar-nav {
+    font-family: Museo;
+    font-size: x-large;
+}
+
+    .navbar-nav > li {
+        padding-left: 30px;
+        padding-right: 30px;
+    }
+
+    .navbar-nav a {
+        color: silver;
+    }
+
+
+.cardContainer {
+    padding: 0;
+}
+
+.card {
+    width: 25%;
+    margin: 20px;
+    padding: 0;
+}
+
+.card-img-top {
+    width: 100%;
+    height: 70%;
+    padding: 0;
+}
+
+@font-face {
+    font-family: "Museo";
+    src: url("//db.onlinewebfonts.com/t/460e8698563db983434874f8f371a7d1.eot");
+    src: url("//db.onlinewebfonts.com/t/460e8698563db983434874f8f371a7d1.eot?#iefix") format("embedded-opentype"), url("//db.onlinewebfonts.com/t/460e8698563db983434874f8f371a7d1.woff2") format("woff2"), url("//db.onlinewebfonts.com/t/460e8698563db983434874f8f371a7d1.woff") format("woff"), url("//db.onlinewebfonts.com/t/460e8698563db983434874f8f371a7d1.ttf") format("truetype"), url("//db.onlinewebfonts.com/t/460e8698563db983434874f8f371a7d1.svg#Museo") format("svg");
+}
