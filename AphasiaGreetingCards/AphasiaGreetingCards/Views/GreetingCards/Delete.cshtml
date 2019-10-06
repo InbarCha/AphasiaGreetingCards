@@ -1,0 +1,55 @@
+﻿@model AphasiaGreetingCards.Models.GreetingCard
+
+@{
+    ViewData["Title"] = "Delete";
+}
+
+<h3>Are you sure you want to delete this?</h3>
+<div class="Page">
+    <h4>GreetingCard</h4>
+    <hr />
+    <dl class="dl-horizontal">
+        <dt>
+            @Html.DisplayNameFor(model => model.theme)
+        </dt>
+        <dd>
+            @Html.DisplayFor(model => model.theme)
+        </dd>
+        <dt>
+            @Html.DisplayNameFor(model => model.sendertUserID)
+        </dt>
+        <dd>
+            @Html.DisplayFor(model => model.sendertUserID)
+        </dd>
+        <dt>
+            @Html.DisplayNameFor(model => model.recipientUserID)
+        </dt>
+        <dd>
+            @Html.DisplayFor(model => model.recipientUserID)
+        </dd>
+        <dt>
+            @Html.DisplayNameFor(model => model.sentenceID)
+        </dt>
+        <dd>
+            @Html.DisplayFor(model => model.sentenceID)
+        </dd>
+        <dt>
+            @Html.DisplayNameFor(model => model.imageID)
+        </dt>
+        <dd>
+            @Html.DisplayFor(model => model.imageID)
+        </dd>
+        <dt>
+            @Html.DisplayNameFor(model => model.publishedToFacebook)
+        </dt>
+        <dd>
+            @Html.DisplayFor(model => model.publishedToFacebook)
+        </dd>
+    </dl>
+    
+    <form asp-action="Delete">
+        <input type="hidden" asp-for="ID" />
+        <input type="submit" value="Delete" class="btn btn-default" /> |
+        <a asp-action="Index">Back to List</a>
+    </form>
+</div>

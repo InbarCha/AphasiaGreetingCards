@@ -44,7 +44,7 @@
 
 .navbar-nav {
     font-family: Museo;
-    font-size: x-large;
+    font-size: large;
 }
 
     .navbar-nav > li {
@@ -78,11 +78,14 @@
 }
 
 #purose {
-    margin-left: 20vw;
-    margin-right: 20vw;
+    margin-left: 25vw;
+    margin-right: 25vw;
     border-width: 7px !important;
 }
 
+.Page {
+    margin: 3vw;
+}
 
 @font-face {
     font-family: "Museo";

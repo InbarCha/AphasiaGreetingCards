@@ -31,3 +31,8 @@ C:\Users\Inbar\Desktop\WebAppCourse\AphasiaGreetingCards\AphasiaGreetingCards\Ap
 C:\Users\Inbar\Desktop\WebAppCourse\AphasiaGreetingCards\AphasiaGreetingCards\AphasiaGreetingCards\obj\Debug\netcoreapp2.1\Razor\Views\Home\GreetingCards.g.cshtml.cs
 C:\Users\Inbar\Desktop\WebAppCourse\AphasiaGreetingCards\AphasiaGreetingCards\AphasiaGreetingCards\obj\Debug\netcoreapp2.1\Razor\Views\Home\SentimentSentences.g.cshtml.cs
 C:\Users\Inbar\Desktop\WebAppCourse\AphasiaGreetingCards\AphasiaGreetingCards\AphasiaGreetingCards\obj\Debug\netcoreapp2.1\Razor\Views\Home\CardAdder.g.cshtml.cs
+C:\Users\Inbar\Desktop\WebAppCourse\AphasiaGreetingCards\AphasiaGreetingCards\AphasiaGreetingCards\obj\Debug\netcoreapp2.1\Razor\Views\GreetingCards\Create.g.cshtml.cs
+C:\Users\Inbar\Desktop\WebAppCourse\AphasiaGreetingCards\AphasiaGreetingCards\AphasiaGreetingCards\obj\Debug\netcoreapp2.1\Razor\Views\GreetingCards\Delete.g.cshtml.cs
+C:\Users\Inbar\Desktop\WebAppCourse\AphasiaGreetingCards\AphasiaGreetingCards\AphasiaGreetingCards\obj\Debug\netcoreapp2.1\Razor\Views\GreetingCards\Details.g.cshtml.cs
+C:\Users\Inbar\Desktop\WebAppCourse\AphasiaGreetingCards\AphasiaGreetingCards\AphasiaGreetingCards\obj\Debug\netcoreapp2.1\Razor\Views\GreetingCards\Edit.g.cshtml.cs
+C:\Users\Inbar\Desktop\WebAppCourse\AphasiaGreetingCards\AphasiaGreetingCards\AphasiaGreetingCards\obj\Debug\netcoreapp2.1\Razor\Views\GreetingCards\Index.g.cshtml.cs
