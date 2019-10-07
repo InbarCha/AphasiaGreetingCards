@@ -4,32 +4,36 @@
     ViewData["Title"] = "Index";
 }
 
-    <div class="Page">
-        <p>
-            <a asp-action="Create" class="btn btn-primary text">Create New</a>
-        </p>
-        <table class="table">
-            <thead>
+<div class="Page">
+    <p>
+        <a asp-action="Create" class="btn btn-primary text">Create New</a>
+    </p>
+    <div class="card shadow-lg">
+        <table class="table table-hover">
+            <thead class="thead-dark">
                 <tr>
-                    <th>
+                    <th class="width-md">
                         @Html.DisplayNameFor(model => model.theme)
                     </th>
-                    <th>
+                    <th class="width-md">
                         @Html.DisplayNameFor(model => model.sendertUserID)
                     </th>
-                    <th>
+                    <th class="width-md">
                         @Html.DisplayNameFor(model => model.recipientUserID)
                     </th>
-                    <th>
+                    <th class="width-md">
                         @Html.DisplayNameFor(model => model.sentenceID)
                     </th>
-                    <th>
+                    <th class="width-md">
                         @Html.DisplayNameFor(model => model.imageID)
                     </th>
-                    <th>
+                    <th class="width-md">
                         @Html.DisplayNameFor(model => model.publishedToFacebook)
                     </th>
-                    <th></th>
+                    <th class="width-lg text-center">
+                        Card
+                    </th>
+                    <th> Actions </th>
                 </tr>
             </thead>
             <tbody>
@@ -51,8 +55,19 @@
                         <td>
                             @Html.DisplayFor(modelItem => item.imageID)
                         </td>
-                        <td>
+                        <td class="ui-helper-center">
                             @Html.DisplayFor(modelItem => item.publishedToFacebook)
+                        </td>
+                        <td class="cardCol ui-helper-center">
+                            <div class="card" style="width:300px">
+                                <img class="card-img-top" src="~/images/happybirthday.jpg" alt="Card image" style="width:100%">
+                                <div class="card-body">
+                                    <h4 class="card-title">John Doe</h4>
+                                    <p class="card-text">Some example text some example text. John Doe is an architect and engineer</p>
+                                    <a href="#" class="btn btn-primary">See Profile</a>
+                                </div>
+                            </div>
+                            <br>
                         </td>
                         <td>
                             <a asp-action="Edit" asp-route-id="@item.ID">Edit</a> |
@@ -63,5 +78,5 @@
                 }
             </tbody>
         </table>
-
     </div>
+</div>
