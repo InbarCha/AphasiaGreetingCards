@@ -53,7 +53,7 @@ namespace AphasiaGreetingCards.Controllers
         // more details see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public async Task<IActionResult> Create([Bind("ID,theme,prefix,recipientUserID,suffix,complexity")] SentimentSentence sentimentSentence)
+        public async Task<IActionResult> Create([Bind("ID,theme,prefix,recipientUserID,recipientUserFullName,suffix,complexity")] SentimentSentence sentimentSentence)
         {
             if (ModelState.IsValid)
             {
@@ -85,7 +85,7 @@ namespace AphasiaGreetingCards.Controllers
         // more details see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public async Task<IActionResult> Edit(int id, [Bind("ID,theme,prefix,recipientUserID,suffix,complexity")] SentimentSentence sentimentSentence)
+        public async Task<IActionResult> Edit(int id, [Bind("ID,theme,prefix,recipientUserID,recipientUserFullName,suffix,complexity")] SentimentSentence sentimentSentence)
         {
             if (id != sentimentSentence.ID)
             {

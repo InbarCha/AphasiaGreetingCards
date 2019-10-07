@@ -54,7 +54,7 @@ namespace AphasiaGreetingCards.Controllers
         // more details see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public async Task<IActionResult> Create([Bind("ID,theme,sendertUserID,recipientUserID,sentenceID,imageID,publishedToFacebook")] GreetingCard greetingCard)
+        public async Task<IActionResult> Create([Bind("ID,theme,sendertUserID,senderUserFullName,recipientUserID,recipientUserFullName,sentenceID,fullSentence,imageID,image,publishedToFacebook")] GreetingCard greetingCard)
         {
             if (ModelState.IsValid)
             {
@@ -86,7 +86,7 @@ namespace AphasiaGreetingCards.Controllers
         // more details see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public async Task<IActionResult> Edit(int id, [Bind("ID,theme,sendertUserID,recipientUserID,sentenceID,imageID,publishedToFacebook")] GreetingCard greetingCard)
+        public async Task<IActionResult> Edit(int id, [Bind("ID,theme,sendertUserID,senderUserFullName,recipientUserID,recipientUserFullName,sentenceID,fullSentence,imageID,image,publishedToFacebook")] GreetingCard greetingCard)
         {
             if (id != greetingCard.ID)
             {
