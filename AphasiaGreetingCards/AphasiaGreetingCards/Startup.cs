@@ -62,7 +62,7 @@ namespace AphasiaGreetingCards
             {
                 routes.MapRoute(
                     name: "default",
-                    template: "{controller=GreetingCards}/{action=Index}/{id?}");
+                    template: "{controller=Home}/{action=Index}/{id?}");
             });
         }
     }

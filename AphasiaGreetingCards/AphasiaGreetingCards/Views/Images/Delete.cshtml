@@ -1,0 +1,45 @@
+﻿@model AphasiaGreetingCards.Models.Image
+
+@{
+    ViewData["Title"] = "Delete";
+}
+
+<h2>Delete</h2>
+
+<h3>Are you sure you want to delete this?</h3>
+<div>
+    <h4>Image</h4>
+    <hr />
+    <dl class="dl-horizontal">
+        <dt>
+            @Html.DisplayNameFor(model => model.imagePath)
+        </dt>
+        <dd>
+            @Html.DisplayFor(model => model.imagePath)
+        </dd>
+        <dt>
+            @Html.DisplayNameFor(model => model.theme)
+        </dt>
+        <dd>
+            @Html.DisplayFor(model => model.theme)
+        </dd>
+        <dt>
+            @Html.DisplayNameFor(model => model.resolution)
+        </dt>
+        <dd>
+            @Html.DisplayFor(model => model.resolution)
+        </dd>
+        <dt>
+            @Html.DisplayNameFor(model => model.digitalSize)
+        </dt>
+        <dd>
+            @Html.DisplayFor(model => model.digitalSize)
+        </dd>
+    </dl>
+    
+    <form asp-action="Delete">
+        <input type="hidden" asp-for="ID" />
+        <input type="submit" value="Delete" class="btn btn-default" /> |
+        <a asp-action="Index">Back to List</a>
+    </form>
+</div>

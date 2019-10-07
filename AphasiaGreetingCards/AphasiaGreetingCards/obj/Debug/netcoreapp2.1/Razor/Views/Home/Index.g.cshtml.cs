@@ -61,7 +61,7 @@ using AphasiaGreetingCards.Models;
             WriteLiteral("\r\n<div class=\"container\" id=\"ContentContainer\">\r\n    <div class=\"row\">\r\n        <div class=\"col-sm-12 text-center\" id=\"welcomeVideo\">\r\n            <video autoplay muted loop width=\"1000\" class=\"shadow-lg p-4 mb-4 bg-dark\">\r\n                ");
             EndContext();
             BeginContext(285, 56, false);
-            __tagHelperExecutionContext = __tagHelperScopeManager.Begin("source", global::Microsoft.AspNetCore.Razor.TagHelpers.TagMode.StartTagOnly, "0a33c74d50614052ab824da7d8943749", async() => {
+            __tagHelperExecutionContext = __tagHelperScopeManager.Begin("source", global::Microsoft.AspNetCore.Razor.TagHelpers.TagMode.StartTagOnly, "ed3d843b68c54e69aa6cad3fc62ed672", async() => {
             }
             );
             __Microsoft_AspNetCore_Mvc_Razor_TagHelpers_UrlResolutionTagHelper = CreateTagHelper<global::Microsoft.AspNetCore.Mvc.Razor.TagHelpers.UrlResolutionTagHelper>();

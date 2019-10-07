@@ -72,7 +72,7 @@ using AphasiaGreetingCards.Models;
             WriteLiteral("\r\n<div class=\"Page\">\r\n    <p>\r\n        ");
             EndContext();
             BeginContext(144, 66, false);
-            __tagHelperExecutionContext = __tagHelperScopeManager.Begin("a", global::Microsoft.AspNetCore.Razor.TagHelpers.TagMode.StartTagAndEndTag, "ef9cb8b2183d4eb4867390942645e83c", async() => {
+            __tagHelperExecutionContext = __tagHelperScopeManager.Begin("a", global::Microsoft.AspNetCore.Razor.TagHelpers.TagMode.StartTagAndEndTag, "1a1f28731ce442b1a3ab9513317bdb43", async() => {
                 BeginContext(196, 10, true);
                 WriteLiteral("Create New");
                 EndContext();
@@ -224,7 +224,7 @@ using AphasiaGreetingCards.Models;
             WriteLiteral("\r\n                        </td>\r\n                        <td class=\"cardCol ui-helper-center\">\r\n                            <div class=\"card\" style=\"width:300px\">\r\n                                ");
             EndContext();
             BeginContext(2556, 95, false);
-            __tagHelperExecutionContext = __tagHelperScopeManager.Begin("img", global::Microsoft.AspNetCore.Razor.TagHelpers.TagMode.StartTagOnly, "c9eae923df594b0882f787c12efe829b", async() => {
+            __tagHelperExecutionContext = __tagHelperScopeManager.Begin("img", global::Microsoft.AspNetCore.Razor.TagHelpers.TagMode.StartTagOnly, "bc91813a063f46458d21a2ea7447f924", async() => {
             }
             );
             __Microsoft_AspNetCore_Mvc_Razor_TagHelpers_UrlResolutionTagHelper = CreateTagHelper<global::Microsoft.AspNetCore.Mvc.Razor.TagHelpers.UrlResolutionTagHelper>();
@@ -255,7 +255,7 @@ using AphasiaGreetingCards.Models;
                             ");
             EndContext();
             BeginContext(3209, 53, false);
-            __tagHelperExecutionContext = __tagHelperScopeManager.Begin("a", global::Microsoft.AspNetCore.Razor.TagHelpers.TagMode.StartTagAndEndTag, "cfd651b97a8c4059bd294b6cb0f1357b", async() => {
+            __tagHelperExecutionContext = __tagHelperScopeManager.Begin("a", global::Microsoft.AspNetCore.Razor.TagHelpers.TagMode.StartTagAndEndTag, "27034cd9acdb463a9b3bbce4faf081de", async() => {
                 BeginContext(3254, 4, true);
                 WriteLiteral("Edit");
                 EndContext();
@@ -290,7 +290,7 @@ using AphasiaGreetingCards.Models;
             WriteLiteral(" |\r\n                            ");
             EndContext();
             BeginContext(3294, 59, false);
-            __tagHelperExecutionContext = __tagHelperScopeManager.Begin("a", global::Microsoft.AspNetCore.Razor.TagHelpers.TagMode.StartTagAndEndTag, "c24e0d0bcd73486c8943e043bd3cf97a", async() => {
+            __tagHelperExecutionContext = __tagHelperScopeManager.Begin("a", global::Microsoft.AspNetCore.Razor.TagHelpers.TagMode.StartTagAndEndTag, "6b6bac218f8349f89ba5ff9f9f9eace8", async() => {
                 BeginContext(3342, 7, true);
                 WriteLiteral("Details");
                 EndContext();
@@ -325,7 +325,7 @@ using AphasiaGreetingCards.Models;
             WriteLiteral(" |\r\n                            ");
             EndContext();
             BeginContext(3385, 57, false);
-            __tagHelperExecutionContext = __tagHelperScopeManager.Begin("a", global::Microsoft.AspNetCore.Razor.TagHelpers.TagMode.StartTagAndEndTag, "bc587dc91ab0401491ed8e9cd5eed1e8", async() => {
+            __tagHelperExecutionContext = __tagHelperScopeManager.Begin("a", global::Microsoft.AspNetCore.Razor.TagHelpers.TagMode.StartTagAndEndTag, "b6d8d1a3317141709745b1687f0b74d9", async() => {
                 BeginContext(3432, 6, true);
                 WriteLiteral("Delete");
                 EndContext();
