@@ -19,6 +19,10 @@
     font-size: 6ex;
 }
 
+#navItemLogIn {
+    color: mediumpurple;
+}
+
 #loginImg {
     width: 80%;
     height: auto;
