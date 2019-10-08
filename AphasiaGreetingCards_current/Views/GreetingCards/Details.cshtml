@@ -1,0 +1,54 @@
+﻿@model AphasiaGreetingCards.Models.GreetingCard
+
+@{
+    ViewData["Title"] = "Details";
+}
+
+<div class="Page">
+    <div>
+        <h4>GreetingCard</h4>
+        <hr />
+        <dl class="dl-horizontal">
+            <dt>
+                @Html.DisplayNameFor(model => model.theme)
+            </dt>
+            <dd>
+                @Html.DisplayFor(model => model.theme)
+            </dd>
+            <dt>
+                @Html.DisplayNameFor(model => model.senderUserFullName)
+            </dt>
+            <dd>
+                @Html.DisplayFor(model => model.senderUserFullName)
+            </dd>
+            <dt>
+                @Html.DisplayNameFor(model => model.recipientUserFullName)
+            </dt>
+            <dd>
+                @Html.DisplayFor(model => model.recipientUserFullName)
+            </dd>
+            <dt>
+                @Html.DisplayNameFor(model => model.fullSentence)
+            </dt>
+            <dd>
+                @Html.DisplayFor(model => model.fullSentence)
+            </dd>
+            <dt>
+                @Html.DisplayNameFor(model => model.image)
+            </dt>
+            <dd>
+                @Html.DisplayFor(model => model.image)
+            </dd>
+            <dt>
+                @Html.DisplayNameFor(model => model.publishedToFacebook)
+            </dt>
+            <dd>
+                @Html.DisplayFor(model => model.publishedToFacebook)
+            </dd>
+        </dl>
+    </div>
+    <div>
+        <a asp-action="Edit" asp-route-id="@Model.ID">Edit</a> |
+        <a asp-action="Index">Back to List</a>
+    </div>
+</div>

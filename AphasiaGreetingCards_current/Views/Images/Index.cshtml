@@ -1,0 +1,55 @@
+﻿@model IEnumerable<AphasiaGreetingCards.Models.Image>
+
+@{
+    ViewData["Title"] = "Index";
+}
+<div class="Page">
+    <p>
+        <a asp-action="Create">Create New</a>
+    </p>
+    <div class="card shadow-lg">
+        <table class="table table-hover">
+            <thead class="thead-dark">
+                <tr>
+                    <th>
+                        @Html.DisplayNameFor(model => model.imagePath)
+                    </th>
+                    <th>
+                        @Html.DisplayNameFor(model => model.theme)
+                    </th>
+                    <th>
+                        @Html.DisplayNameFor(model => model.resolution)
+                    </th>
+                    <th>
+                        @Html.DisplayNameFor(model => model.digitalSize)
+                    </th>
+                    <th></th>
+                </tr>
+            </thead>
+            <tbody>
+                @foreach (var item in Model)
+                {
+                    <tr>
+                        <td>
+                            @Html.DisplayFor(modelItem => item.imagePath)
+                        </td>
+                        <td>
+                            @Html.DisplayFor(modelItem => item.theme)
+                        </td>
+                        <td>
+                            @Html.DisplayFor(modelItem => item.resolution)
+                        </td>
+                        <td>
+                            @Html.DisplayFor(modelItem => item.digitalSize)
+                        </td>
+                        <td>
+                            <a asp-action="Edit" asp-route-id="@item.ID">Edit</a> |
+                            <a asp-action="Details" asp-route-id="@item.ID">Details</a> |
+                            <a asp-action="Delete" asp-route-id="@item.ID">Delete</a>
+                        </td>
+                    </tr>
+                }
+            </tbody>
+        </table> ""
+    </div>
+</div>

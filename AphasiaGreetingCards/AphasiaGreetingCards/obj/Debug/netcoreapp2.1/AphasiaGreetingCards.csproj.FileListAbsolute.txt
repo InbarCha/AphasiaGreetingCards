@@ -32,7 +32,6 @@ C:\Users\Inbar\Desktop\WebAppCourse\AphasiaGreetingCards\AphasiaGreetingCards\Ap
 C:\Users\Inbar\Desktop\WebAppCourse\AphasiaGreetingCards\AphasiaGreetingCards\AphasiaGreetingCards\obj\Debug\netcoreapp2.1\Razor\Views\GreetingCards\Details.g.cshtml.cs
 C:\Users\Inbar\Desktop\WebAppCourse\AphasiaGreetingCards\AphasiaGreetingCards\AphasiaGreetingCards\obj\Debug\netcoreapp2.1\Razor\Views\GreetingCards\Edit.g.cshtml.cs
 C:\Users\Inbar\Desktop\WebAppCourse\AphasiaGreetingCards\AphasiaGreetingCards\AphasiaGreetingCards\obj\Debug\netcoreapp2.1\Razor\Views\GreetingCards\Index.g.cshtml.cs
-C:\Users\Inbar\Desktop\WebAppCourse\AphasiaGreetingCards\AphasiaGreetingCards\AphasiaGreetingCards\obj\Debug\netcoreapp2.1\AphasiaGreetingCards.csprojAssemblyReference.cache
 C:\Users\Inbar\Desktop\WebAppCourse\AphasiaGreetingCards\AphasiaGreetingCards\AphasiaGreetingCards\obj\Debug\netcoreapp2.1\Razor\Views\SentimentSentences\Create.g.cshtml.cs
 C:\Users\Inbar\Desktop\WebAppCourse\AphasiaGreetingCards\AphasiaGreetingCards\AphasiaGreetingCards\obj\Debug\netcoreapp2.1\Razor\Views\SentimentSentences\Delete.g.cshtml.cs
 C:\Users\Inbar\Desktop\WebAppCourse\AphasiaGreetingCards\AphasiaGreetingCards\AphasiaGreetingCards\obj\Debug\netcoreapp2.1\Razor\Views\SentimentSentences\Details.g.cshtml.cs
@@ -48,3 +47,5 @@ C:\Users\Inbar\Desktop\WebAppCourse\AphasiaGreetingCards\AphasiaGreetingCards\Ap
 C:\Users\Inbar\Desktop\WebAppCourse\AphasiaGreetingCards\AphasiaGreetingCards\AphasiaGreetingCards\obj\Debug\netcoreapp2.1\Razor\Views\Images\Details.g.cshtml.cs
 C:\Users\Inbar\Desktop\WebAppCourse\AphasiaGreetingCards\AphasiaGreetingCards\AphasiaGreetingCards\obj\Debug\netcoreapp2.1\Razor\Views\Images\Edit.g.cshtml.cs
 C:\Users\Inbar\Desktop\WebAppCourse\AphasiaGreetingCards\AphasiaGreetingCards\AphasiaGreetingCards\obj\Debug\netcoreapp2.1\Razor\Views\Images\Index.g.cshtml.cs
+C:\Users\Inbar\Desktop\WebAppCourse\AphasiaGreetingCards\AphasiaGreetingCards\AphasiaGreetingCards\obj\Debug\netcoreapp2.1\Razor\Views\Home\Login.g.cshtml.cs
+C:\Users\Inbar\Desktop\WebAppCourse\AphasiaGreetingCards\AphasiaGreetingCards\AphasiaGreetingCards\obj\Debug\netcoreapp2.1\AphasiaGreetingCards.csprojAssemblyReference.cache
