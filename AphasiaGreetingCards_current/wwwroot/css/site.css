@@ -14,13 +14,25 @@
         font-style: italic;
     }
 
-
 #primaryDisplayContent {
     font-size: 6ex;
 }
 
-#navItemLogIn {
-    color: mediumpurple;
+#profile-form, #change-password-form {
+    width: 100%;
+}
+
+
+.list-group-item > a {
+    color: black;
+}
+
+#manageAccountUL {
+    padding-left: 150px;
+}
+
+.navItemLogIn {
+    color: mediumpurple !important;
 }
 
 #loginImg {
@@ -35,7 +47,6 @@
     margin-left: 0;
     max-width: none;
 }
-
 
 #ContentContainer {
     padding-left: 20px;
@@ -96,6 +107,10 @@
 
 .navbar-dark .navbar-nav .nav-link {
     color: white;
+}
+
+#collapsibleNavbar {
+    justify-content: start !important;
 }
 
 .ui-helper-center {

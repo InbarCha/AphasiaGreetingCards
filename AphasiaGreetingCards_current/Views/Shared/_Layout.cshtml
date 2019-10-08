@@ -33,7 +33,7 @@
     </div>
 
     <div id="navbarDiv">
-        <nav class="navbar navbar-expand-lg bg-dark navbar-dark">
+        <nav class="navbar navbar-left navbar-expand-lg bg-dark navbar-dark">
             <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#collapsibleNavbar">
                 <span class="navbar-toggler-icon"></span>
             </button>
@@ -54,10 +54,8 @@
                     <li class="nav-item">
                         <a class="nav-link" asp-area="" asp-controller="Images" asp-action="Index"> Our Images </a>
                     </li>
-                    <li class="nav-item ml-auto">
-                        <a id="navItemLogIn" class="nav-link" href="/Identity/Account/Login"> Log In </a>
-                    </li>
-                </ul>
+                    <partial name="_LoginPartial" />
+                </ul>  
             </div>
         </nav>
     </div>
