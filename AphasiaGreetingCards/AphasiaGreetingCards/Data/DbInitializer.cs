@@ -14,7 +14,7 @@ namespace AphasiaGreetingCards.Data
             context.Database.EnsureCreated();
 
             //if a GreetingCard already exists in the database, do nothing
-            if (context.Users.Any())
+            if (context.GreetingCards.Any())
             {
                 return;
             }
@@ -38,7 +38,7 @@ namespace AphasiaGreetingCards.Data
             var SentimentSentences = new SentimentSentence[]
             {
                 new SentimentSentence{prefix="For your birthday", recipientUserID=313289068, recipientUserFullName="Inbar Hachmon", suffix="best of wishes!", complexity="low", theme="Birthday"},
-                new SentimentSentence{prefix="Happy holiday", recipientUserID=234676891, recipientUserFullName="Sivan Peer", suffix="hope you enjoy it immensely!", complexity="low", theme="Holiday"},
+                new SentimentSentence{prefix="Happy Holiday", recipientUserID=234676891, recipientUserFullName="Sivan Peer", suffix="hope you enjoy it immensely!", complexity="low", theme="Holiday"},
                 new SentimentSentence{prefix="Happy Birthday", recipientUserID=456576891, recipientUserFullName="Yuval Shapira", suffix="wish you all of the best!", complexity="low", theme="Birthday"}
             };
             foreach (SentimentSentence c in SentimentSentences)
@@ -63,9 +63,9 @@ namespace AphasiaGreetingCards.Data
             var GreetingCards = new GreetingCard[]
             {
                 new GreetingCard{recipientUserID=313289068, recipientUserFullName="Inbar Hachmon", sendertUserID=234676891, senderUserFullName="Sivan Peer",
-                    theme ="Holiday", sentenceID=1, fullSentence="For your birthday, Inbar, best of wishes!", imageID=1, image="~/images/HappyHoliday.jpg", publishedToFacebook=false },
-                new GreetingCard{recipientUserID=234676891, recipientUserFullName="Sivan Peer", sendertUserID=313289068, senderUserFullName="Inbar Hachmon", theme="Birthday",
-                    sentenceID =2, fullSentence="Happy birthday, Yuval, wish you all of the best!", imageID=2, publishedToFacebook=false }
+                    theme ="Happy Birthday", sentenceID=1, fullSentence="For your birthday, Inbar, best of wishes!", imageID=1, image="~/images/HappyHoliday.jpg", publishedToFacebook=false },
+                new GreetingCard{recipientUserID=234676891, recipientUserFullName="Sivan Peer", sendertUserID=313289068, senderUserFullName="Inbar Hachmon", theme="Happy Birthday",
+                    sentenceID =2, fullSentence="Happy birthday, Sivan, wish you all of the best!", imageID=2, publishedToFacebook=false }
             };
             foreach (GreetingCard e in GreetingCards)
             {

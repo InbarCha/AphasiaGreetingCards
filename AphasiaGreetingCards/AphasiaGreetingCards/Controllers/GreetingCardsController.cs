@@ -58,6 +58,9 @@ namespace AphasiaGreetingCards.Controllers
         {
             if (ModelState.IsValid)
             {
+                //check if the user logged in
+
+
                 _context.Add(greetingCard);
                 await _context.SaveChangesAsync();
                 return RedirectToAction(nameof(Index));
