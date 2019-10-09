@@ -13,6 +13,7 @@ using Microsoft.EntityFrameworkCore;
 using AphasiaGreetingCards.Models;
 using AphasiaGreetingCards.Data;
 using Microsoft.AspNetCore.Identity;
+using Microsoft.AspNetCore.Identity.UI.Services;
 
 namespace AphasiaGreetingCards
 {
@@ -36,11 +37,11 @@ namespace AphasiaGreetingCards
             });
 
             services.AddDbContext<ApplicationDbContext>(options =>
-                /*options.UseSqlServer(
-                    Configuration.GetConnectionString("DefaultConnection")));*/
-                options.UseSqlite("Data Source=App_Data/MyLocalDB.db"));
+                  /*options.UseSqlServer(
+                      Configuration.GetConnectionString("DefaultConnection")));*/
+                  options.UseSqlServer(Configuration.GetConnectionString("ApplicationDbContext")));
 
-            services.AddDefaultIdentity<IdentityUser>()
+            services.AddIdentity<User, IdentityRole>()
                 .AddEntityFrameworkStores<ApplicationDbContext>();
 
             services.AddMvc().SetCompatibilityVersion(CompatibilityVersion.Version_2_1);
