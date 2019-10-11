@@ -4,9 +4,9 @@
     var hasExternalLogins = (await SignInManager.GetExternalAuthenticationSchemesAsync()).Any();
 }
 
-<div class="row Page">
-    <div class="col-md-4 offset-md-4">
-        <ul class="list-group list-group-horizontal" id="manageAccountUL">
+<div class="row Page text-center mx-auto">
+    <div class="text-center mx-auto">
+        <ul class="list-group list-group-horizontal text-center mx-auto" id="manageAccountUL">
             <li class="list-group-item @ManageNavPages.IndexNavClass(ViewContext)"><a asp-page="./Index">Profile</a></li>
             <li class="list-group-item @ManageNavPages.ChangePasswordNavClass(ViewContext)"><a id="change-password" asp-page="./ChangePassword">Change Password</a></li>
             @if (hasExternalLogins)

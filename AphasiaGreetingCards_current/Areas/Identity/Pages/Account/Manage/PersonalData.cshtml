@@ -5,40 +5,25 @@
     ViewData["ActivePage"] = ManageNavPages.PersonalData;
 }
 
-<div class="Page">
-    <div class="text-center display-4">
-        Manage Your Account
-    </div>
-</div>
 <div>
-    <div class="text-center">
-        <br />
-        <h4>Change Your Account Settings</h4>
-    </div>
-    <hr />
-    <div>
-        <partial name="_ManageNav" />
-        <div class="row Page">
-            <div class="col-md-4">
-                <img src="~/images/personalDataImg.png" alt="Login" class="loginImg">
+    <div class="row Page">
+        <div class="col-md-4">
+            <img src="~/images/personalDataImg.png" alt="Login" class="loginImg">
+        </div>
+        <div class="col-md-4">
+            <p>Your account contains personal data that you have given us. This page allows you to download or delete that data.</p>
+            <p>
+                <strong>Deleting this data will permanently remove your account, and this cannot be recovered.</strong>
+            </p>
+            <div>
+                <a asp-page="DeletePersonalData" class="btn btn-primary">Delete</a>
             </div>
-            <div class="col-md-4">
-                <p>Your account contains personal data that you have given us. This page allows you to download or delete that data.</p>
-                <p>
-                    <strong>Deleting this data will permanently remove your account, and this cannot be recovered.</strong>
-                </p>
-                <form asp-page="DownloadPersonalData" method="post" class="form-group text-center">
-                    <button class="btn btn-primary" type="submit">Download</button>
-                </form>
-                <div class="text-center">
-                    <a asp-page="DeletePersonalData" class="btn btn-primary">Delete</a>
-                </div>
-            </div>
-
-            @section Scripts {
-                <partial name="_ValidationScriptsPartial" />
-            }
         </div>
 
+        @section Scripts {
+            <partial name="_ValidationScriptsPartial" />
+        }
     </div>
+
 </div>
+

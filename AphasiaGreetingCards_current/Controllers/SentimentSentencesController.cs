@@ -11,7 +11,6 @@ using AphasiaGreetingCards.Data;
 
 namespace AphasiaGreetingCards.Controllers
 {
-    [Authorize]
     public class SentimentSentencesController : Controller
     {
         private readonly ApplicationDbContext _context;
@@ -57,7 +56,6 @@ namespace AphasiaGreetingCards.Controllers
         // To protect from overposting attacks, please enable the specific properties you want to bind to, for 
         // more details see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
-        [ValidateAntiForgeryToken]
         public async Task<IActionResult> Create([Bind(("ID,theme,prefix,recipientUserID,recipientUserFullName,suffix,complexity"))] SentimentSentence sentimentSentence)
         {
             if (ModelState.IsValid)

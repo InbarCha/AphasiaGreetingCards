@@ -1,50 +1,64 @@
-﻿@model AphasiaGreetingCards.Models.SentimentSentence
+﻿@using Microsoft.AspNetCore.Identity
 
-@{
+@inject SignInManager<User> SignInManager
+@inject UserManager<User> UserManager
+
+
+@model AphasiaGreetingCards.Models.SentimentSentence
+
+<!-- NEED TO CHANGE TO ONLY ADMIN USERS -->
+@if (SignInManager.IsSignedIn(User))
+{
     ViewData["Title"] = "Create";
+    <div class="Page">
+        <h4>SentimentSentence</h4>
+        <hr />
+        <div class="row">
+            <div class="col-md-4">
+                <form asp-action="Create">
+                    <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+                    <div class="form-group">
+                        <label asp-for="theme" class="control-label"></label>
+                        <input asp-for="theme" class="form-control" />
+                        <span asp-validation-for="theme" class="text-danger"></span>
+                    </div>
+                    <div class="form-group">
+                        <label asp-for="prefix" class="control-label"></label>
+                        <input asp-for="prefix" class="form-control" />
+                        <span asp-validation-for="prefix" class="text-danger"></span>
+                    </div>
+                    <div class="form-group">
+                        <label asp-for="recipientUserID" class="control-label"></label>
+                        <input asp-for="recipientUserID" class="form-control" />
+                        <span asp-validation-for="recipientUserID" class="text-danger"></span>
+                    </div>
+                    <div class="form-group">
+                        <label asp-for="suffix" class="control-label"></label>
+                        <input asp-for="suffix" class="form-control" />
+                        <span asp-validation-for="suffix" class="text-danger"></span>
+                    </div>
+                    <div class="form-group">
+                        <label asp-for="complexity" class="control-label"></label>
+                        <input asp-for="complexity" class="form-control" />
+                        <span asp-validation-for="complexity" class="text-danger"></span>
+                    </div>
+                    <div class="form-group">
+                        <input type="submit" value="Create" class="btn btn-default" />
+                    </div>
+                </form>
+            </div>
+        </div>
+
+        <div>
+            <a asp-action="Index">Back to List</a>
+        </div>
+    </div>
+}
+else
+{
+    <div class="display-3 text-center">
+        You must be logged in to create a sentiment sentence.
+    </div>
 }
 
-<h2>Create</h2>
-
-<h4>SentimentSentence</h4>
-<hr />
-<div class="row">
-    <div class="col-md-4">
-        <form asp-action="Create">
-            <div asp-validation-summary="ModelOnly" class="text-danger"></div>
-            <div class="form-group">
-                <label asp-for="theme" class="control-label"></label>
-                <input asp-for="theme" class="form-control" />
-                <span asp-validation-for="theme" class="text-danger"></span>
-            </div>
-            <div class="form-group">
-                <label asp-for="prefix" class="control-label"></label>
-                <input asp-for="prefix" class="form-control" />
-                <span asp-validation-for="prefix" class="text-danger"></span>
-            </div>
-            <div class="form-group">
-                <label asp-for="recipientUserID" class="control-label"></label>
-                <input asp-for="recipientUserID" class="form-control" />
-                <span asp-validation-for="recipientUserID" class="text-danger"></span>
-            </div>
-            <div class="form-group">
-                <label asp-for="suffix" class="control-label"></label>
-                <input asp-for="suffix" class="form-control" />
-                <span asp-validation-for="suffix" class="text-danger"></span>
-            </div>
-            <div class="form-group">
-                <label asp-for="complexity" class="control-label"></label>
-                <input asp-for="complexity" class="form-control" />
-                <span asp-validation-for="complexity" class="text-danger"></span>
-            </div>
-            <div class="form-group">
-                <input type="submit" value="Create" class="btn btn-default" />
-            </div>
-        </form>
-    </div>
-</div>
-
-<div>
-    <a asp-action="Index">Back to List</a>
-</div>
 

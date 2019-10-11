@@ -27,9 +27,6 @@
     color: black;
 }
 
-#manageAccountUL {
-    padding-left: 150px;
-}
 
 .navItemLogIn {
     color: mediumpurple !important;
@@ -120,8 +117,8 @@
 
 .Page {
     margin-top: 2vw !important;
-    margin-left: 5vw !important;
-    margin-right: 5vw !important;
+    margin-left: 10vw !important;
+    margin-right: 10vw !important;
 }
 
 @font-face {

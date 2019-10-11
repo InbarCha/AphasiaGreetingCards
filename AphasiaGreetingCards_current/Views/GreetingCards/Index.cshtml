@@ -1,13 +1,56 @@
-﻿@model IEnumerable<AphasiaGreetingCards.Models.GreetingCard>
+﻿@using Microsoft.AspNetCore.Identity
+
+@inject SignInManager<User> SignInManager
+@inject UserManager<User> UserManager
+
+@model IEnumerable<AphasiaGreetingCards.Models.GreetingCard>
 
 @{
     ViewData["Title"] = "Index";
 }
-
 <div class="Page">
-    <p>
-        <a asp-action="Create" class="btn btn-primary text">Create New</a>
-    </p>
+    @if (SignInManager.IsSignedIn(User))
+    {
+        <p>
+            <a asp-controller="GreetingCards" asp-action="Create" class="btn btn-primary text">Create New</a>
+        </p>
+    }
+    else
+    {
+        <div class="container">
+            <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#myModal">
+                To Create New
+            </button>
+
+            <!-- The Modal -->
+            <div class="modal fade" id="myModal">
+                <div class="modal-dialog modal-sm">
+                    <div class="modal-content">
+
+                        <!-- Modal Header -->
+                        <div class="modal-header">
+                            <h4 class="modal-title">You must be logged in!</h4>
+                            <button type="button" class="close" data-dismiss="modal">&times;</button>
+                        </div>
+
+                        <!-- Modal body -->
+                        <div class="modal-body">
+                            To create a new greeting card, you must be logged in.
+                        </div>
+
+                        <!-- Modal footer -->
+                        <div class="modal-footer">
+                            <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+                        </div>
+
+                    </div>
+                </div>
+            </div>
+
+        </div>
+        <br/>
+    }
+
     <div class="card shadow-lg">
         <table class="table table-hover">
             <thead class="thead-dark">
@@ -64,14 +107,23 @@
                                 <div class="card-body">
                                     <h4 class="card-title">@Html.DisplayFor(modelItem => item.theme)</h4>
                                     <p class="card-text">@Html.DisplayFor(modelItem => item.fullSentence)</p>
-                                    <a asp-action="Edit" asp-route-id="@item.ID" class="btn btn-primary">Edit</a>
                                 </div>
                             </div>
                             <br>
                         </td>
                         <td>
-                            <a asp-action="Details" asp-route-id="@item.ID">Details</a> |
-                            <a asp-action="Delete" asp-route-id="@item.ID">Delete</a>
+                            @if (SignInManager.IsSignedIn(User))
+                            {
+                                <a asp-action="Edit" asp-route-id="@item.ID" class="btn btn-primary">Edit</a> 
+                                <a asp-action="Details" asp-route-id="@item.ID" class="btn btn-primary">Details</a> 
+                                <a asp-action="Delete" asp-route-id="@item.ID" class="btn btn-primary">Delete</a>
+                            }
+                            else
+                            {
+                                <div>
+                                    To Edit|Details|Delete you must be logged in
+                                </div>
+                            }
                         </td>
                     </tr>
                 }

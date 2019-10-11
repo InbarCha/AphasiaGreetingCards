@@ -64,7 +64,6 @@ namespace AphasiaGreetingCards
             app.UseHttpsRedirection();
             app.UseStaticFiles();
             app.UseCookiePolicy();
-            app.UseStaticFiles();
 
             app.UseAuthentication();
 

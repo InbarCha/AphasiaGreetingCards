@@ -9,9 +9,11 @@ using Microsoft.AspNetCore.Mvc.Rendering;
 using Microsoft.EntityFrameworkCore;
 using AphasiaGreetingCards.Data;
 
+using Microsoft.AspNetCore.Identity;
+
+
 namespace AphasiaGreetingCards.Controllers
 {
-    [Authorize]
     public class GreetingCardsController : Controller
     {
         private readonly ApplicationDbContext _context;
@@ -50,6 +52,7 @@ namespace AphasiaGreetingCards.Controllers
         // GET: GreetingCards/Create
         public IActionResult Create()
         {
+            
             return View();
         }
 
@@ -57,7 +60,6 @@ namespace AphasiaGreetingCards.Controllers
         // To protect from overposting attacks, please enable the specific properties you want to bind to, for 
         // more details see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
-        [ValidateAntiForgeryToken]
         public async Task<IActionResult> Create([Bind(("ID,theme,sendertUserID,senderUserFullName,recipientUserID,recipientUserFullName,sentenceID,fullSentence,imageID,image,publishedToFacebook"))] GreetingCard greetingCard)
         {
             if (ModelState.IsValid)
@@ -89,7 +91,6 @@ namespace AphasiaGreetingCards.Controllers
         // To protect from overposting attacks, please enable the specific properties you want to bind to, for 
         // more details see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
-        [ValidateAntiForgeryToken]
         public async Task<IActionResult> Edit(int id, [Bind("ID,theme,sendertUserID,senderUserFullName,recipientUserID,recipientUserFullName,sentenceID,fullSentence,imageID,image,publishedToFacebook")] GreetingCard greetingCard)
         {
             if (id != greetingCard.ID)
@@ -140,7 +141,6 @@ namespace AphasiaGreetingCards.Controllers
 
         // POST: GreetingCards/Delete/5
         [HttpPost, ActionName("Delete")]
-        [ValidateAntiForgeryToken]
         public async Task<IActionResult> DeleteConfirmed(int id)
         {
             var greetingCard = await _context.GreetingCards.FindAsync(id);
