@@ -13280,23 +13280,23 @@
     ]
   },
   "packageFolders": {
-    "C:\\Users\\Inbar\\.nuget\\packages\\": {},
+    "C:\\Users\\psivi\\.nuget\\packages\\": {},
     "C:\\Program Files\\dotnet\\sdk\\NuGetFallbackFolder": {}
   },
   "project": {
     "version": "1.0.0",
     "restore": {
-      "projectUniqueName": "C:\\Users\\Inbar\\Desktop\\WebAppCourse\\AphasiaGreetingCards\\AphasiaGreetingCards_current\\AphasiaGreetingCards.csproj",
+      "projectUniqueName": "C:\\Users\\psivi\\Source\\Repos\\InbarCha\\AphasiaGreetingCards_1\\AphasiaGreetingCards_current\\AphasiaGreetingCards.csproj",
       "projectName": "AphasiaGreetingCards",
-      "projectPath": "C:\\Users\\Inbar\\Desktop\\WebAppCourse\\AphasiaGreetingCards\\AphasiaGreetingCards_current\\AphasiaGreetingCards.csproj",
-      "packagesPath": "C:\\Users\\Inbar\\.nuget\\packages\\",
-      "outputPath": "C:\\Users\\Inbar\\Desktop\\WebAppCourse\\AphasiaGreetingCards\\AphasiaGreetingCards_current\\obj\\",
+      "projectPath": "C:\\Users\\psivi\\Source\\Repos\\InbarCha\\AphasiaGreetingCards_1\\AphasiaGreetingCards_current\\AphasiaGreetingCards.csproj",
+      "packagesPath": "C:\\Users\\psivi\\.nuget\\packages\\",
+      "outputPath": "C:\\Users\\psivi\\Source\\Repos\\InbarCha\\AphasiaGreetingCards_1\\AphasiaGreetingCards_current\\obj\\",
       "projectStyle": "PackageReference",
       "fallbackFolders": [
         "C:\\Program Files\\dotnet\\sdk\\NuGetFallbackFolder"
       ],
       "configFilePaths": [
-        "C:\\Users\\Inbar\\AppData\\Roaming\\NuGet\\NuGet.Config",
+        "C:\\Users\\psivi\\AppData\\Roaming\\NuGet\\NuGet.Config",
         "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
       ],
       "originalTargetFrameworks": [
