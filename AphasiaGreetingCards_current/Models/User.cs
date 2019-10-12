@@ -34,6 +34,9 @@ namespace AphasiaGreetingCards.Models
         [Column("City")]
         public string City { get; set; }
 
+        [Column("isAdmin")]
+        public bool isAdmin { get; set; }
+
         public IEnumerable<User> Friends { get; set; }
 
         public User(string FirstName, string LastName, string Email, string UserName, int Age, string Birthday, string City) 

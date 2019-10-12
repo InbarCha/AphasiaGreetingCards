@@ -14,6 +14,7 @@ using AphasiaGreetingCards.Models;
 using AphasiaGreetingCards.Data;
 using Microsoft.AspNetCore.Identity;
 using Microsoft.AspNetCore.Identity.UI.Services;
+using Microsoft.AspNetCore.Identity.EntityFrameworkCore;
 
 namespace AphasiaGreetingCards
 {
@@ -60,7 +61,7 @@ namespace AphasiaGreetingCards
                 app.UseExceptionHandler("/Home/Error");
                 app.UseHsts();
             }
-
+            
             app.UseHttpsRedirection();
             app.UseStaticFiles();
             app.UseCookiePolicy();

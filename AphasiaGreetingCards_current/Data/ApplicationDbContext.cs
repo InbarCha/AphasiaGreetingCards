@@ -7,6 +7,7 @@ using Microsoft.AspNetCore.Identity.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore;
 using AphasiaGreetingCards.Models;
 using Microsoft.AspNetCore.Identity;
+using IdentityRole = Microsoft.AspNetCore.Identity.IdentityRole;
 
 namespace AphasiaGreetingCards.Data
 {
@@ -19,6 +20,7 @@ namespace AphasiaGreetingCards.Data
         public DbSet<AphasiaGreetingCards.Models.GreetingCard> GreetingCards { get; set; }
         public DbSet<AphasiaGreetingCards.Models.Image> Images { get; set; }
         public DbSet<AphasiaGreetingCards.Models.SentimentSentence> SentimentSentences { get; set; }
-
+            
+        
     }
 }

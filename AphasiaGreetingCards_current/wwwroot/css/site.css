@@ -2,7 +2,7 @@
 
 #greetings_card_display {
     font-family: Museo;
-    font-size: xx-large;
+    font-size: x-large;
     background-image: url('/images/gradient.jpg');
     background-size: cover;
     align-content: center;
@@ -52,7 +52,7 @@
 }
 
 .jumbotron {
-    height: 500px;
+    height: 400px;
     position: relative;
     display: flex;
     flex-direction: column;
@@ -62,7 +62,7 @@
 
 .navbar-nav {
     font-family: Museo;
-    font-size: large;
+    font-size: medium;
 }
 
     .navbar-nav > li {

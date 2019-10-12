@@ -9,7 +9,7 @@
     ViewData["Title"] = "Edit";
 }
 
-@if (SignInManager.IsSignedIn(User))
+@if (SignInManager.IsSignedIn(User) && UserManager.GetUserAsync(User).Result.isAdmin)
 {
     <div class="Page">
         <h4>SentimentSentence</h4>
@@ -59,6 +59,7 @@
 else
 {
     <div class="display-3 text-center">
-        You must be logged in to edit a sentiment sentence.
+        You must be logged in as admin to edit a sentiment sentence. <br />
+        <a href="/SentimentSentences" class="btn btn-primary"> Back to Sentiment Sentences List </a>
     </div>
 }

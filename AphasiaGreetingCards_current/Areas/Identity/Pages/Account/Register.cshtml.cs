@@ -68,6 +68,7 @@ namespace AphasiaGreetingCards.Areas.Identity.Pages.Account
 
             [Required]
             [Display(Name = "Birthday")]
+            [DataType(DataType.Date)]
             public string Birthday { get; set; }
 
             [Required]
@@ -85,7 +86,8 @@ namespace AphasiaGreetingCards.Areas.Identity.Pages.Account
             returnUrl = returnUrl ?? Url.Content("~/");
             if (ModelState.IsValid)
             {
-                var user = new User { FirstName=Input.FirstName, Birthday=Input.Birthday, LastName=Input.LastName, Age=Input.Age, City=Input.City, UserName = Input.Email, Email = Input.Email };
+
+                var user = new User { FirstName = Input.FirstName, Birthday = Input.Birthday, LastName = Input.LastName, Age = Input.Age, City = Input.City, UserName = Input.Email, Email = Input.Email, isAdmin = false};
                 var result = await _userManager.CreateAsync(user, Input.Password);
                 if (result.Succeeded)
                 {

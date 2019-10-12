@@ -5,16 +5,15 @@
 
 
 @model AphasiaGreetingCards.Models.SentimentSentence
-
 <!-- NEED TO CHANGE TO ONLY ADMIN USERS -->
-@if (SignInManager.IsSignedIn(User))
+@if (SignInManager.IsSignedIn(User) && UserManager.GetUserAsync(User).Result.isAdmin)
 {
     ViewData["Title"] = "Create";
     <div class="Page">
-        <h4>SentimentSentence</h4>
+        <div class="display-4 text-center">Create a New Sentiment Sentence</div>
         <hr />
         <div class="row">
-            <div class="col-md-4">
+            <div class="col-md-4 offset-md-4">
                 <form asp-action="Create">
                     <div asp-validation-summary="ModelOnly" class="text-danger"></div>
                     <div class="form-group">
@@ -28,9 +27,9 @@
                         <span asp-validation-for="prefix" class="text-danger"></span>
                     </div>
                     <div class="form-group">
-                        <label asp-for="recipientUserID" class="control-label"></label>
-                        <input asp-for="recipientUserID" class="form-control" />
-                        <span asp-validation-for="recipientUserID" class="text-danger"></span>
+                        <label asp-for="recipientUserFirstName" class="control-label"></label>
+                        <input asp-for="recipientUserFirstName" class="form-control" />
+                        <span asp-validation-for="recipientUserFirstName" class="text-danger"></span>
                     </div>
                     <div class="form-group">
                         <label asp-for="suffix" class="control-label"></label>
@@ -43,12 +42,12 @@
                         <span asp-validation-for="complexity" class="text-danger"></span>
                     </div>
                     <div class="form-group">
-                        <input type="submit" value="Create" class="btn btn-default" />
+                        <input type="submit" value="Create" class="btn btn-primary" />
                     </div>
                 </form>
             </div>
         </div>
-
+    
         <div>
             <a asp-action="Index">Back to List</a>
         </div>
@@ -56,8 +55,9 @@
 }
 else
 {
-    <div class="display-3 text-center">
-        You must be logged in to create a sentiment sentence.
+    <div class="display-4 text-center">
+        You must be logged in as admin to create a sentiment sentence. <br />
+        <a href="/SentimentSentences" class="btn btn-primary"> Back to Sentiment Sentences List </a>
     </div>
 }
 
