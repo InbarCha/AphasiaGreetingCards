@@ -19,7 +19,7 @@ namespace AphasiaGreetingCards.Models
         public int recipientUserID { get; set; }
 
         [Display(Name = "Recipient")]
-        public string recipientUserFullName { get; set; }
+        public string recipientUserFirstName { get; set; }
 
         [Display(Name = "Suffix")]
         public string suffix { get; set; }
