@@ -63,7 +63,7 @@
                         @Html.DisplayNameFor(model => model.prefix)
                     </th>
                     <th>
-                        @Html.DisplayNameFor(model => model.recipientUserFullName)
+                        @Html.DisplayNameFor(model => model.recipientUserFirstName)
                     </th>
                     <th>
                         @Html.DisplayNameFor(model => model.suffix)
@@ -71,44 +71,50 @@
                     <th>
                         @Html.DisplayNameFor(model => model.complexity)
                     </th>
+                    <th>
+                        Full Sentence
+                    </th>
                     <th></th>
                 </tr>
             </thead>
             <tbody>
                 @foreach (var item in Model)
                 {
-                    <tr>
-                        <td>
-                            @Html.DisplayFor(modelItem => item.theme)
-                        </td>
-                        <td>
-                            @Html.DisplayFor(modelItem => item.prefix)
-                        </td>
-                        <td>
-                            @Html.DisplayFor(modelItem => item.recipientUserFullName)
-                        </td>
-                        <td>
-                            @Html.DisplayFor(modelItem => item.suffix)
-                        </td>
-                        <td>
-                            @Html.DisplayFor(modelItem => item.complexity)
-                        </td>
-                        <td>
-                            @if (SignInManager.IsSignedIn(User))
-                            {
-                                <a asp-action="Edit" asp-route-id="@item.ID" class="btn btn-primary">Edit</a>
-                                <a asp-action="Details" asp-route-id="@item.ID" class="btn btn-primary">Details</a>
-                                <a asp-action="Delete" asp-route-id="@item.ID" class="btn btn-primary">Delete</a>
-                            }
-                            else
-                            {
-                                <div>
-                                    To Edit|Details|Delete you must be logged in
-                                </div>
-                            }
+                <tr>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.theme)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.prefix)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.recipientUserFirstName)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.suffix)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.complexity)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.prefix), @Html.DisplayFor(omdelItem => item.recipientUserFirstName) @Html.DisplayFor(omdelItem => item.suffix)
+                    </td>
+                    <td>
+                        @if (SignInManager.IsSignedIn(User))
+                        {
+                            <a asp-action="Edit" asp-route-id="@item.ID" class="btn btn-primary">Edit</a>
+                            <a asp-action="Details" asp-route-id="@item.ID" class="btn btn-primary">Details</a>
+                            <a asp-action="Delete" asp-route-id="@item.ID" class="btn btn-primary">Delete</a>
+                        }
+                        else
+                        {
+                            <div>
+                                To Edit|Details|Delete you must be logged in
+                            </div>
+                        }
 
-                        </td>
-                    </tr>
+                    </td>
+                </tr>
                 }
             </tbody>
         </table>
