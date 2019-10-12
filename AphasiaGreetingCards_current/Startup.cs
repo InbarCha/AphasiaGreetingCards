@@ -37,9 +37,9 @@ namespace AphasiaGreetingCards
             });
 
             services.AddDbContext<ApplicationDbContext>(options =>
-                  /*options.UseSqlServer(
-                      Configuration.GetConnectionString("DefaultConnection")));*/
-                  options.UseSqlServer(Configuration.GetConnectionString("ApplicationDbContext")));
+                /*options.UseSqlServer(
+                    Configuration.GetConnectionString("DefaultConnection")));*/
+                options.UseSqlite("Data Source=App_Data/MyLocalDB.db"));
 
             services.AddIdentity<User, IdentityRole>()
                 .AddEntityFrameworkStores<ApplicationDbContext>();
