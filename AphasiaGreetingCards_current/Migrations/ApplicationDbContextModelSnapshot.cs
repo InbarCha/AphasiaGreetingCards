@@ -21,25 +21,36 @@ namespace AphasiaGreetingCards.Migrations
                     b.Property<int>("ID")
                         .ValueGeneratedOnAdd();
 
-                    b.Property<string>("fullSentence");
+                    b.Property<string>("fullSentence")
+                        .IsRequired();
 
-                    b.Property<string>("image");
+                    b.Property<string>("image")
+                        .IsRequired();
 
                     b.Property<int>("imageID");
 
+                    b.Property<string>("imageName");
+
                     b.Property<bool>("publishedToFacebook");
+
+                    b.Property<string>("recipientUserEmail")
+                        .IsRequired();
 
                     b.Property<string>("recipientUserFullName");
 
-                    b.Property<int>("recipientUserID");
-
                     b.Property<string>("senderUserFullName");
 
-                    b.Property<int>("sendertUserID");
+                    b.Property<string>("sendertUserEmail")
+                        .IsRequired();
 
                     b.Property<int>("sentenceID");
 
-                    b.Property<string>("theme");
+                    b.Property<string>("sentencePrefix");
+
+                    b.Property<string>("sentenceSuffix");
+
+                    b.Property<string>("theme")
+                        .IsRequired();
 
                     b.HasKey("ID");
 
@@ -51,7 +62,11 @@ namespace AphasiaGreetingCards.Migrations
                     b.Property<int>("ID")
                         .ValueGeneratedOnAdd();
 
+                    b.Property<int?>("GreetingCardID");
+
                     b.Property<int>("digitalSize");
+
+                    b.Property<string>("imageName");
 
                     b.Property<string>("imagePath");
 
@@ -61,6 +76,8 @@ namespace AphasiaGreetingCards.Migrations
 
                     b.HasKey("ID");
 
+                    b.HasIndex("GreetingCardID");
+
                     b.ToTable("Images");
                 });
 
@@ -69,19 +86,28 @@ namespace AphasiaGreetingCards.Migrations
                     b.Property<int>("ID")
                         .ValueGeneratedOnAdd();
 
-                    b.Property<string>("complexity");
+                    b.Property<int?>("GreetingCardID");
 
-                    b.Property<string>("prefix");
+                    b.Property<string>("complexity")
+                        .IsRequired();
+
+                    b.Property<string>("prefix")
+                        .IsRequired();
+
+                    b.Property<string>("recipientUserEmail")
+                        .IsRequired();
 
                     b.Property<string>("recipientUserFirstName");
 
-                    b.Property<int>("recipientUserID");
+                    b.Property<string>("suffix")
+                        .IsRequired();
 
-                    b.Property<string>("suffix");
-
-                    b.Property<string>("theme");
+                    b.Property<string>("theme")
+                        .IsRequired();
 
                     b.HasKey("ID");
+
+                    b.HasIndex("GreetingCardID");
 
                     b.ToTable("SentimentSentences");
                 });
@@ -267,6 +293,20 @@ namespace AphasiaGreetingCards.Migrations
                     b.HasKey("UserId", "LoginProvider", "Name");
 
                     b.ToTable("AspNetUserTokens");
+                });
+
+            modelBuilder.Entity("AphasiaGreetingCards.Models.Image", b =>
+                {
+                    b.HasOne("AphasiaGreetingCards.Models.GreetingCard")
+                        .WithMany("ImagesDB")
+                        .HasForeignKey("GreetingCardID");
+                });
+
+            modelBuilder.Entity("AphasiaGreetingCards.Models.SentimentSentence", b =>
+                {
+                    b.HasOne("AphasiaGreetingCards.Models.GreetingCard")
+                        .WithMany("SentimentSentencesDB")
+                        .HasForeignKey("GreetingCardID");
                 });
 
             modelBuilder.Entity("AphasiaGreetingCards.Models.User", b =>

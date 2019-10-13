@@ -45,6 +45,7 @@ namespace AphasiaGreetingCards.Migrations
                     Age = table.Column<int>(nullable: false),
                     Birthday = table.Column<string>(nullable: false),
                     City = table.Column<string>(nullable: false),
+                    isAdmin = table.Column<bool>(nullable: false),
                     UserId = table.Column<string>(nullable: true)
                 },
                 constraints: table =>
@@ -64,54 +65,22 @@ namespace AphasiaGreetingCards.Migrations
                 {
                     ID = table.Column<int>(nullable: false)
                         .Annotation("Sqlite:Autoincrement", true),
-                    theme = table.Column<string>(nullable: true),
-                    sendertUserID = table.Column<int>(nullable: false),
+                    theme = table.Column<string>(nullable: false),
+                    sendertUserEmail = table.Column<string>(nullable: false),
                     senderUserFullName = table.Column<string>(nullable: true),
-                    recipientUserID = table.Column<int>(nullable: false),
+                    recipientUserEmail = table.Column<string>(nullable: false),
                     recipientUserFullName = table.Column<string>(nullable: true),
                     sentenceID = table.Column<int>(nullable: false),
-                    fullSentence = table.Column<string>(nullable: true),
+                    sentencePrefix = table.Column<string>(nullable: true),
+                    sentenceSuffix = table.Column<string>(nullable: true),
+                    fullSentence = table.Column<string>(nullable: false),
                     imageID = table.Column<int>(nullable: false),
-                    image = table.Column<string>(nullable: true),
+                    image = table.Column<string>(nullable: false),
                     publishedToFacebook = table.Column<bool>(nullable: false)
                 },
                 constraints: table =>
                 {
                     table.PrimaryKey("PK_GreetingCards", x => x.ID);
-                });
-
-            migrationBuilder.CreateTable(
-                name: "Images",
-                columns: table => new
-                {
-                    ID = table.Column<int>(nullable: false)
-                        .Annotation("Sqlite:Autoincrement", true),
-                    imagePath = table.Column<string>(nullable: true),
-                    theme = table.Column<string>(nullable: true),
-                    resolution = table.Column<string>(nullable: true),
-                    digitalSize = table.Column<int>(nullable: false)
-                },
-                constraints: table =>
-                {
-                    table.PrimaryKey("PK_Images", x => x.ID);
-                });
-
-            migrationBuilder.CreateTable(
-                name: "SentimentSentences",
-                columns: table => new
-                {
-                    ID = table.Column<int>(nullable: false)
-                        .Annotation("Sqlite:Autoincrement", true),
-                    theme = table.Column<string>(nullable: true),
-                    prefix = table.Column<string>(nullable: true),
-                    recipientUserID = table.Column<int>(nullable: false),
-                    recipientUserFirstName = table.Column<string>(nullable: true),
-                    suffix = table.Column<string>(nullable: true),
-                    complexity = table.Column<string>(nullable: true)
-                },
-                constraints: table =>
-                {
-                    table.PrimaryKey("PK_SentimentSentences", x => x.ID);
                 });
 
             migrationBuilder.CreateTable(
@@ -220,6 +189,55 @@ namespace AphasiaGreetingCards.Migrations
                         onDelete: ReferentialAction.Cascade);
                 });
 
+            migrationBuilder.CreateTable(
+                name: "Images",
+                columns: table => new
+                {
+                    ID = table.Column<int>(nullable: false)
+                        .Annotation("Sqlite:Autoincrement", true),
+                    imagePath = table.Column<string>(nullable: true),
+                    imageName = table.Column<string>(nullable: true),
+                    theme = table.Column<string>(nullable: true),
+                    resolution = table.Column<string>(nullable: true),
+                    digitalSize = table.Column<int>(nullable: false),
+                    GreetingCardID = table.Column<int>(nullable: true)
+                },
+                constraints: table =>
+                {
+                    table.PrimaryKey("PK_Images", x => x.ID);
+                    table.ForeignKey(
+                        name: "FK_Images_GreetingCards_GreetingCardID",
+                        column: x => x.GreetingCardID,
+                        principalTable: "GreetingCards",
+                        principalColumn: "ID",
+                        onDelete: ReferentialAction.Restrict);
+                });
+
+            migrationBuilder.CreateTable(
+                name: "SentimentSentences",
+                columns: table => new
+                {
+                    ID = table.Column<int>(nullable: false)
+                        .Annotation("Sqlite:Autoincrement", true),
+                    theme = table.Column<string>(nullable: false),
+                    prefix = table.Column<string>(nullable: false),
+                    recipientUserEmail = table.Column<string>(nullable: false),
+                    recipientUserFirstName = table.Column<string>(nullable: true),
+                    suffix = table.Column<string>(nullable: false),
+                    complexity = table.Column<string>(nullable: false),
+                    GreetingCardID = table.Column<int>(nullable: true)
+                },
+                constraints: table =>
+                {
+                    table.PrimaryKey("PK_SentimentSentences", x => x.ID);
+                    table.ForeignKey(
+                        name: "FK_SentimentSentences_GreetingCards_GreetingCardID",
+                        column: x => x.GreetingCardID,
+                        principalTable: "GreetingCards",
+                        principalColumn: "ID",
+                        onDelete: ReferentialAction.Restrict);
+                });
+
             migrationBuilder.CreateIndex(
                 name: "IX_AspNetRoleClaims_RoleId",
                 table: "AspNetRoleClaims",
@@ -261,6 +279,16 @@ namespace AphasiaGreetingCards.Migrations
                 name: "IX_AspNetUsers_UserId",
                 table: "AspNetUsers",
                 column: "UserId");
+
+            migrationBuilder.CreateIndex(
+                name: "IX_Images_GreetingCardID",
+                table: "Images",
+                column: "GreetingCardID");
+
+            migrationBuilder.CreateIndex(
+                name: "IX_SentimentSentences_GreetingCardID",
+                table: "SentimentSentences",
+                column: "GreetingCardID");
         }
 
         protected override void Down(MigrationBuilder migrationBuilder)
@@ -281,9 +309,6 @@ namespace AphasiaGreetingCards.Migrations
                 name: "AspNetUserTokens");
 
             migrationBuilder.DropTable(
-                name: "GreetingCards");
-
-            migrationBuilder.DropTable(
                 name: "Images");
 
             migrationBuilder.DropTable(
@@ -294,6 +319,9 @@ namespace AphasiaGreetingCards.Migrations
 
             migrationBuilder.DropTable(
                 name: "AspNetUsers");
+
+            migrationBuilder.DropTable(
+                name: "GreetingCards");
         }
     }
 }

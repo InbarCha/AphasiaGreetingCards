@@ -9,6 +9,8 @@
     ViewData["Title"] = "Index";
 }
 <div class="Page">
+    <div class="display-4 text-center"> Greeting Cards </div>
+    <hr />
     @if (SignInManager.IsSignedIn(User))
     {
         <p>
@@ -48,7 +50,7 @@
             </div>
 
         </div>
-        <br/>
+        <br />
     }
 
     <div class="card shadow-lg">
@@ -62,13 +64,13 @@
                         @Html.DisplayNameFor(model => model.senderUserFullName)
                     </th>
                     <th class="width-md">
-                        @Html.DisplayNameFor(model => model.recipientUserFullName)
+                        Recipient
                     </th>
                     <th class="width-md">
                         @Html.DisplayNameFor(model => model.fullSentence)
                     </th>
                     <th class="width-md">
-                        @Html.DisplayNameFor(model => model.image)
+                        Image Name
                     </th>
                     <th class="width-md">
                         @Html.DisplayNameFor(model => model.publishedToFacebook)
@@ -96,16 +98,16 @@
                             @Html.DisplayFor(modelItem => item.fullSentence)
                         </td>
                         <td>
-                            @Html.DisplayFor(modelItem => item.image)
+                            @Html.DisplayFor(modelItem => item.imageName)
                         </td>
                         <td>
                             @Html.DisplayFor(modelItem => item.publishedToFacebook)
                         </td>
                         <td>
-                            <div class="card" style="width:300px">
-                                <img class="card-img-top" src="~/images/happybirthday.jpg" alt="Card image" style="width:100%">
+                            <div class="card GreetingCardFull">
+                                <img class="card-img-top" src="@Html.DisplayFor(modelItem => item.image)" alt="Card image" style="width:100%">
                                 <div class="card-body">
-                                    <h4 class="card-title">@Html.DisplayFor(modelItem => item.theme)</h4>
+                                    <h4 class="card-title">To @Html.DisplayFor(modelItem => item.recipientUserFullName)</h4>
                                     <p class="card-text">@Html.DisplayFor(modelItem => item.fullSentence)</p>
                                 </div>
                             </div>
@@ -114,8 +116,8 @@
                         <td>
                             @if (SignInManager.IsSignedIn(User))
                             {
-                                <a asp-action="Edit" asp-route-id="@item.ID" class="btn btn-primary">Edit</a> 
-                                <a asp-action="Details" asp-route-id="@item.ID" class="btn btn-primary">Details</a> 
+                                <a asp-action="Edit" asp-route-id="@item.ID" class="btn btn-primary">Edit</a>
+                                <a asp-action="Details" asp-route-id="@item.ID" class="btn btn-primary">Details</a>
                                 <a asp-action="Delete" asp-route-id="@item.ID" class="btn btn-primary">Delete</a>
                             }
                             else

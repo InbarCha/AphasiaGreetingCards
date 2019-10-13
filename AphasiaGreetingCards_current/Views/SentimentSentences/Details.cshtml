@@ -6,9 +6,9 @@
 
 <div class="Page">
     <div>
-        <h4>SentimentSentence</h4>
+        <div class="display-4 text-center">Sentiment Sentence Details</div>
         <hr />
-        <dl class="dl-horizontal">
+        <dl class="col-md-4 offset-md-4 text-center dl-horizontal">
             <dt>
                 @Html.DisplayNameFor(model => model.theme)
             </dt>
@@ -22,10 +22,10 @@
                 @Html.DisplayFor(model => model.prefix)
             </dd>
             <dt>
-                @Html.DisplayNameFor(model => model.recipientUserID)
+                @Html.DisplayNameFor(model => model.recipientUserFirstName)
             </dt>
             <dd>
-                @Html.DisplayFor(model => model.recipientUserID)
+                @Html.DisplayFor(model => model.recipientUserFirstName)
             </dd>
             <dt>
                 @Html.DisplayNameFor(model => model.suffix)
@@ -41,8 +41,8 @@
             </dd>
         </dl>
     </div>
-    <div>
-        <a asp-action="Edit" asp-route-id="@Model.ID">Edit</a> |
-        <a asp-action="Index">Back to List</a>
+    <div class="col-md-4 offset-md-4 dl-horizontal text-center">
+        <a asp-action="Edit" asp-route-id="@Model.ID" class="btn btn-primary">Edit</a> 
+        <a asp-action="Index" class="btn btn-primary">Back to List</a>
     </div>
 </div>

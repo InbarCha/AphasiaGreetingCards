@@ -10,8 +10,11 @@ namespace AphasiaGreetingCards.Models
     {
         public int ID { get; set; }
 
-        [Display(Name = "Image")]
+        [Display(Name = "Image Path")]
         public string imagePath { get; set; }
+
+        [Display(Name = "Image Name")]
+        public string imageName { get; set; }
 
         [Display(Name = "Theme")]
         public string theme { get; set; }

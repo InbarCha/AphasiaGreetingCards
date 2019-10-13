@@ -52,22 +52,60 @@ namespace AphasiaGreetingCards.Controllers
         // GET: GreetingCards/Create
         public IActionResult Create()
         {
-            
-            return View();
+            var model = new GreetingCard { SentimentSentencesDB = _context.SentimentSentences, ImagesDB = _context.Images };
+            return View(model);
         }
 
         // POST: GreetingCards/Create
         // To protect from overposting attacks, please enable the specific properties you want to bind to, for 
         // more details see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
-        public async Task<IActionResult> Create([Bind(("ID,theme,sendertUserID,senderUserFullName,recipientUserID,recipientUserFullName,sentenceID,fullSentence,imageID,image,publishedToFacebook"))] GreetingCard greetingCard)
+        public async Task<IActionResult> Create([Bind(("ID,theme,sendertUserEmail,senderUserFullName,recipientUserEmail,sentencePrefix,fullSentence,sentenceSuffix,image,publishedToFacebook"))] GreetingCard greetingCard)
         {
             if (ModelState.IsValid)
             {
+                var recipientUser = _context.Users.FirstOrDefaultAsync(m => m.Email == greetingCard.recipientUserEmail).Result;
+                if (recipientUser != default)
+                {
+                    var recipientUserFirstName = recipientUser.FirstName;
+                    var recipientUserLastName = recipientUser.LastName;
+                    greetingCard.recipientUserFullName = recipientUserFirstName + " " + recipientUserLastName;
+                    greetingCard.fullSentence = greetingCard.sentencePrefix + ", " + recipientUserFirstName + "! " + greetingCard.sentenceSuffix;
+                }
+                else
+                {
+                    greetingCard.recipientUserFullName = greetingCard.recipientUserEmail;
+                    greetingCard.recipientUserEmail = "Default@default.com";
+                    greetingCard.fullSentence = greetingCard.sentencePrefix + ", " + greetingCard.recipientUserFullName + "! " + greetingCard.sentenceSuffix;
+                }
+
+                Image selectedImage = _context.Images.FirstOrDefaultAsync(m => m.imageName == greetingCard.image).Result;
+                if (selectedImage != default)
+                {
+                    greetingCard.image = selectedImage.imagePath;
+                    greetingCard.imageID = selectedImage.ID;
+                    greetingCard.imageName = selectedImage.imageName;
+                }
+
+                var sentence = _context.SentimentSentences.FirstOrDefaultAsync(m => m.prefix == greetingCard.sentencePrefix && m.suffix == greetingCard.sentenceSuffix).Result;
+                if(sentence == default)
+                {
+                    var sentenceBySuffix = _context.SentimentSentences.FirstOrDefaultAsync(m => m.suffix == greetingCard.sentenceSuffix).Result;
+                    if(sentenceBySuffix != default)
+                    {
+                        var newSentenceToDB = new SentimentSentence { prefix = greetingCard.sentencePrefix, suffix = greetingCard.sentenceSuffix, complexity=sentenceBySuffix.complexity,
+                            recipientUserEmail=greetingCard.recipientUserEmail, recipientUserFirstName=greetingCard.recipientUserFullName, theme=greetingCard.theme };
+                        _context.SentimentSentences.Add(newSentenceToDB);
+                    }
+                }
+
                 _context.Add(greetingCard);
                 await _context.SaveChangesAsync();
                 return RedirectToAction(nameof(Index));
             }
+
+            greetingCard.ImagesDB = _context.Images;
+            greetingCard.SentimentSentencesDB = _context.SentimentSentences;
             return View(greetingCard);
         }
 
@@ -84,6 +122,9 @@ namespace AphasiaGreetingCards.Controllers
             {
                 return NotFound();
             }
+
+            greetingCard.ImagesDB = _context.Images;
+            greetingCard.SentimentSentencesDB = _context.SentimentSentences;
             return View(greetingCard);
         }
 
@@ -91,7 +132,7 @@ namespace AphasiaGreetingCards.Controllers
         // To protect from overposting attacks, please enable the specific properties you want to bind to, for 
         // more details see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
-        public async Task<IActionResult> Edit(int id, [Bind("ID,theme,sendertUserID,senderUserFullName,recipientUserID,recipientUserFullName,sentenceID,fullSentence,imageID,image,publishedToFacebook")] GreetingCard greetingCard)
+        public async Task<IActionResult> Edit(int id, [Bind("ID,theme,sendertUserEmail,senderUserFullName,recipientUserEmail,sentencePrefix,fullSentence,sentenceSuffix,image,publishedToFacebook")] GreetingCard greetingCard)
         {
             if (id != greetingCard.ID)
             {
@@ -102,6 +143,48 @@ namespace AphasiaGreetingCards.Controllers
             {
                 try
                 {
+                    var recipientUser = _context.Users.FirstOrDefaultAsync(m => m.Email == greetingCard.recipientUserEmail).Result;
+                    if (recipientUser != default)
+                    {
+                        var recipientUserFirstName = recipientUser.FirstName;
+                        var recipientUserLastName = recipientUser.LastName;
+                        greetingCard.recipientUserFullName = recipientUserFirstName + " " + recipientUserLastName;
+                        greetingCard.fullSentence = greetingCard.sentencePrefix + ", " + recipientUserFirstName + "! " + greetingCard.sentenceSuffix;
+                    }
+                    else
+                    {
+                        greetingCard.recipientUserFullName = greetingCard.recipientUserEmail;
+                        greetingCard.recipientUserEmail = "Default@default.com";
+                        greetingCard.fullSentence = greetingCard.sentencePrefix + ", " + greetingCard.recipientUserFullName + "! " + greetingCard.sentenceSuffix;
+                    }
+
+                    Image selectedImage = _context.Images.FirstOrDefaultAsync(m => m.imageName == greetingCard.image).Result;
+                    if (selectedImage != default)
+                    {
+                        greetingCard.image = selectedImage.imagePath;
+                        greetingCard.imageID = selectedImage.ID;
+                        greetingCard.imageName = selectedImage.imageName;
+                    }
+
+                    var sentence = _context.SentimentSentences.FirstOrDefaultAsync(m => m.prefix == greetingCard.sentencePrefix && m.suffix == greetingCard.sentenceSuffix).Result;
+                    if (sentence == default)
+                    {
+                        var sentenceBySuffix = _context.SentimentSentences.FirstOrDefaultAsync(m => m.suffix == greetingCard.sentenceSuffix).Result;
+                        if (sentenceBySuffix != default)
+                        {
+                            var newSentenceToDB = new SentimentSentence
+                            {
+                                prefix = greetingCard.sentencePrefix,
+                                suffix = greetingCard.sentenceSuffix,
+                                complexity = sentenceBySuffix.complexity,
+                                recipientUserEmail = greetingCard.recipientUserEmail,
+                                recipientUserFirstName = greetingCard.recipientUserFullName,
+                                theme = greetingCard.theme
+                            };
+                            _context.SentimentSentences.Add(newSentenceToDB);
+                        }
+                    }
+
                     _context.Update(greetingCard);
                     await _context.SaveChangesAsync();
                 }

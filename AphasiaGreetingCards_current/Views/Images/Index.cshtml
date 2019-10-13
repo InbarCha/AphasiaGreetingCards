@@ -4,10 +4,15 @@
     ViewData["Title"] = "Index";
 }
 <div class="Page">
+    <div class="display-4 text-center"> Images </div>
+    <hr />
     <div class="card shadow-lg">
         <table class="table table-hover">
             <thead class="thead-dark">
                 <tr>
+                    <th>
+                        @Html.DisplayNameFor(model => model.imageName)
+                    </th>
                     <th>
                         @Html.DisplayNameFor(model => model.theme)
                     </th>
@@ -27,6 +32,9 @@
                 {
                     <tr>
                         <td>
+                            @Html.DisplayFor(modelItem => item.imageName)
+                        </td>
+                        <td>
                             @Html.DisplayFor(modelItem => item.theme)
                         </td>
                         <td>
@@ -41,6 +49,6 @@
                     </tr>
                 }
             </tbody>
-        </table> 
+        </table>
     </div>
 </div>

@@ -56,10 +56,22 @@ namespace AphasiaGreetingCards.Controllers
         // To protect from overposting attacks, please enable the specific properties you want to bind to, for 
         // more details see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
-        public async Task<IActionResult> Create([Bind(("ID,theme,prefix,recipientUserID,recipientUserFullName,suffix,complexity"))] SentimentSentence sentimentSentence)
+        public async Task<IActionResult> Create([Bind(("ID,theme,prefix,recipientUserEmail,suffix,complexity"))] SentimentSentence sentimentSentence)
         {
             if (ModelState.IsValid)
             {
+                var recipientUser = _context.Users.FirstOrDefaultAsync(m => m.Email == sentimentSentence.recipientUserEmail).Result;
+                if (recipientUser != default)
+                {
+                    var recipientUserFirstName = recipientUser.FirstName;
+                    sentimentSentence.recipientUserFirstName = recipientUserFirstName;
+                }
+                else
+                { 
+                    sentimentSentence.recipientUserFirstName = sentimentSentence.recipientUserEmail;
+                    sentimentSentence.recipientUserEmail = "Default@default.com" ;
+                }
+
                 _context.Add(sentimentSentence);
                 await _context.SaveChangesAsync();
                 return RedirectToAction(nameof(Index));
@@ -88,7 +100,7 @@ namespace AphasiaGreetingCards.Controllers
         // more details see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public async Task<IActionResult> Edit(int id, [Bind("ID,theme,prefix,recipientUserID,recipientUserFullName,suffix,complexity")] SentimentSentence sentimentSentence)
+        public async Task<IActionResult> Edit(int id, [Bind("ID,theme,prefix,recipientUserEmail,recipientUserFirstName,suffix,complexity")] SentimentSentence sentimentSentence)
         {
             if (id != sentimentSentence.ID)
             {
@@ -99,6 +111,18 @@ namespace AphasiaGreetingCards.Controllers
             {
                 try
                 {
+                    var recipientUser = _context.Users.FirstOrDefaultAsync(m => m.Email == sentimentSentence.recipientUserEmail).Result;
+                    if (recipientUser != default)
+                    {
+                        var recipientUserFirstName = recipientUser.FirstName;
+                        sentimentSentence.recipientUserFirstName = recipientUserFirstName;
+                    }
+                    else
+                    {
+                        sentimentSentence.recipientUserFirstName = sentimentSentence.recipientUserEmail;
+                        sentimentSentence.recipientUserEmail = "Default@default.com";
+                    }
+
                     _context.Update(sentimentSentence);
                     await _context.SaveChangesAsync();
                 }

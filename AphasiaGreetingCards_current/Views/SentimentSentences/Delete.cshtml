@@ -10,11 +10,10 @@
 {
     ViewData["Title"] = "Delete";
 
-    <h3>Are you sure you want to delete this?</h3>
-    <div>
-        <h4>SentimentSentence</h4>
-        <hr />
-        <dl class="dl-horizontal">
+    <div class="display-4 text-center">Are you sure you want to delete this?</div>
+    <hr />
+    <div class="col-md-4 offset-md-4">
+        <dl class="dl-horizontal col-md-4 offset-md-4">
             <dt>
                 @Html.DisplayNameFor(model => model.theme)
             </dt>
@@ -28,10 +27,10 @@
                 @Html.DisplayFor(model => model.prefix)
             </dd>
             <dt>
-                @Html.DisplayNameFor(model => model.recipientUserID)
+                @Html.DisplayNameFor(model => model.recipientUserFirstName)
             </dt>
             <dd>
-                @Html.DisplayFor(model => model.recipientUserID)
+                @Html.DisplayFor(model => model.recipientUserFirstName)
             </dd>
             <dt>
                 @Html.DisplayNameFor(model => model.suffix)
@@ -47,10 +46,10 @@
             </dd>
         </dl>
 
-        <form asp-action="Delete">
+        <form asp-action="Delete" class="text-center">
             <input type="hidden" asp-for="ID" />
-            <input type="submit" value="Delete" class="btn btn-default" /> |
-            <a asp-action="Index">Back to List</a>
+            <input type="submit" value="Delete" class="btn btn-primary" /> 
+            <a asp-action="Index" class="btn btn-primary">Back to List</a>
         </form>
     </div>
 }
@@ -58,7 +57,7 @@
 else
 {
     <div class="display-3 text-center">
-        You must be logged in as admin to delete a sentiment sentence. <br/>
+        You must be logged in as admin to delete a sentiment sentence. <br />
         <a href="/SentimentSentences" class="btn btn-primary"> Back to Sentiment Sentences List </a>
     </div>
 }

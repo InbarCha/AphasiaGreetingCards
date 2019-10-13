@@ -10,6 +10,8 @@
 }
 
 <div class="Page">
+    <div class="display-4 text-center"> Sentiment Sentences </div>
+    <hr/>
     @if (SignInManager.IsSignedIn(User))
     {
         <p>
@@ -97,7 +99,7 @@
                         @Html.DisplayFor(modelItem => item.complexity)
                     </td>
                     <td>
-                        @Html.DisplayFor(modelItem => item.prefix), @Html.DisplayFor(omdelItem => item.recipientUserFirstName) @Html.DisplayFor(omdelItem => item.suffix)
+                        @Html.DisplayFor(modelItem => item.prefix), @Html.DisplayFor(omdelItem => item.recipientUserFirstName)! @Html.DisplayFor(modelItem => item.suffix)
                     </td>
                     <td>
                         @if (SignInManager.IsSignedIn(User))

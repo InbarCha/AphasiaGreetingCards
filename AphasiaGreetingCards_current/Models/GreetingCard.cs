@@ -15,39 +15,49 @@ namespace AphasiaGreetingCards.Models
         public string theme { get; set; }
 
         [Required]
-        [Display(Name = "Sender ID")]
-        public int sendertUserID { get; set; }
+        [Display(Name = "Sender Email")]
+        public string sendertUserEmail { get; set; }
 
-        [Required]
-        [Display(Name = "Sender Name")]
+        [Display(Name = "Sender Full Name")]
         public string senderUserFullName { get; set; }
 
         [Required]
-        [Display(Name = "Recipient ID")]
-        public int recipientUserID { get; set; }
+        [Display(Name = "Recipient User")]
+        public string recipientUserEmail { get; set; }
 
-        [Required]
-        [Display(Name = "Recipient Name")]
+        [Display(Name = "Recipient Full Name")]
         public string recipientUserFullName { get; set; }
 
-        [Required]
         [Display(Name = "Sentence ID")]
         public int sentenceID { get; set; }
 
-        [Required]
-        [Display(Name = "Sentence")]
-        public string fullSentence { get; set; }
+
+        [Display(Name = "Sentence Prefix")]
+        public string sentencePrefix { get; set; }
+
+        [Display(Name = "Sentence Suffix")]
+        public string sentenceSuffix { get; set; }
 
         [Required]
-        [Display(Name = "Image")]
+        [Display(Name = "Full Sentence")]
+        public string fullSentence { get; set; }
+
+
+        [Display(Name = "Image ID")]
         public int imageID { get; set; }
 
         [Required]
         [Display(Name = "Image")]
         public string image { get; set; }
 
+        [Display(Name = "Image Name")]
+        public string imageName { get; set; }
+
         [Required]
         [Display(Name = "Published To Facebook?")]
         public bool publishedToFacebook { get; set; }
+
+        public IQueryable<SentimentSentence> SentimentSentencesDB { get; set; }
+        public IQueryable<Image> ImagesDB { get; set; }
     }
 }

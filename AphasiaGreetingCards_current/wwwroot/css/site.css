@@ -22,11 +22,12 @@
     width: 100%;
 }
 
-
+#defaultRecipientBtn, #defaultRecipientBtnGreetingCard {
+    color: red;
+}
 .list-group-item > a {
     color: black;
 }
-
 
 .navItemLogIn {
     color: mediumpurple !important;
@@ -84,6 +85,11 @@
     padding: 0 !important;
     margin: auto !important;
 }
+
+.GreetingCardFull {
+    width: 250px !important;
+}
+
 #welcomeP {
     font-family: Museo;
 }

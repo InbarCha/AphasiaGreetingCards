@@ -18,10 +18,11 @@ namespace AphasiaGreetingCards.Models
         [Display(Name = "Prefix")]
         public string prefix { get; set; }
 
-        public int recipientUserID { get; set; }
-
         [Required]
-        [Display(Name = "Recipient")]
+        [Display(Name = "Recipient User")]
+        public string recipientUserEmail { get; set; }
+
+        [Display(Name = "Recipient First Name")]
         public string recipientUserFirstName { get; set; }
 
         [Required]

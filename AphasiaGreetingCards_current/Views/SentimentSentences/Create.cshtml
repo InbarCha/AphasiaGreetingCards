@@ -3,7 +3,6 @@
 @inject SignInManager<User> SignInManager
 @inject UserManager<User> UserManager
 
-
 @model AphasiaGreetingCards.Models.SentimentSentence
 <!-- NEED TO CHANGE TO ONLY ADMIN USERS -->
 @if (SignInManager.IsSignedIn(User) && UserManager.GetUserAsync(User).Result.isAdmin)
@@ -18,7 +17,17 @@
                     <div asp-validation-summary="ModelOnly" class="text-danger"></div>
                     <div class="form-group">
                         <label asp-for="theme" class="control-label"></label>
-                        <input asp-for="theme" class="form-control" />
+                        <select asp-for="theme" class="form-control">
+                            <option value="Birthday">Birthday</option>
+                            <option value="Bar Mitzva">Bar Mitzva</option>
+                            <option value="It's a boy!">It's a boy!</option>
+                            <option value="Daily">Daily</option>
+                            <option value="It's a girl!">It's a girl!</option>
+                            <option value="Holiday">Holiday</option>
+                            <option value="Love">Love</option>
+                            <option value="Valentine">Valentine</option>
+                            <option value="Wedding">Wedding</option>
+                        </select>
                         <span asp-validation-for="theme" class="text-danger"></span>
                     </div>
                     <div class="form-group">
@@ -27,9 +36,20 @@
                         <span asp-validation-for="prefix" class="text-danger"></span>
                     </div>
                     <div class="form-group">
-                        <label asp-for="recipientUserFirstName" class="control-label"></label>
-                        <input asp-for="recipientUserFirstName" class="form-control" />
-                        <span asp-validation-for="recipientUserFirstName" class="text-danger"></span>
+                        <label asp-for="recipientUserEmail" class="control-label"></label>
+                        <select asp-for="recipientUserEmail" class="form-control" id="selectRecipient">
+                            @foreach (User u in UserManager.Users)
+                               {
+                                   <option value="@u.Email">@u.Email : @u.FirstName @u.LastName</option>
+                               }
+                            <option value="Default" id="defaultRecipientBtn">Add an Unregistered User Recipient By Name</option>
+                        </select>
+                        <script>
+                            $("#defaultRecipientBtn").click(function () {
+                                $("#selectRecipient").replaceWith("<input id='recipientUserEmail' asp-for='recipientUserEmail' type='text' data-val='true' data-val-required='The Recipient User field is required' name='recipientUserEmail' class='form-control' value=''/>");
+                            });
+                        </script>
+                        <span asp-validation-for="recipientUserEmail" class="text-danger"></span>
                     </div>
                     <div class="form-group">
                         <label asp-for="suffix" class="control-label"></label>
@@ -38,7 +58,10 @@
                     </div>
                     <div class="form-group">
                         <label asp-for="complexity" class="control-label"></label>
-                        <input asp-for="complexity" class="form-control" />
+                        <select asp-for="complexity" class="form-control">
+                            <option value="High">High</option>
+                            <option value="Low">Low</option>
+                        </select>
                         <span asp-validation-for="complexity" class="text-danger"></span>
                     </div>
                     <div class="form-group">
@@ -49,7 +72,7 @@
         </div>
     
         <div>
-            <a asp-action="Index">Back to List</a>
+            <a asp-action="Index" class="btn btn-primary">Back to List</a>
         </div>
     </div>
 }

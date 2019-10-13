@@ -2,22 +2,21 @@
 
 namespace AphasiaGreetingCards.Migrations
 {
-    public partial class addingAdmin : Migration
+    public partial class addingColumnImageNameToGreetingCard : Migration
     {
         protected override void Up(MigrationBuilder migrationBuilder)
         {
-            migrationBuilder.AddColumn<bool>(
-                name: "isAdmin",
-                table: "AspNetUsers",
-                nullable: false,
-                defaultValue: false);
+            migrationBuilder.AddColumn<string>(
+                name: "imageName",
+                table: "GreetingCards",
+                nullable: true);
         }
 
         protected override void Down(MigrationBuilder migrationBuilder)
         {
             migrationBuilder.DropColumn(
-                name: "isAdmin",
-                table: "AspNetUsers");
+                name: "imageName",
+                table: "GreetingCards");
         }
     }
 }
