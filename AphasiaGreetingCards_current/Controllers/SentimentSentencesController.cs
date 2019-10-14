@@ -175,5 +175,56 @@ namespace AphasiaGreetingCards.Controllers
         {
             return _context.SentimentSentences.Any(e => e.ID == id);
         }
+
+        public async Task<IActionResult> Search(string theme, string prefix, string suffix)
+        {
+            var selectedSentimentSentences = from s in _context.SentimentSentences
+                                             select s;
+
+            //if all search parameters were given
+            if (!string.IsNullOrEmpty(theme) && !string.IsNullOrEmpty(prefix) && !string.IsNullOrEmpty(suffix))
+            {
+                selectedSentimentSentences = selectedSentimentSentences.Where(g => g.theme == theme && g.prefix == prefix
+                                                                      && g.suffix == suffix);
+            }
+
+            //only "theme" and "prefix" were given
+            else if (!string.IsNullOrEmpty(theme) && !string.IsNullOrEmpty(prefix) && string.IsNullOrEmpty(suffix))
+            {
+                selectedSentimentSentences = selectedSentimentSentences.Where(g => g.theme == theme && g.prefix == prefix);
+            }
+
+            //only "theme" and "suffix" were given
+            else if (!string.IsNullOrEmpty(theme) && string.IsNullOrEmpty(prefix) && !string.IsNullOrEmpty(suffix))
+            {
+                selectedSentimentSentences = selectedSentimentSentences.Where(g => g.theme == theme && g.suffix == suffix);
+            }
+
+            //only "prefix" and "suffix" were given
+            else if (string.IsNullOrEmpty(theme) && !string.IsNullOrEmpty(prefix) && !string.IsNullOrEmpty(suffix))
+            {
+                selectedSentimentSentences = selectedSentimentSentences.Where(g => g.prefix == prefix && g.suffix == suffix);
+            }
+
+            //only "prefix" was given
+            else if (string.IsNullOrEmpty(theme) && !string.IsNullOrEmpty(prefix) && string.IsNullOrEmpty(suffix))
+            {
+                selectedSentimentSentences = selectedSentimentSentences.Where(g => g.prefix == prefix);
+            }
+
+            //only "suffix" was given
+            else if (!string.IsNullOrEmpty(suffix) && string.IsNullOrEmpty(theme) && string.IsNullOrEmpty(prefix))
+            {
+                selectedSentimentSentences = selectedSentimentSentences.Where(g => g.suffix == suffix);
+            }
+
+            //only "theme" was given
+            else if (string.IsNullOrEmpty(suffix) && string.IsNullOrEmpty(prefix) && !string.IsNullOrEmpty(theme))
+            {
+                selectedSentimentSentences = selectedSentimentSentences.Where(g => g.theme == theme);
+            }
+
+            return View("Index", await selectedSentimentSentences.ToListAsync());
+        }
     }
 }

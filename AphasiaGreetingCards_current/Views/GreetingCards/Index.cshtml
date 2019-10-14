@@ -11,11 +11,12 @@
 
 <div class="Page">
     <div class="display-4 text-center"> Greeting Cards </div>
+    <br/>
     <hr />
     <div class="text-center">
-        <button type="button" class="btn btn-primary" id="btnToggleSearch"> Search Form </button>
+        <button type="button" class="btn btn-primary btnToggleSearch"> Search Form </button>
     </div>
-    <div id="searhFormForGreetingCard">
+    <div class="searhFormForGreetingCard">
         <form asp-action="search" class="col-md-4 offset-md-4">
             <div class="form-group">
                 <label class="control-label">Theme</label>
@@ -53,12 +54,10 @@
             </div>
         </form>
     </div>
-
+    <a href="/GreetingCards" class="btn btn-primary"> Full List </a>
     @if (SignInManager.IsSignedIn(User))
     {
-        <p>
             <a asp-controller="GreetingCards" asp-action="Create" class="btn btn-primary text">Create New</a>
-        </p>
     }
     else
     {
@@ -91,7 +90,6 @@
                     </div>
                 </div>
             </div>
-
         </div>
         <br />
     }

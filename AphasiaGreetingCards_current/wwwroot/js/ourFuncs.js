@@ -1,9 +1,9 @@
 ﻿$(document).ready(function () {
-    $("#searhFormForGreetingCard").hide();
+    $(".searhFormForGreetingCard").hide();
 });
 
-$("#btnToggleSearch").click(function () {
-    $("#searhFormForGreetingCard").toggle();
+$(".btnToggleSearch").click(function () {
+    $(".searhFormForGreetingCard").toggle();
 });
 
 $("#defaultImageGreetingCard").click(function () {
