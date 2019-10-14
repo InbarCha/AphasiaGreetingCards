@@ -32,5 +32,56 @@ namespace AphasiaGreetingCards.Controllers
         {
             return _context.Images.Any(e => e.ID == id);
         }
+
+        public async Task<IActionResult> Search(string imageName, string resolution, string theme)
+        {
+            var selectedImages = from im in _context.Images
+                                             select im;
+
+            //if all search parameters were given
+            if (!string.IsNullOrEmpty(theme) && !string.IsNullOrEmpty(resolution) && !string.IsNullOrEmpty(imageName))
+            {
+                selectedImages = selectedImages.Where(g => g.theme == theme && g.resolution == resolution
+                                                                      && g.imageName == imageName);
+            }
+
+            //only "theme" and "resolution" were given
+            else if (!string.IsNullOrEmpty(theme) && !string.IsNullOrEmpty(resolution) && string.IsNullOrEmpty(imageName))
+            {
+                selectedImages = selectedImages.Where(g => g.theme == theme && g.resolution == resolution);
+            }
+
+            //only "theme" and "imageName" were given
+            else if (!string.IsNullOrEmpty(theme) && string.IsNullOrEmpty(resolution) && !string.IsNullOrEmpty(imageName))
+            {
+                selectedImages = selectedImages.Where(g => g.theme == theme && g.imageName == imageName);
+            }
+
+            //only "imageName" and "resolution" were given
+            else if (string.IsNullOrEmpty(theme) && !string.IsNullOrEmpty(imageName) && !string.IsNullOrEmpty(resolution))
+            {
+                selectedImages = selectedImages.Where(g => g.imageName == imageName && g.resolution == resolution);
+            }
+
+            //only "imageName" was given
+            else if (string.IsNullOrEmpty(theme) && !string.IsNullOrEmpty(imageName) && string.IsNullOrEmpty(resolution))
+            {
+                selectedImages = selectedImages.Where(g => g.imageName == imageName);
+            }
+
+            //only "resolution" was given
+            else if (!string.IsNullOrEmpty(resolution) && string.IsNullOrEmpty(theme) && string.IsNullOrEmpty(imageName))
+            {
+                selectedImages = selectedImages.Where(g => g.resolution == resolution);
+            }
+
+            //only "theme" was given
+            else if (string.IsNullOrEmpty(resolution) && string.IsNullOrEmpty(imageName) && !string.IsNullOrEmpty(theme))
+            {
+                selectedImages = selectedImages.Where(g => g.theme == theme);
+            }
+
+            return View("Index", await selectedImages.ToListAsync());
+        }
     }
 }
