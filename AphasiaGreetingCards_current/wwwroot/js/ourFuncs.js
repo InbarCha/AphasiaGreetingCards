@@ -17,3 +17,37 @@ $("#defaultRecipientBtnGreetingCard").click(function () {
 $("#defaultRecipientBtn").click(function () {
     $("#selectRecipient").replaceWith("<input id='recipientUserEmail' asp-for='recipientUserEmail' type='text' data-val='true' data-val-required='The Recipient User field is required' name='recipientUserEmail' class='form-control' value=''/>");
 });
+
+var geocoder;
+var map;
+function initialize() {
+    geocoder = new google.maps.Geocoder();
+    var latlng = new google.maps.LatLng(32.109333, 34.855499);
+    var mapOptions = {
+        zoom: 9,
+        center: latlng
+    }
+    map = new google.maps.Map(document.getElementById('map'), mapOptions);
+
+    var tableRows = document.getElementsByTagName("tbody")[0].rows;
+    for (i = 0; i < tableRows.length; i++) {
+        row = tableRows[i];
+        cell = row.cells[5];
+        innerText = cell.innerText;
+        codeAddress(innerText);
+    }
+}
+
+function codeAddress(address) {
+    geocoder.geocode({ 'address': address }, function (results, status) {
+        if (status == 'OK') {
+            map.setCenter(results[0].geometry.location);
+            var marker = new google.maps.Marker({
+                map: map,
+                position: results[0].geometry.location
+            });
+        } else {
+            alert('Geocode was not successful for the following reason: ' + status);
+        }
+    });
+}

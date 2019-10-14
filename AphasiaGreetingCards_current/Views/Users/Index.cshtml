@@ -4,94 +4,106 @@
     ViewData["Title"] = "Index";
 }
 
-<div class="Page">
-    <div class="display-4 text-center"> Users </div>
-    <hr />
-    <div class="text-center">
-        <button type="button" class="btn btn-primary btnToggleSearch"> Search Form </button>
+<body onload="initialize()">
+    <div class="Page">
+        <div class="display-4 text-center"> Users </div>
+        <hr />
+
+        <div class="text-center">
+            <button type="button" class="btn btn-primary btnToggleSearch"> Search Form </button>
+        </div>
+        <div class="searhFormForGreetingCard">
+            <form asp-action="search" class="col-md-4 offset-md-4">
+                <div class="form-group">
+                    <label class="control-label">First Name</label>
+                    <input class="form-control" name="firstName" />
+                    <span class="text-danger"></span>
+                </div>
+                <div class="form-group">
+                    <label class="control-label">Last Name</label>
+                    <input class="form-control" name="lastName" />
+                    <span class="text-danger"></span>
+                </div>
+                <div class="form-group">
+                    <label class="control-label">City</label>
+                    <input class="form-control" name="city" />
+                    <span class="text-danger"></span>
+                </div>
+                <div class="form-group text-center">
+                    <input type="submit" value="Search" class="btn btn-primary" />
+                </div>
+            </form>
+        </div>
+        <a href="/Users" class="btn btn-primary text-center"> Full List </a>
+
+        <div class="row">
+            <div class="col-md-9">
+                <div class="card shadow-lg">
+                    <table class="table table-hover">
+                        <thead class="thead-dark">
+                            <tr>
+                                <th class="width-md">
+                                    Email
+                                </th>
+                                <th class="width-md">
+                                    @Html.DisplayNameFor(model => model.FirstName)
+                                </th>
+                                <th class="width-md">
+                                    @Html.DisplayNameFor(model => model.LastName)
+                                </th>
+                                <th class="width-md">
+                                    @Html.DisplayNameFor(model => model.Age)
+                                </th>
+                                <th class="width-md">
+                                    @Html.DisplayNameFor(model => model.Birthday)
+                                </th>
+                                <th class="width-md">
+                                    @Html.DisplayNameFor(model => model.City)
+                                </th>
+                                <th class="width-md">
+                                    Is Admin?
+                                </th>
+                                <th> Actions </th>
+                            </tr>
+                        </thead>
+                        <tbody id="usersTable">
+                            @foreach (var item in Model)
+                            {
+                                <tr>
+                                    <td>
+                                        @Html.DisplayFor(modelItem => item.Email)
+                                    </td>
+                                    <td>
+                                        @Html.DisplayFor(modelItem => item.FirstName)
+                                    </td>
+                                    <td>
+                                        @Html.DisplayFor(modelItem => item.LastName)
+                                    </td>
+                                    <td>
+                                        @Html.DisplayFor(modelItem => item.Age)
+                                    </td>
+                                    <td>
+                                        @Html.DisplayFor(modelItem => item.Birthday)
+                                    </td>
+                                    <td>
+                                        @Html.DisplayFor(modelItem => item.City)
+                                    </td>
+                                    <td>
+                                        @Html.DisplayFor(modelItem => item.isAdmin)
+                                    </td>
+                                    <td>
+                                        <a asp-action="Details" asp-route-id="@item.Id">Details</a>
+                                    </td>
+                                </tr>
+                            }
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+            <div class="col-md-3">
+                <div id="map">
+                </div>
+            </div>
+        </div>
     </div>
-    <div class="searhFormForGreetingCard">
-        <form asp-action="search" class="col-md-4 offset-md-4">
-            <div class="form-group">
-                <label class="control-label">First Name</label>
-                <input class="form-control" name="firstName" />
-                <span class="text-danger"></span>
-            </div>
-            <div class="form-group">
-                <label class="control-label">Last Name</label>
-                <input class="form-control" name="lastName" />
-                <span class="text-danger"></span>
-            </div>
-            <div class="form-group">
-                <label class="control-label">City</label>
-                <input class="form-control" name="city" />
-                <span class="text-danger"></span>
-            </div>
-            <div class="form-group text-center">
-                <input type="submit" value="Search" class="btn btn-primary" />
-            </div>
-        </form>
-    </div>
-    <a href="/Users" class="btn btn-primary text-center"> Full List </a>
-    <div class="card shadow-lg">
-        <table class="table table-hover">
-            <thead class="thead-dark">
-                <tr>
-                    <th class="width-md">
-                        Email
-                    </th>
-                    <th class="width-md">
-                        @Html.DisplayNameFor(model => model.FirstName)
-                    </th>
-                    <th class="width-md">
-                        @Html.DisplayNameFor(model => model.LastName)
-                    </th>
-                    <th class="width-md">
-                        @Html.DisplayNameFor(model => model.Age)
-                    </th>
-                    <th class="width-md">
-                        @Html.DisplayNameFor(model => model.Birthday)
-                    </th>
-                    <th class="width-md">
-                        @Html.DisplayNameFor(model => model.City)
-                    </th>
-                    <th class="width-md">
-                        Is Admin?
-                    </th>
-                    <th> Actions </th>
-                </tr>
-            </thead>
-            <tbody>
-                @foreach (var item in Model)
-                {
-                    <tr>
-                        <td>
-                            @Html.DisplayFor(modelItem => item.Email)
-                        </td>
-                        <td>
-                            @Html.DisplayFor(modelItem => item.FirstName)
-                        </td>
-                        <td>
-                            @Html.DisplayFor(modelItem => item.LastName)
-                        </td>
-                        <td>
-                            @Html.DisplayFor(modelItem => item.Age)
-                        </td>
-                        <td>
-                            @Html.DisplayFor(modelItem => item.Birthday)
-                        </td>
-                        <td>
-                            @Html.DisplayFor(modelItem => item.City)
-                        </td>
-                        <td>
-                            @Html.DisplayFor(modelItem => item.isAdmin)
-                        </td>
-                        <td>
-                            <a asp-action="Details" asp-route-id="@item.Id">Details</a>
-                        </td>
-                    </tr>
-                }
-            </tbody>
-        </table>
-    </div>
-</div>
+</body>

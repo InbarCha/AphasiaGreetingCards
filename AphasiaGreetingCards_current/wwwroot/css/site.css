@@ -38,12 +38,11 @@
     font-size: medium;
 }
 
-#groupByDiv, #SearchByDiv {
-    padding: 10px;
-}
-
-#groupByBtn {
-    margin: 10px !important;
+#map {
+    height: 800px;
+    width: 400px;
+    text-align: center;
+    justify-content: center;
 }
 
 .navItemLogIn {

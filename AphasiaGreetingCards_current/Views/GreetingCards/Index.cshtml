@@ -12,63 +12,6 @@
 <div class="Page">
     <div class="display-4 text-center"> Greeting Cards </div>
     <hr />
-    <div class="col-md-4 offset-md-4">
-        <div id="SearchByDiv">
-            <div class="text-center">
-                <button type="button" class="btn btn-primary btnToggleSearch"> Search Form </button>
-            </div>
-            <form asp-action="search" class="searhFormForGreetingCard">
-                <div class="form-group">
-                    <label class="control-label">Theme</label>
-                    <select class="form-control" name="theme">
-                        <option value="Birthday">Birthday</option>
-                        <option value="Bar Mitzva">Bar Mitzva</option>
-                        <option value="It's a boy!">It's a boy!</option>
-                        <option value="Daily">Daily</option>
-                        <option value="It's a girl!">It's a girl!</option>
-                        <option value="Holiday">Holiday</option>
-                        <option value="Love">Love</option>
-                        <option value="Valentine">Valentine</option>
-                        <option value="Wedding">Wedding</option>
-                    </select>
-                    <span class="text-danger"></span>
-                </div>
-                <div class="form-group">
-                    <label class="control-label">Full Sentence</label>
-                    <input class="form-control" name="fullSentence" />
-                    <span class="text-danger"></span>
-                </div>
-                <div class="form-group">
-                    <label class="control-label">Image</label>
-                    <select class="form-control" name="image" id="selectImageSearchGreetingCard">
-                        @foreach (Image im in Model.First().ImagesDB)
-                        {
-                            <option value="@im.imageName" id="@im.ID">@im.imageName</option>
-                        }
-                        <option value="Default" id="defaultImageGreetingCard"> Don't Want to Add Image to Search</option>
-                    </select>
-                    <span class="text-danger"></span>
-                </div>
-                <div class="form-group text-center">
-                    <input type="submit" value="Search" class="btn btn-primary" />
-                </div>
-                <hr />
-            </form>
-        </div>
-
-        <div id="groupByDiv">
-            <div class="text-center">
-                <a id="groupByBtn" asp-controller="GreetingCards" asp-action="CountGreetingCardsPerTheme" class="btn btn-primary text">Number of Greeting Cards Per Theme</a>
-            </div>
-            <div class="text-center groupByResult">
-                @foreach (KeyValuePair<string, int> count in Model.First().groupByPerTheme)
-                {
-                    <div class="groupByResultLabls">Number of "@count.Key" Greeting Cards: @count.Value </div>
-                }
-            </div>
-        </div>
-    </div>
-    <hr />
     <a href="/GreetingCards" class="btn btn-primary"> Full List </a>
     @if (SignInManager.IsSignedIn(User))
     {
@@ -108,87 +51,149 @@
         </div>
         <br />
     }
-    <div class="card shadow-lg">
-        <table class="table table-hover">
-            <thead class="thead-dark">
-                <tr>
-                    <th class="width-md">
-                        @Html.DisplayNameFor(model => model.theme)
-                    </th>
-                    <th class="width-md">
-                        @Html.DisplayNameFor(model => model.senderUserFullName)
-                    </th>
-                    <th class="width-md">
-                        Recipient
-                    </th>
-                    <th class="width-md">
-                        @Html.DisplayNameFor(model => model.fullSentence)
-                    </th>
-                    <th class="width-md">
-                        Image Name
-                    </th>
-                    <th class="width-md">
-                        @Html.DisplayNameFor(model => model.publishedToFacebook)
-                    </th>
-                    <th class="width-lg text-center">
-                        Card
-                    </th>
-                    <th> Actions </th>
-                </tr>
-            </thead>
-            <tbody>
-                @foreach (var item in Model)
-                {
-                    if (!string.IsNullOrEmpty(item.theme) && !string.IsNullOrEmpty(item.senderUserFullName) && !string.IsNullOrEmpty(item.recipientUserFullName)
-                        && !string.IsNullOrEmpty(item.fullSentence) && !string.IsNullOrEmpty(item.imageName))
-                    {
+    <div class="row">
+        <div class="col-md-9">
+            <div class="card shadow-lg">
+                <table class="table table-hover">
+                    <thead class="thead-dark">
                         <tr>
-                            <td>
-                                @Html.DisplayFor(modelItem => item.theme)
-                            </td>
-                            <td>
-                                @Html.DisplayFor(modelItem => item.senderUserFullName)
-                            </td>
-                            <td>
-                                @Html.DisplayFor(modelItem => item.recipientUserFullName)
-                            </td>
-                            <td>
-                                @Html.DisplayFor(modelItem => item.fullSentence)
-                            </td>
-                            <td>
-                                @Html.DisplayFor(modelItem => item.imageName)
-                            </td>
-                            <td>
-                                @Html.DisplayFor(modelItem => item.publishedToFacebook)
-                            </td>
-                            <td>
-                                <div class="card GreetingCardFull">
-                                    <img class="card-img-top" src="@Html.DisplayFor(modelItem => item.image)" alt="Card image" style="width:100%">
-                                    <div class="card-body">
-                                        <h4 class="card-title">To @Html.DisplayFor(modelItem => item.recipientUserFullName)</h4>
-                                        <p class="card-text">@Html.DisplayFor(modelItem => item.fullSentence)</p>
-                                    </div>
-                                </div>
-                                <br>
-                            </td>
-                            <td>
-                                @if (SignInManager.IsSignedIn(User))
-                                {
-                                    <a asp-action="Edit" asp-route-id="@item.ID" class="btn btn-primary">Edit</a>
-                                    <a asp-action="Details" asp-route-id="@item.ID" class="btn btn-primary">Details</a>
-                                    <a asp-action="Delete" asp-route-id="@item.ID" class="btn btn-primary">Delete</a>
-                                }
-                                else
-                                {
-                                    <div>
-                                        To Edit | Details | Delete you must be logged in
-                                    </div>
-                                }
-                            </td>
+                            <th class="width-md">
+                                @Html.DisplayNameFor(model => model.theme)
+                            </th>
+                            <th class="width-md">
+                                @Html.DisplayNameFor(model => model.senderUserFullName)
+                            </th>
+                            <th class="width-md">
+                                Recipient
+                            </th>
+                            <th class="width-md">
+                                @Html.DisplayNameFor(model => model.fullSentence)
+                            </th>
+                            <th class="width-md">
+                                Image Name
+                            </th>
+                            <th class="width-md">
+                                @Html.DisplayNameFor(model => model.publishedToFacebook)
+                            </th>
+                            <th class="width-lg text-center">
+                                Card
+                            </th>
+                            <th> Actions </th>
                         </tr>
-                    }
-                }
-            </tbody>
-        </table>
+                    </thead>
+                    <tbody>
+                        @foreach (var item in Model)
+                        {
+                            if (!string.IsNullOrEmpty(item.theme) && !string.IsNullOrEmpty(item.senderUserFullName) && !string.IsNullOrEmpty(item.recipientUserFullName)
+                                && !string.IsNullOrEmpty(item.fullSentence) && !string.IsNullOrEmpty(item.imageName))
+                            {
+                                <tr>
+                                    <td>
+                                        @Html.DisplayFor(modelItem => item.theme)
+                                    </td>
+                                    <td>
+                                        @Html.DisplayFor(modelItem => item.senderUserFullName)
+                                    </td>
+                                    <td>
+                                        @Html.DisplayFor(modelItem => item.recipientUserFullName)
+                                    </td>
+                                    <td>
+                                        @Html.DisplayFor(modelItem => item.fullSentence)
+                                    </td>
+                                    <td>
+                                        @Html.DisplayFor(modelItem => item.imageName)
+                                    </td>
+                                    <td>
+                                        @Html.DisplayFor(modelItem => item.publishedToFacebook)
+                                    </td>
+                                    <td>
+                                        <div class="card GreetingCardFull">
+                                            <img class="card-img-top" src="@Html.DisplayFor(modelItem => item.image)" alt="Card image" style="width:100%">
+                                            <div class="card-body">
+                                                <h4 class="card-title">To @Html.DisplayFor(modelItem => item.recipientUserFullName)</h4>
+                                                <p class="card-text">@Html.DisplayFor(modelItem => item.fullSentence)</p>
+                                            </div>
+                                        </div>
+                                        <br>
+                                    </td>
+                                    <td>
+                                        @if (SignInManager.IsSignedIn(User))
+                                        {
+                                            <a asp-action="Edit" asp-route-id="@item.ID" class="btn btn-primary">Edit</a>
+                                            <a asp-action="Details" asp-route-id="@item.ID" class="btn btn-primary">Details</a>
+                                            <a asp-action="Delete" asp-route-id="@item.ID" class="btn btn-primary">Delete</a>
+                                        }
+                                        else
+                                        {
+                                            <div>
+                                                To Edit | Details | Delete you must be logged in
+                                            </div>
+                                        }
+                                    </td>
+                                </tr>
+                            }
+                        }
+                    </tbody>
+                </table>
+            </div>
+        </div>
+        <div class="col-md-3">
+            <div>
+                <div id="SearchByDiv">
+                    <div class="text-center">
+                        <button type="button" class="btn btn-primary btnToggleSearch"> Search Form </button>
+                    </div>
+                    <form asp-action="search" class="searhFormForGreetingCard">
+                        <div class="form-group">
+                            <label class="control-label">Theme</label>
+                            <select class="form-control" name="theme">
+                                <option value="Birthday">Birthday</option>
+                                <option value="Bar Mitzva">Bar Mitzva</option>
+                                <option value="It's a boy!">It's a boy!</option>
+                                <option value="Daily">Daily</option>
+                                <option value="It's a girl!">It's a girl!</option>
+                                <option value="Holiday">Holiday</option>
+                                <option value="Love">Love</option>
+                                <option value="Valentine">Valentine</option>
+                                <option value="Wedding">Wedding</option>
+                            </select>
+                            <span class="text-danger"></span>
+                        </div>
+                        <div class="form-group">
+                            <label class="control-label">Full Sentence</label>
+                            <input class="form-control" name="fullSentence" />
+                            <span class="text-danger"></span>
+                        </div>
+                        <div class="form-group">
+                            <label class="control-label">Image</label>
+                            <select class="form-control" name="image" id="selectImageSearchGreetingCard">
+                                @foreach (Image im in Model.First().ImagesDB)
+                                {
+                                    <option value="@im.imageName" id="@im.ID">@im.imageName</option>
+                                }
+                                <option value="Default" id="defaultImageGreetingCard"> Don't Want to Add Image to Search</option>
+                            </select>
+                            <span class="text-danger"></span>
+                        </div>
+                        <div class="form-group text-center">
+                            <input type="submit" value="Search" class="btn btn-primary" />
+                        </div>
+                        <hr />
+                    </form>
+                </div>
+
+                <div id="groupByDiv">
+                    <div class="text-center">
+                        <a id="groupByBtn" asp-controller="GreetingCards" asp-action="CountGreetingCardsPerTheme" class="btn btn-primary text">Number of Greeting Cards Per Theme</a>
+                    </div>
+                    <div class="text-center groupByResult">
+                        @foreach (KeyValuePair<string, int> count in Model.First().groupByPerTheme)
+                        {
+                            <div class="groupByResultLabls">Number of "@count.Key" Greeting Cards: @count.Value </div>
+                        }
+                    </div>
+                </div>
+            </div>
+        </div>
     </div>
 </div>
