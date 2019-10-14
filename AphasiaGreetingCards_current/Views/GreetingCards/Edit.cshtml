@@ -15,7 +15,7 @@
     ViewData["Title"] = "Edit";
 
     <div class="Page">
-        <div class="display-4 text-center">GreetingCard</div>
+        <div class="display-4 text-center"> Edit a Greeting Card</div>
         <hr />
         <div class="row">
             <div class="col-md-4 offset-md-4">
@@ -61,11 +61,6 @@
                             }
                             <option value="Default" id="defaultRecipientBtnGreetingCard">Add an Unregistered User Recipient By Name</option>
                         </select>
-                        <script>
-                            $("#defaultRecipientBtnGreetingCard").click(function () {
-                                $("#selectRecipientGreetingCards").replaceWith("<input id='recipientUserEmail' asp-for='recipientUserEmail' type='text' data-val='true' data-val-required='The Recipient User field is required' name='recipientUserEmail' class='form-control' value=''/>");
-                            });
-                        </script>
                         <span asp-validation-for="recipientUserEmail" class="text-danger"></span>
                     </div>
                     <div class="form-group">

@@ -44,11 +44,6 @@
                                }
                             <option value="Default" id="defaultRecipientBtn">Add an Unregistered User Recipient By Name</option>
                         </select>
-                        <script>
-                            $("#defaultRecipientBtn").click(function () {
-                                $("#selectRecipient").replaceWith("<input id='recipientUserEmail' asp-for='recipientUserEmail' type='text' data-val='true' data-val-required='The Recipient User field is required' name='recipientUserEmail' class='form-control' value=''/>");
-                            });
-                        </script>
                         <span asp-validation-for="recipientUserEmail" class="text-danger"></span>
                     </div>
                     <div class="form-group">

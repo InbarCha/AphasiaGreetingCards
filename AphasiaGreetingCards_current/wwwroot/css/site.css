@@ -22,7 +22,11 @@
     width: 100%;
 }
 
-#defaultRecipientBtn, #defaultRecipientBtnGreetingCard {
+#defaultRecipientBtn, #defaultRecipientBtnGreetingCard{
+    color: red;
+}
+
+#defaultImageGreetingCard {
     color: red;
 }
 .list-group-item > a {

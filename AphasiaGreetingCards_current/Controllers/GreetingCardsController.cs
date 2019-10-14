@@ -27,7 +27,17 @@ namespace AphasiaGreetingCards.Controllers
         [AllowAnonymous]
         public async Task<IActionResult> Index()
         {
-            return View(await _context.GreetingCards.ToListAsync());
+            if (_context.GreetingCards.Any())
+            {
+                _context.GreetingCards.First().ImagesDB = _context.Images;
+                return View(await _context.GreetingCards.ToListAsync());
+            }
+            else
+            {
+                GreetingCard greetingCard = new GreetingCard { ImagesDB = _context.Images };
+                return View(greetingCard);
+            }
+                
         }
 
         // GET: GreetingCards/Details/5
@@ -235,6 +245,72 @@ namespace AphasiaGreetingCards.Controllers
         private bool GreetingCardsExists(int id)
         {
             return _context.GreetingCards.Any(e => e.ID == id);
+        }
+
+        public async Task<IActionResult> Search(string theme, string fullSentence, string image)
+        {
+            var selectedGreetingCards = from g in _context.GreetingCards
+                                        select g;
+
+            //all three search parameters were given
+            if (!string.IsNullOrEmpty(theme) && !string.IsNullOrEmpty(fullSentence) && !string.IsNullOrEmpty(theme))
+            {
+                selectedGreetingCards = selectedGreetingCards.Where(g => g.theme == theme && g.fullSentence == fullSentence
+                                                                      && g.imageName==image);
+            }
+
+            //only "theme" and "full sentence" were given
+            else if (!string.IsNullOrEmpty(theme) && !string.IsNullOrEmpty(fullSentence) && string.IsNullOrEmpty(image))
+            {
+                selectedGreetingCards = selectedGreetingCards.Where(g => g.theme == theme && g.fullSentence == fullSentence);
+            }
+            
+            //only "theme" and "image" were given
+            else if (!string.IsNullOrEmpty(theme) && string.IsNullOrEmpty(fullSentence) && !string.IsNullOrEmpty(image))
+            {
+                selectedGreetingCards = selectedGreetingCards.Where(g => g.theme == theme && g.imageName == image);
+            }
+
+            //only "full sentence" and "image" were given
+            else if (string.IsNullOrEmpty(theme) && !string.IsNullOrEmpty(fullSentence) && !string.IsNullOrEmpty(image))
+            {
+                selectedGreetingCards = selectedGreetingCards.Where(g => g.fullSentence == fullSentence && g.imageName == image);
+            }
+
+            //only "full sentence" was given
+            else if (string.IsNullOrEmpty(theme) && !string.IsNullOrEmpty(fullSentence) && string.IsNullOrEmpty(image))
+            {
+                selectedGreetingCards = selectedGreetingCards.Where(g => g.fullSentence == fullSentence);
+            }
+
+            //only "theme" was given
+            else if (!string.IsNullOrEmpty(theme) && string.IsNullOrEmpty(fullSentence) && string.IsNullOrEmpty(image))
+            {
+                selectedGreetingCards = selectedGreetingCards.Where(g => g.theme == theme);
+            }
+
+            //only "image" was given
+            else if (string.IsNullOrEmpty(theme) && string.IsNullOrEmpty(fullSentence) && !string.IsNullOrEmpty(image))
+            {
+                selectedGreetingCards = selectedGreetingCards.Where(g => g.imageName == image);
+            }
+
+            //--------- search returned result ---------------
+            if (selectedGreetingCards.Any())
+            {
+                selectedGreetingCards.First().ImagesDB = _context.Images;
+                return View("Index", await selectedGreetingCards.ToListAsync());
+            }
+
+            //---------search returns empty--------------------
+            else
+            {
+                GreetingCard greetingCard = new GreetingCard { ImagesDB = _context.Images };
+                List<GreetingCard> greetingCardEnumerable = new List<GreetingCard>();
+                greetingCardEnumerable.Add(greetingCard);
+
+                return View("Index", greetingCardEnumerable);
+            }
         }
     }
 }
