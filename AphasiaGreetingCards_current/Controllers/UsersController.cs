@@ -50,9 +50,55 @@ namespace AphasiaGreetingCards.Controllers
             return View(user);
         }
 
-        private bool UserExists(string id)
+        public async Task<IActionResult> Search(string firstName, string lastName, string city)
         {
-            return _context.Users.Any(e => e.Id == id);
+            var selectedUsers = from u in _context.Users
+                                             select u;
+
+            //if all search parameters were given
+            if (!string.IsNullOrEmpty(firstName) && !string.IsNullOrEmpty(lastName) && !string.IsNullOrEmpty(city))
+            {
+                selectedUsers = selectedUsers.Where(g => g.FirstName == firstName && g.LastName == lastName 
+                                                                      && g.City == city);
+            }
+
+            //only "firstName" and "lastName" were given
+            else if (!string.IsNullOrEmpty(firstName) && !string.IsNullOrEmpty(lastName) && string.IsNullOrEmpty(city))
+            {
+                selectedUsers = selectedUsers.Where(g => g.FirstName == firstName && g.LastName == lastName);
+            }
+
+            //only "firstName" and "city" were given
+            else if (!string.IsNullOrEmpty(firstName) && string.IsNullOrEmpty(lastName) && !string.IsNullOrEmpty(city))
+            {
+                selectedUsers = selectedUsers.Where(g => g.FirstName == firstName && g.City == city);
+            }
+
+            //only "lastName" and "city" were given
+            else if (string.IsNullOrEmpty(firstName) && !string.IsNullOrEmpty(lastName) && !string.IsNullOrEmpty(city))
+            {
+                selectedUsers = selectedUsers.Where(g => g.LastName == lastName && g.City == city);
+            }
+
+            //only "lastName" was given
+            else if (string.IsNullOrEmpty(firstName) && !string.IsNullOrEmpty(lastName) && string.IsNullOrEmpty(city))
+            {
+                selectedUsers = selectedUsers.Where(g => g.LastName == lastName);
+            }
+
+            //only "firstName" was given
+            else if (!string.IsNullOrEmpty(firstName) && string.IsNullOrEmpty(lastName) && string.IsNullOrEmpty(city))
+            {
+                selectedUsers = selectedUsers.Where(g => g.FirstName == firstName);
+            }
+
+            //only "city" was given
+            else if (string.IsNullOrEmpty(firstName) && string.IsNullOrEmpty(lastName) && !string.IsNullOrEmpty(city))
+            {
+                selectedUsers = selectedUsers.Where(g => g.City == city);
+            }
+
+            return View("Index", await selectedUsers.ToListAsync());
         }
     }
 }
