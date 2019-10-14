@@ -3,6 +3,17 @@
 }
 
 <div class="container" id="ContentContainer">
+    <div class="text-center">
+        <canvas id="myCanvas" width="200" height="100">
+            Your browser does not support the HTML5 canvas tag.
+        </canvas>
+    </div>
+    <script>
+        var c = document.getElementById("myCanvas");
+        var ctx = c.getContext("2d");
+        ctx.font = "30px Arial";
+        ctx.fillText("Welcome!",10,50);
+    </script>
     <div class="row">
         <div class="col-sm-12 text-center" id="welcomeVideo">
             <video autoplay muted loop width="700" class="shadow-lg p-4 mb-4 bg-dark">
