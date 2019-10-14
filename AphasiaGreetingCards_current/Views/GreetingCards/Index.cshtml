@@ -11,13 +11,13 @@
 
 <div class="Page">
     <div class="display-4 text-center"> Greeting Cards </div>
-    <br/>
     <hr />
-    <div class="text-center">
-        <button type="button" class="btn btn-primary btnToggleSearch"> Search Form </button>
-    </div>
-    <div class="searhFormForGreetingCard">
-        <form asp-action="search" class="col-md-4 offset-md-4">
+
+    <div class="col-md-4 offset-md-4" id="SearchByDiv">
+        <div class="text-center">
+            <button type="button" class="btn btn-primary btnToggleSearch"> Search Form </button>
+        </div>
+        <form asp-action="search" class="searhFormForGreetingCard">
             <div class="form-group">
                 <label class="control-label">Theme</label>
                 <select class="form-control" name="theme">
@@ -52,12 +52,28 @@
             <div class="form-group text-center">
                 <input type="submit" value="Search" class="btn btn-primary" />
             </div>
+            <hr/>
         </form>
+
     </div>
+  
+    <div class="col-md-4 offset-md-4" id="groupByDiv">
+        <div class="text-center">
+            <a id="groupByBtn" asp-controller="GreetingCards" asp-action="CountGreetingCardsPerTheme" class="btn btn-primary text">Number of Greeting Cards Per Theme</a>
+        </div>
+        <div class="text-center groupByResult">
+            @foreach (KeyValuePair<string, int> count in Model.First().groupByPerTheme)
+            {
+                <div class="groupByResultLabls">Number of "@count.Key" Greeting Cards: @count.Value </div>
+            }
+        </div>
+    </div>
+
+
     <a href="/GreetingCards" class="btn btn-primary"> Full List </a>
     @if (SignInManager.IsSignedIn(User))
     {
-            <a asp-controller="GreetingCards" asp-action="Create" class="btn btn-primary text">Create New</a>
+        <a asp-controller="GreetingCards" asp-action="Create" class="btn btn-primary text">Create New</a>
     }
     else
     {

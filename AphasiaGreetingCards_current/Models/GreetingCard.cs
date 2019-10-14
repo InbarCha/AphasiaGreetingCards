@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
+using System.ComponentModel.DataAnnotations.Schema;
 using System.Linq;
 using System.Threading.Tasks;
 
@@ -59,5 +60,13 @@ namespace AphasiaGreetingCards.Models
 
         public IQueryable<SentimentSentence> SentimentSentencesDB { get; set; }
         public IQueryable<Image> ImagesDB { get; set; }
+
+        [NotMapped]
+        public Dictionary<string, int> groupByPerTheme { get; set; }
+
+        public GreetingCard()
+        {
+            groupByPerTheme = new Dictionary<string, int>();
+        }
     }
 }

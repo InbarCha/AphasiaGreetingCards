@@ -35,7 +35,9 @@ namespace AphasiaGreetingCards.Controllers
             else
             {
                 GreetingCard greetingCard = new GreetingCard { ImagesDB = _context.Images };
-                return View(greetingCard);
+                List<GreetingCard> greetingCardEnumerable = new List<GreetingCard>();
+                greetingCardEnumerable.Add(greetingCard);
+                return View(greetingCardEnumerable);
             }
                 
         }
@@ -311,6 +313,35 @@ namespace AphasiaGreetingCards.Controllers
 
                 return View("Index", greetingCardEnumerable);
             }
+        }
+
+        //GROUP BY
+        public async Task<IActionResult> CountGreetingCardsPerTheme()
+        {
+            var selectedGreetingCards = from g in _context.GreetingCards
+                                        group g by g.theme;
+
+            if(selectedGreetingCards.Any())
+            {
+                Dictionary<string, int> greetingCardPerThemeCnt = new Dictionary<string, int>();
+                foreach(IGrouping<string, GreetingCard> c in selectedGreetingCards)
+                {
+                    greetingCardPerThemeCnt.Add(c.Key, c.Count(g=>g.theme == c.First().theme));
+                }
+                _context.GreetingCards.First().groupByPerTheme = greetingCardPerThemeCnt;
+                _context.GreetingCards.First().ImagesDB = _context.Images;
+                return View("Index", await _context.GreetingCards.ToListAsync());
+            }
+            else
+            {
+                GreetingCard greetingCard = new GreetingCard { ImagesDB = _context.Images };
+                List<GreetingCard> greetingCardEnumerable = new List<GreetingCard>();
+                greetingCardEnumerable.Add(greetingCard);
+                
+                return View("Index", greetingCardEnumerable);
+            }
+            
+
         }
     }
 }
