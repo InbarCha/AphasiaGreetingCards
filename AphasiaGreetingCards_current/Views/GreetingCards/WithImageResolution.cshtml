@@ -11,6 +11,10 @@
 
 <div class="Page">
     <div class="display-4 text-center"> Greeting Cards </div>
+    <br/>
+    <div class="text-center">
+        <h5> Return to Full List for All Capabilities</h5>
+    </div>
     <hr />
     <div class="row">
         <div class="col-md-9">
@@ -102,6 +106,8 @@
                                     </td>
                                     <td>
                                         @Html.DisplayFor(modelItem => item.imageName)
+                                        <hr/>
+                                        Image Resolution Is: @Html.DisplayFor(modelItem => item.imageResolution)
                                     </td>
                                     <td>
                                         @Html.DisplayFor(modelItem => item.publishedToFacebook)
@@ -191,17 +197,6 @@
                     {
                         <div class="groupByResultLabls">Number of "@count.Key" Greeting Cards: @count.Value </div>
                     }
-                </div>
-            </div>
-
-            <div id="imagesResolutionJoin">
-                <div class="text-center">
-                    <a id="imageResolutionBtn" asp-controller="GreetingCards" asp-action="WithImageResolution" class="btn btn-primary text"> Show Images Resolution </a>
-                </div>
-            </div>
-            <div id="imageDigitalSizeJoin">
-                <div class="text-center">
-                    <a id="imageDigitalSizeResolution" asp-controller="GreetingCards" asp-action="WithImageDigitalSize" class="btn btn-primary text"> Show Images Digital Size </a>
                 </div>
             </div>
         </div>

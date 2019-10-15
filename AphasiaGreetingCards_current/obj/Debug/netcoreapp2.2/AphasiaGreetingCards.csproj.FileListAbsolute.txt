@@ -254,4 +254,5 @@ C:\Users\psivi\Source\Repos\InbarCha\AphasiaGreetingCards_1\AphasiaGreetingCards
 C:\Users\psivi\Source\Repos\InbarCha\AphasiaGreetingCards_1\AphasiaGreetingCards_current\obj\Debug\netcoreapp2.2\Razor\Views\Statistics\Index.g.cshtml.cs
 C:\Users\psivi\Source\Repos\InbarCha\AphasiaGreetingCards_1\AphasiaGreetingCards_current\obj\Debug\netcoreapp2.2\AphasiaGreetingCards.csprojAssemblyReference.cache
 C:\Users\Inbar\Desktop\WebAppCourse\AphasiaGreetingCards\AphasiaGreetingCards_current\obj\Debug\netcoreapp2.2\Razor\Views\Statistics\Index.g.cshtml.cs
-C:\Users\Inbar\Desktop\WebAppCourse\AphasiaGreetingCards\AphasiaGreetingCards_current\obj\Debug\netcoreapp2.2\AphasiaGreetingCards.csprojAssemblyReference.cache
+C:\Users\Inbar\Desktop\WebAppCourse\AphasiaGreetingCards\AphasiaGreetingCards_current\obj\Debug\netcoreapp2.2\Razor\Views\GreetingCards\WithImageResolution.g.cshtml.cs
+C:\Users\Inbar\Desktop\WebAppCourse\AphasiaGreetingCards\AphasiaGreetingCards_current\obj\Debug\netcoreapp2.2\Razor\Views\GreetingCards\WithImageDigitalSize.g.cshtml.cs

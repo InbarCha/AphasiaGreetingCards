@@ -49,10 +49,10 @@ namespace AphasiaGreetingCards.Models
 
         [Required]
         [Display(Name = "Image")]
-        public string image { get; set; }
+        public string image { get; set; } //image path
 
         [Display(Name = "Image Name")]
-        public string imageName { get; set; }
+        public string imageName { get; set; } 
 
         [Required]
         [Display(Name = "Published To Facebook?")]
@@ -63,6 +63,11 @@ namespace AphasiaGreetingCards.Models
 
         [NotMapped]
         public Dictionary<string, int> groupByPerTheme { get; set; }
+
+        [NotMapped]
+        public string imageResolution { get; set; } //for join
+        [NotMapped]
+        public int imageDigitalSize { get; set; } //for join
 
         public GreetingCard()
         {

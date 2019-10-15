@@ -340,8 +340,72 @@ namespace AphasiaGreetingCards.Controllers
                 
                 return View("Index", greetingCardEnumerable);
             }
-            
-
         }
+
+        //join 1
+        public IActionResult WithImageResolution()
+        {
+            var selectedGreetingCards = from g in _context.GreetingCards
+                                        join image in _context.Images on g.imageID equals image.ID
+                                        select new { g, image };
+
+            if (selectedGreetingCards.Any())
+            {
+                List<GreetingCard> greetingCards = new List<GreetingCard>();
+                greetingCards.AddRange(_context.GreetingCards);
+
+                int numberOfItems = selectedGreetingCards.Count();
+                for(int i = 0; i < numberOfItems; i++)
+                {
+                    string resolution = selectedGreetingCards.ToArray()[i].image.resolution;
+                    greetingCards.ElementAt(i).imageResolution = resolution;
+                }
+
+                _context.GreetingCards.First().ImagesDB = _context.Images;
+                return View(greetingCards);
+            }
+            else
+            {
+                GreetingCard greetingCard = new GreetingCard { ImagesDB = _context.Images };
+                List<GreetingCard> greetingCardEnumerable = new List<GreetingCard>();
+                greetingCardEnumerable.Add(greetingCard);
+
+                return View("Index", greetingCardEnumerable);
+            }
+        }
+
+        //join 2
+        public IActionResult WithImageDigitalSize()
+        {
+            var selectedGreetingCards = from g in _context.GreetingCards
+                                        join image in _context.Images on g.imageID equals image.ID
+                                        select new { g, image };
+
+            if (selectedGreetingCards.Any())
+            {
+                List<GreetingCard> greetingCards = new List<GreetingCard>();
+                greetingCards.AddRange(_context.GreetingCards);
+
+                int numberOfItems = selectedGreetingCards.Count();
+                for(int i = 0; i < numberOfItems; i++)
+                {
+                    int digitalSize = selectedGreetingCards.ToArray()[i].image.digitalSize;
+                    greetingCards.ElementAt(i).imageDigitalSize = digitalSize;
+                }
+
+                _context.GreetingCards.First().ImagesDB = _context.Images;
+                return View(greetingCards);
+            }
+            else
+            {
+                GreetingCard greetingCard = new GreetingCard { ImagesDB = _context.Images };
+                List<GreetingCard> greetingCardEnumerable = new List<GreetingCard>();
+                greetingCardEnumerable.Add(greetingCard);
+
+                return View("Index", greetingCardEnumerable);
+            }
+        }
+
+
     }
 }
