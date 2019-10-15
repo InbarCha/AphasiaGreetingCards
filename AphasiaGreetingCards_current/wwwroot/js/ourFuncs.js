@@ -18,6 +18,8 @@ $("#defaultRecipientBtn").click(function () {
     $("#selectRecipient").replaceWith("<input id='recipientUserEmail' asp-for='recipientUserEmail' type='text' data-val='true' data-val-required='The Recipient User field is required' name='recipientUserEmail' class='form-control' value=''/>");
 });
 
+
+
 //---- google maps api ----------
 var geocoder;
 var map;

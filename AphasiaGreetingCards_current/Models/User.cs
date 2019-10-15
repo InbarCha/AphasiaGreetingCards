@@ -37,8 +37,19 @@ namespace AphasiaGreetingCards.Models
         [Column("isAdmin")]
         public bool isAdmin { get; set; }
 
-        public IEnumerable<User> Friends { get; set; }
+        //for K-Means:
+        //{0} - Birthday, 
+        //{1} - Bar Mitzva
+        //{2} - It's a boy!
+        //{3} - Daily
+        //{4} - It's a girl!
+        //{5} - Holiday
+        //{6} - Love
+        //{7} - Valentine
+        //{8} - Wedding
 
+        public IEnumerable<User> Friends { get; set; }
+        
         public User(string FirstName, string LastName, string Email, string UserName, int Age, string Birthday, string City) 
         {
             this.UserName = UserName;
@@ -52,7 +63,6 @@ namespace AphasiaGreetingCards.Models
 
         public User ()
         {
-
         }
     }
 }

@@ -12,118 +12,130 @@
 
 @if (SignInManager.IsSignedIn(User))
 {
-    ViewData["Title"] = "Edit";
+    //the user trying to edit is the one that created the greeting card
+    if (User.Identity.Name == Model.sendertUserEmail)
+    {
+        ViewData["Title"] = "Edit";
 
-    <div class="Page">
-        <div class="display-4 text-center"> Edit a Greeting Card</div>
-        <hr />
-        <div class="row">
-            <div class="col-md-4 offset-md-4">
-                <form asp-action="Edit">
-                    <div asp-validation-summary="ModelOnly" class="text-danger"></div>
-                    <input type="hidden" asp-for="ID" />
-                    <div class="form-group">
-                        <label asp-for="theme" class="control-label"></label>
-                        <select asp-for="theme" class="form-control">
-                            <option value="Birthday">Birthday</option>
-                            <option value="Bar Mitzva">Bar Mitzva</option>
-                            <option value="BoyBirth">It's a boy!</option>
-                            <option value="Daily">Daily</option>
-                            <option value="GirlBirth">It's a girl!</option>
-                            <option value="Holiday">Holiday</option>
-                            <option value="Love">Love</option>
-                            <option value="Valentine">Valentine</option>
-                            <option value="Wedding">Wedding</option>
-                        </select>
-                        <span asp-validation-for="theme" class="text-danger"></span>
-                    </div>
-                    <div class="form-group" hidden>
-                        <label asp-for="fullSentence" class="control-label"></label>
-                        <input asp-for="fullSentence" class="form-control" value="dummy value" />
-                        <span asp-validation-for="fullSentence" class="text-danger"></span>
-                    </div>
-                    <div class="form-group">
-                        <label asp-for="senderUserFullName" class="control-label"></label>
-                        <input asp-for="senderUserFullName" class="form-control" value="@UserManager.GetUserAsync(User).Result.FirstName @UserManager.GetUserAsync(User).Result.LastName" readonly />
-                        <span asp-validation-for="senderUserFullName" class="text-danger"></span>
-                    </div>
-                    <div class="form-group">
-                        <label asp-for="sendertUserEmail" class="control-label"></label>
-                        <input asp-for="sendertUserEmail" class="form-control" value="@UserManager.GetUserAsync(User).Result.Email" readonly />
-                        <span asp-validation-for="sendertUserEmail" class="text-danger"></span>
-                    </div>
-                    <div class="form-group">
-                        <label asp-for="recipientUserEmail" class="control-label"></label>
-                        <select asp-for="recipientUserEmail" class="form-control" id="selectRecipientGreetingCards">
-                            @foreach (User u in UserManager.Users)
-                            {
-                                <option value="@u.Email">@u.Email : @u.FirstName @u.LastName</option>
-                            }
-                            <option value="Default" id="defaultRecipientBtnGreetingCard">Add an Unregistered User Recipient By Name</option>
-                        </select>
-                        <span asp-validation-for="recipientUserEmail" class="text-danger"></span>
-                    </div>
-                    <div class="form-group">
-                        <label asp-for="sentencePrefix" class="control-label"></label>
-                        <select asp-for="sentencePrefix" class="form-control">
-                            @foreach (SentimentSentence s in Model.SentimentSentencesDB)
-                            {
-                                if (!sentencesPrefix.Contains(s.prefix))
-                                {
-                                    <option value="@s.prefix"> @s.prefix </option>
-                                    sentencesPrefix.Add(s.prefix);
-                                }
-                            }
-                        </select>
-                        <span asp-validation-for="sentencePrefix" class="text-danger"></span>
-                    </div>
-                    <div class="form-group">
-                        <label asp-for="sentenceSuffix" class="control-label"></label>
-                        <select asp-for="sentenceSuffix" class="form-control">
-                            @foreach (SentimentSentence s in Model.SentimentSentencesDB)
-                            {
-                                if (!sentencesSuffix.Contains(s.suffix))
-                                {
-                                    <option value="@s.suffix"> @s.suffix </option>
-                                    sentencesSuffix.Add(s.suffix);
-                                }
-
-                            }
-                        </select>
-                        <span asp-validation-for="sentenceSuffix" class="text-danger"></span>
-                    </div>
-                    <div class="form-group">
-                        <label asp-for="image" class="control-label"></label>
-                        <select asp-for="image" class="form-control">
-                            @foreach (Image im in Model.ImagesDB)
-                            {
-                                <option value="@im.imageName" id="@im.ID">@im.imageName</option>
-                            }
-                        </select>
-                        <span asp-validation-for="image" class="text-danger"></span>
-                    </div>
-                    <div class="form-group">
-                        <div class="checkbox">
-                            <label>
-                                <input asp-for="publishedToFacebook" /> @Html.DisplayNameFor(model => model.publishedToFacebook)
-                            </label>
+        <div class="Page">
+            <div class="display-4 text-center"> Edit a Greeting Card</div>
+            <hr />
+            <div class="row">
+                <div class="col-md-4 offset-md-4">
+                    <form asp-action="Edit">
+                        <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+                        <input type="hidden" asp-for="ID" />
+                        <div class="form-group">
+                            <label asp-for="theme" class="control-label"></label>
+                            <select asp-for="theme" class="form-control">
+                                <option value="Birthday">Birthday</option>
+                                <option value="Bar Mitzva">Bar Mitzva</option>
+                                <option value="BoyBirth">It's a boy!</option>
+                                <option value="Daily">Daily</option>
+                                <option value="GirlBirth">It's a girl!</option>
+                                <option value="Holiday">Holiday</option>
+                                <option value="Love">Love</option>
+                                <option value="Valentine">Valentine</option>
+                                <option value="Wedding">Wedding</option>
+                            </select>
+                            <span asp-validation-for="theme" class="text-danger"></span>
                         </div>
-                    </div>
-                    <div class="form-group text-center">
-                        <input type="submit" value="Save" class="btn btn-primary" />
-                    </div>
-                </form>
+                        <div class="form-group" hidden>
+                            <label asp-for="fullSentence" class="control-label"></label>
+                            <input asp-for="fullSentence" class="form-control" value="dummy value" />
+                            <span asp-validation-for="fullSentence" class="text-danger"></span>
+                        </div>
+                        <div class="form-group">
+                            <label asp-for="senderUserFullName" class="control-label"></label>
+                            <input asp-for="senderUserFullName" class="form-control" value="@UserManager.GetUserAsync(User).Result.FirstName @UserManager.GetUserAsync(User).Result.LastName" readonly />
+                            <span asp-validation-for="senderUserFullName" class="text-danger"></span>
+                        </div>
+                        <div class="form-group">
+                            <label asp-for="sendertUserEmail" class="control-label"></label>
+                            <input asp-for="sendertUserEmail" class="form-control" value="@UserManager.GetUserAsync(User).Result.Email" readonly />
+                            <span asp-validation-for="sendertUserEmail" class="text-danger"></span>
+                        </div>
+                        <div class="form-group">
+                            <label asp-for="recipientUserEmail" class="control-label"></label>
+                            <select asp-for="recipientUserEmail" class="form-control" id="selectRecipientGreetingCards">
+                                @foreach (User u in UserManager.Users)
+                                {
+                                    <option value="@u.Email">@u.Email : @u.FirstName @u.LastName</option>
+                                }
+                                <option value="Default" id="defaultRecipientBtnGreetingCard">Add an Unregistered User Recipient By Name</option>
+                            </select>
+                            <span asp-validation-for="recipientUserEmail" class="text-danger"></span>
+                        </div>
+                        <div class="form-group">
+                            <label asp-for="sentencePrefix" class="control-label"></label>
+                            <select asp-for="sentencePrefix" class="form-control">
+                                @foreach (SentimentSentence s in Model.SentimentSentencesDB)
+                                {
+                                    if (!sentencesPrefix.Contains(s.prefix))
+                                    {
+                                        <option value="@s.prefix"> @s.prefix </option>
+                                        sentencesPrefix.Add(s.prefix);
+                                    }
+                                }
+                            </select>
+                            <span asp-validation-for="sentencePrefix" class="text-danger"></span>
+                        </div>
+                        <div class="form-group">
+                            <label asp-for="sentenceSuffix" class="control-label"></label>
+                            <select asp-for="sentenceSuffix" class="form-control">
+                                @foreach (SentimentSentence s in Model.SentimentSentencesDB)
+                                {
+                                    if (!sentencesSuffix.Contains(s.suffix))
+                                    {
+                                        <option value="@s.suffix"> @s.suffix </option>
+                                        sentencesSuffix.Add(s.suffix);
+                                    }
+
+                                }
+                            </select>
+                            <span asp-validation-for="sentenceSuffix" class="text-danger"></span>
+                        </div>
+                        <div class="form-group">
+                            <label asp-for="image" class="control-label"></label>
+                            <select asp-for="image" class="form-control">
+                                @foreach (Image im in Model.ImagesDB)
+                                {
+                                    <option value="@im.imageName" id="@im.ID">@im.imageName</option>
+                                }
+                            </select>
+                            <span asp-validation-for="image" class="text-danger"></span>
+                        </div>
+                        <div class="form-group">
+                            <div class="checkbox">
+                                <label>
+                                    <input asp-for="publishedToFacebook" /> @Html.DisplayNameFor(model => model.publishedToFacebook)
+                                </label>
+                            </div>
+                        </div>
+                        <div class="form-group text-center">
+                            <input type="submit" value="Save" class="btn btn-primary" />
+                        </div>
+                    </form>
+                </div>
+            </div>
+
+            <div>
+                <a asp-action="Index" class="btn btn-primary">Back to List</a>
             </div>
         </div>
-
-        <div>
-            <a asp-action="Index" class="btn btn-primary">Back to List</a>
+    }
+    else
+    {
+        <div class="display-4 text-center">
+            You do not have permission to edit this card - you are not its creator. <br />
+            <a href="/GreetingCards" class="btn btn-primary"> Back to Greeting Cards List </a>
         </div>
-    </div>
+    }
+
 }
 else
 {
-    <div class="display-3 text-center">
+    <div class="display-4 text-center">
         You must be logged in to edit a greeting card. <br />
         <a href="/GreetingCards" class="btn btn-primary"> Back to Greeting Cards List </a>
     </div>

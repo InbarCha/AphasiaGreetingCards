@@ -1,16 +1,13 @@
-﻿using System;
-using System.Collections.Generic;
+﻿using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
 using AphasiaGreetingCards.Models;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
-using Microsoft.AspNetCore.Mvc.Rendering;
 using Microsoft.EntityFrameworkCore;
 using AphasiaGreetingCards.Data;
-
-using Microsoft.AspNetCore.Identity;
-
+using Accord.MachineLearning;
+using System;
 
 namespace AphasiaGreetingCards.Controllers
 {
@@ -65,7 +62,77 @@ namespace AphasiaGreetingCards.Controllers
         public IActionResult Create()
         {
             var model = new GreetingCard { SentimentSentencesDB = _context.SentimentSentences, ImagesDB = _context.Images };
-            return View(model);
+           
+            //------------SUGGEST A GREETING CARD--------------------------
+            //if there are enough users for K-Means, find a greeting card for suggestion
+            if(_context.Users.Count() >= 10)
+            {
+                //find the logged in user
+                var email = User.Identity.Name;
+                User loggedInUser = _context.Users.FirstOrDefault(u => u.Email == email);
+
+                //----------- K MEANS (in our case 9-means) --------------------
+                List<double[]> observations = kMeansGetObservations();
+                //array's size is the number of observations, containing the label for each observation (in the observations' order)
+                int[] labels = clusterKMeans(observations.ToArray());
+                
+                int userIndex = FindUserIndexInDb(loggedInUser);
+                if (userIndex == -1)
+                    return View(model);
+                else
+                {
+                    //get the user's label
+                    int userLabel = labels[userIndex];
+
+                    //find whether another user with the same label exists
+                    int userFromTheSameLabelIndex = -1;
+                    for (int i = 0; i<labels.Length; i++)
+                    {
+                        if (labels[i] == userLabel)
+                            userFromTheSameLabelIndex = i;
+                    }
+
+                    //there isn't another user from the same label
+                    if (userFromTheSameLabelIndex == -1)
+                    {
+                        return View(model);
+                    }
+                    //there exists another user from the same label
+                    else
+                    {
+                        User userFromTheSameLabel = _context.Users.ToArray()[userFromTheSameLabelIndex];
+
+                        //find all greeting cards that the other user created
+                        List<GreetingCard> otherUserGreetingCards = new List<GreetingCard>();
+                        foreach (GreetingCard g in _context.GreetingCards)
+                        {
+                            if (g.sendertUserEmail == userFromTheSameLabel.Email)
+                            {
+                                otherUserGreetingCards.Add(g);
+                            }
+                        }
+
+                        //the other user (from the same label) created some greeting card
+                        //choose one at random and return it to the view
+                        if (otherUserGreetingCards.Any())
+                        {
+                            Random r = new Random();
+                            int random = r.Next(0, otherUserGreetingCards.Count());
+
+                            GreetingCard toReturn = otherUserGreetingCards.ToArray()[random];
+                            toReturn.ImagesDB = _context.Images;
+                            toReturn.SentimentSentencesDB = _context.SentimentSentences;
+
+                            return View(toReturn);
+                        }
+                    }
+                }
+                return View(model);
+            }
+            else
+            {
+                return View(model);
+            }
         }
 
         // POST: GreetingCards/Create
@@ -406,6 +473,97 @@ namespace AphasiaGreetingCards.Controllers
             }
         }
 
+        private List<double[]> kMeansGetObservations()
+        {
+            List<double[]> observations = new List<double[]>();
 
+            /* 
+            for every user, iterate over every greeting card
+            if the greeting card was sent by the user, 
+            check the greeting card's theme and update the userThemeCount accordingly
+            */
+            foreach (User u in _context.Users)
+            {
+                double[] userThemeCount = new double[9];
+                foreach (GreetingCard g in _context.GreetingCards)
+                {
+                    if (g.sendertUserEmail == u.Email)
+                    {
+                        switch (g.theme)
+                        {
+                            case "Birthday":
+                                {
+                                    userThemeCount[0]++;
+                                    break;
+                                }
+                            case "Bar Mitzva":
+                                {
+                                    userThemeCount[1]++;
+                                    break;
+                                }
+                            case "It's a boy!":
+                                {
+                                    userThemeCount[2]++;
+                                    break;
+                                }
+                            case "Daily":
+                                {
+                                    userThemeCount[3]++;
+                                    break;
+                                }
+                            case "It's a girl!":
+                                {
+                                    userThemeCount[4]++;
+                                    break;
+                                }
+                            case "Holiday":
+                                {
+                                    userThemeCount[5]++;
+                                    break;
+                                }
+                            case "Love":
+                                {
+                                    userThemeCount[6]++;
+                                    break;
+                                }
+                            case "Valentine":
+                                {
+                                    userThemeCount[7]++;
+                                    break;
+                                }
+                            case "Wedding":
+                                {
+                                    userThemeCount[8]++;
+                                    break;
+                                }
+                        }
+                    }
+                }
+                observations.Add(userThemeCount);
+            }
+
+            return observations;
+        }
+
+        private int[] clusterKMeans(double[][] observations)
+        {
+            Accord.Math.Random.Generator.Seed = 0;
+            KMeans kmeans = new KMeans(9);
+            KMeansClusterCollection clusters = kmeans.Learn(observations);
+            int[] labels = clusters.Decide(observations);
+
+            return labels;
+        }
+
+        private int FindUserIndexInDb(User user)
+        {
+            for(int i=0; i<_context.Users.Count(); i++)
+            {
+                if (_context.Users.ToArray()[i].Email == user.Email)
+                    return i;
+            }
+
+            return -1;
+        }
     }
 }

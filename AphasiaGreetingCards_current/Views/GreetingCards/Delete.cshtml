@@ -7,63 +7,72 @@
 
 @if (SignInManager.IsSignedIn(User))
 {
-    ViewData["Title"] = "Delete";
+    if (User.Identity.Name == Model.sendertUserEmail)
+    {
+        ViewData["Title"] = "Delete";
 
-    <div class="Page">
+        <div class="Page">
+            <div class="display-4 text-center">Are you sure you want to delete this?</div>
+            <hr />
+            <div class="col-md-4 offset-md-4">
+                <dl class="dl-horizontal col-md-4 offset-md-4">
+                    <dt>
+                        @Html.DisplayNameFor(model => model.theme)
+                    </dt>
+                    <dd>
+                        @Html.DisplayFor(model => model.theme)
+                    </dd>
+                    <dt>
+                        @Html.DisplayNameFor(model => model.senderUserFullName)
+                    </dt>
+                    <dd>
+                        @Html.DisplayFor(model => model.senderUserFullName)
+                    </dd>
+                    <dt>
+                        Recipient
+                    </dt>
+                    <dd>
+                        @Html.DisplayFor(model => model.recipientUserFullName)
+                    </dd>
+                    <dt>
+                        @Html.DisplayNameFor(model => model.fullSentence)
+                    </dt>
+                    <dd>
+                        @Html.DisplayFor(model => model.fullSentence)
+                    </dd>
+                    <dt>
+                        @Html.DisplayNameFor(model => model.image)
+                    </dt>
+                    <dd>
+                        @Html.DisplayFor(model => model.image)
+                    </dd>
+                    <dt>
+                        @Html.DisplayNameFor(model => model.publishedToFacebook)
+                    </dt>
+                    <dd>
+                        @Html.DisplayFor(model => model.publishedToFacebook)
+                    </dd>
+                </dl>
 
-    </div>
-    <div class="display-4 text-center">Are you sure you want to delete this?</div>
-    <hr />
-    <div class="col-md-4 offset-md-4">
-        <dl class="dl-horizontal col-md-4 offset-md-4">
-            <dt>
-                @Html.DisplayNameFor(model => model.theme)
-            </dt>
-            <dd>
-                @Html.DisplayFor(model => model.theme)
-            </dd>
-            <dt>
-                @Html.DisplayNameFor(model => model.senderUserFullName)
-            </dt>
-            <dd>
-                @Html.DisplayFor(model => model.senderUserFullName)
-            </dd>
-            <dt>
-                Recipient
-            </dt>
-            <dd>
-                @Html.DisplayFor(model => model.recipientUserFullName)
-            </dd>
-            <dt>
-                @Html.DisplayNameFor(model => model.fullSentence)
-            </dt>
-            <dd>
-                @Html.DisplayFor(model => model.fullSentence)
-            </dd>
-            <dt>
-                @Html.DisplayNameFor(model => model.image)
-            </dt>
-            <dd>
-                @Html.DisplayFor(model => model.image)
-            </dd>
-            <dt>
-                @Html.DisplayNameFor(model => model.publishedToFacebook)
-            </dt>
-            <dd>
-                @Html.DisplayFor(model => model.publishedToFacebook)
-            </dd>
-        </dl>
-
-        <form asp-action="Delete" class="text-center">
-            <input type="hidden" asp-for="ID" />
-            <input type="submit" value="Delete" class="btn btn-primary" /> 
-            <a asp-action="Index" class="btn btn-primary">Back to List</a>
-        </form>
-    </div>
+                <form asp-action="Delete" class="text-center">
+                    <input type="hidden" asp-for="ID" />
+                    <input type="submit" value="Delete" class="btn btn-primary" />
+                    <a asp-action="Index" class="btn btn-primary">Back to List</a>
+                </form>
+            </div>
+        </div>
+    }
+    else
+    {
+        <div class="display-4 text-center">
+            You do not have permission to delete this card - you are not its creator. <br />
+            <a href="/GreetingCards" class="btn btn-primary"> Back to Greeting Cards List </a>
+        </div>
+    }
 }
 else
 {
-    <div class="display-3 text-center">
+    <div class="display-4 text-center">
         You must be logged in to delete a greeting card. <br />
         <a href="/GreetingCards" class="btn btn-primary"> Back to Greeting Cards List </a>
     </div>
