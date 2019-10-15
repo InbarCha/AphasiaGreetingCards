@@ -45,6 +45,10 @@
     justify-content: center;
 }
 
+.toFullCapabilities {
+    color: red;
+}
+
 .navItemLogIn {
     color: mediumpurple !important;
 }
