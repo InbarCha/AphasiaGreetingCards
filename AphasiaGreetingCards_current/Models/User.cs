@@ -37,6 +37,9 @@ namespace AphasiaGreetingCards.Models
         [Column("isAdmin")]
         public bool isAdmin { get; set; }
 
+        [Column("isFacebook")]
+        public bool isFacebook { get; set; }
+
         //for K-Means:
         //{0} - Birthday, 
         //{1} - Bar Mitzva

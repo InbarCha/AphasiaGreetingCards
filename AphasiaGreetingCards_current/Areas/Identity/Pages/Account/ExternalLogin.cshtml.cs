@@ -45,6 +45,38 @@ namespace AphasiaGreetingCards.Areas.Identity.Pages.Account
             [Required]
             [EmailAddress]
             public string Email { get; set; }
+
+            [Required]
+            [Display(Name = "First Name")]
+            public string FirstName { get; set; }
+
+            [Required]
+            [Display(Name = "Last Name")]
+            public string LastName { get; set; }
+
+            [Required]
+            [StringLength(100, ErrorMessage = "The {0} must be at least {2} and at max {1} characters long.", MinimumLength = 6)]
+            [DataType(DataType.Password)]
+            [Display(Name = "Password")]
+            public string Password { get; set; }
+
+            [DataType(DataType.Password)]
+            [Display(Name = "Confirm password")]
+            [Compare("Password", ErrorMessage = "The password and confirmation password do not match.")]
+            public string ConfirmPassword { get; set; }
+
+            [Required]
+            [Display(Name = "Age")]
+            public int Age { get; set; }
+
+            [Required]
+            [Display(Name = "Birthday")]
+            [DataType(DataType.Date)]
+            public string Birthday { get; set; }
+
+            [Required]
+            [Display(Name = "City")]
+            public string City { get; set; }
         }
 
         public IActionResult OnGetAsync()
@@ -115,7 +147,7 @@ namespace AphasiaGreetingCards.Areas.Identity.Pages.Account
 
             if (ModelState.IsValid)
             {
-                var user = new User { UserName = Input.Email, Email = Input.Email };
+                var user = new User { FirstName = Input.FirstName, Birthday = Input.Birthday, LastName = Input.LastName, Age = Input.Age, City = Input.City, UserName = Input.Email, Email = Input.Email, isAdmin = false, isFacebook = true };
                 var result = await _userManager.CreateAsync(user);
                 if (result.Succeeded)
                 {
