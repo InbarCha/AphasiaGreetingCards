@@ -121,11 +121,15 @@
 }
 
 .width-lg {
-    width: 20vw !important;
+    width: 250px !important;
 }
 
 .width-md {
-    width: 10vw !important;
+    width: 160px !important;
+}
+
+.width-sm {
+    width: 100px !important;
 }
 
 .navbar-dark .navbar-nav .nav-link {
