@@ -132,6 +132,12 @@
     width: 100px !important;
 }
 
+#quoteOfTheDay {
+    width: 70% !important;
+    height: 700px;
+    border-width: 7px !important;
+}
+
 .navbar-dark .navbar-nav .nav-link {
     color: white;
 }

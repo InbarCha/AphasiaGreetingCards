@@ -57,3 +57,9 @@ function codeAddress(address) {
 }
 
 //---------------------------------
+function initializeCanvas() {
+    var c = document.getElementById("myCanvas");
+    var ctx = c.getContext("2d");
+    ctx.font = "30px Arial";
+    ctx.fillText("Welcome!", 10, 50);
+}
