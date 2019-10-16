@@ -63,3 +63,37 @@ function initializeCanvas() {
     ctx.font = "30px Arial";
     ctx.fillText("Welcome!", 10, 50);
 }
+
+//--------WORDS API (Web API)---------
+function wordsApi(word) {
+    var settings = {
+        "async": true,
+        "crossDomain": true,
+        "url": "https://wordsapiv1.p.rapidapi.com/words/" + word + "/typeOf",
+        "method": "GET",
+        "Content-type": "application/json",
+        "headers": {
+            "x-rapidapi-host": "wordsapiv1.p.rapidapi.com",
+            "x-rapidapi-key": "49f063579cmsh838038dc0f5aa11p1f0acajsn6ca64000c24a"
+        }
+    }
+
+    //handle the response
+    $.ajax(settings).done(function (response) {
+        var result = JSON.parse(JSON.stringify(response));
+        var typeOf = result['typeOf'];
+        var finalresult = "";
+        for (i = 0; i < typeOf.length; i++) {
+            finalresult += typeOf[i];
+            if (i < typeOf.length - 1) {
+                finalresult += ", ";
+            }
+        }
+        $("#dictionaryResultLbl").replaceWith("<label class='control-label' id='dictionaryResultLbl'>" + finalresult + "</label>");
+    });
+}
+
+$("#dictionaryBtn").click(function () {
+    var word = document.getElementById("dictionaryInput").value;
+    wordsApi(word);
+});

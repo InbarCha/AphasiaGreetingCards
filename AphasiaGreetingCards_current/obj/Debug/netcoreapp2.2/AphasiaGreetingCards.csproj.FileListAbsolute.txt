@@ -258,3 +258,5 @@ C:\Users\Inbar\Desktop\WebAppCourse\AphasiaGreetingCards\AphasiaGreetingCards_cu
 C:\Users\Inbar\Desktop\WebAppCourse\AphasiaGreetingCards\AphasiaGreetingCards_current\obj\Debug\netcoreapp2.2\Razor\Views\GreetingCards\WithImageDigitalSize.g.cshtml.cs
 C:\Users\Inbar\Desktop\WebAppCourse\AphasiaGreetingCards\AphasiaGreetingCards_current\bin\Debug\netcoreapp2.2\Accord.dll.config
 C:\Users\Inbar\Desktop\WebAppCourse\AphasiaGreetingCards\AphasiaGreetingCards_current\obj\Debug\netcoreapp2.2\AphasiaGreetingCards.csprojAssemblyReference.cache
+C:\Users\Inbar\Desktop\WebAppCourse\AphasiaGreetingCards\AphasiaGreetingCards_current\bin\Debug\netcoreapp2.2\AphasiaGreetingCards.dll.config
+C:\Users\Inbar\Desktop\WebAppCourse\AphasiaGreetingCards\AphasiaGreetingCards_current\obj\Debug\netcoreapp2.2\AphasiaGreetingCards.dll.config
