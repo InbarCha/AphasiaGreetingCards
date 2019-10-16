@@ -55,7 +55,7 @@ namespace AphasiaGreetingCards.Models
         public string imageName { get; set; } 
 
         [Required]
-        [Display(Name = "On Facebook?")]
+        [Display(Name = "Publish To Facebook?")]
         public bool publishedToFacebook { get; set; }
 
         public IQueryable<SentimentSentence> SentimentSentencesDB { get; set; }

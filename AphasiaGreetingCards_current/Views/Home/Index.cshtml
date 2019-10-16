@@ -1,38 +1,35 @@
 ﻿@{
     ViewData["Title"] = "Home Page";
 }
+<br />
+
 <body onload="initializeCanvas()">
-    <div class="text-center">
-        <canvas id="myCanvas" width="200" height="100">
-            Your browser does not support the HTML5 canvas tag.
-        </canvas>
-    </div>
-    <div class="row">
-        <div class="col-md-6">
-            <div class="text-center" id="welcomeVideo">
+    <div class="container" id="ContentContainer">
+        <div class="text-center">
+            <canvas id="myCanvas" width="200" height="100">
+                Your browser does not support the HTML5 canvas tag.
+            </canvas>
+        </div>
+        <div class="row">
+            <div class="col-sm-12 text-center" id="welcomeVideo">
                 <video autoplay muted loop width="700" class="shadow-lg p-4 mb-4 bg-dark">
                     <source src="~/Media/greetingCard.mp4" type="video/mp4">
                     Your browser does not support the video tag.
                 </video>
             </div>
-            <div class="text-center display-4" id="welcomeP">
+            <div class="col-sm-12 text-center display-4" id="welcomeP">
                 <h6>
                     This is a web application created for aphasics. <br />
                     Aphasia is an inability to comprehend or formulate language because of damage to specific brain regions. <br />
                     The difficulties of people with aphasia can range from occasional trouble finding words, <br />
                     to losing the ability to speak, read, or write; intelligence, however, is unaffected. <br />
                 </h6>
-                <div>
+                <div class="border border-dark" id="purpose">
                     <h6>
                         As a result, many aphasics have difficulty creating gretting-cards for their friends and family. <br />
                         This application's purpose is to help them in this wonderful task.
                     </h6>
                 </div>
-            </div>
-        </div>
-        <div class="col-md-6 text-center" id="quoteDiv">
-            <div>
-                <iframe id="quoteOfTheDay" class="text-center" src="https://www.wow4u.com/quote-of-the-day/"></iframe>
             </div>
         </div>
     </div>

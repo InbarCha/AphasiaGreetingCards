@@ -8,12 +8,15 @@ using Microsoft.EntityFrameworkCore;
 using AphasiaGreetingCards.Data;
 using Accord.MachineLearning;
 using System;
+using System.Net.Http;
 
 namespace AphasiaGreetingCards.Controllers
 {
     public class GreetingCardsController : Controller
     {
         private readonly ApplicationDbContext _context;
+        private readonly string FacebookPageAccessToken = "EAAH4sfKIrl4BAAFZB5I1ZBFr43IMk0ATsxXORSWEgCfCg0GEajyaJXmkgarjw10REZAoyfszI85lZBqdobnw0kI1VZAk0WIKGkyUI4RumgfG1M13DHHOZARgcHMkWcOTbP7Of9mBLU651KdeSe0pu7exvxMFR6ZAqyJHjmi15PRqFOawSr2zo6DW44oCzUeNjCNmxdKgZAz1NAZDZD";
+        private static readonly HttpClient client = new HttpClient();
 
         public GreetingCardsController(ApplicationDbContext context)
         {
@@ -180,6 +183,10 @@ namespace AphasiaGreetingCards.Controllers
 
                 _context.Add(greetingCard);
                 await _context.SaveChangesAsync();
+                if(greetingCard.publishedToFacebook)
+                {
+                    await postToFacebook(greetingCard.senderUserFullName, greetingCard.sentencePrefix, greetingCard.recipientUserFullName, greetingCard.sentenceSuffix);
+                }
                 return RedirectToAction(nameof(Index));
             }
 
@@ -564,6 +571,20 @@ namespace AphasiaGreetingCards.Controllers
             }
 
             return -1;
+        }
+
+        private async Task<bool> postToFacebook(string senderUserFullName, string prefix, string recipientUserFullName, string suffix)
+        {
+            var values = new Dictionary<string, string>
+            {
+                { "message", "User " + senderUserFullName + " sent a greeting card: " +  prefix + ", " + recipientUserFullName + "! " + suffix },
+            };
+
+            string url = "https://graph.facebook.com/100564308037278/feed" + "?access_token=" + FacebookPageAccessToken;
+            var content = new FormUrlEncodedContent(values);
+            var response = await client.PostAsync(url, content);
+
+            return false;
         }
     }
 }

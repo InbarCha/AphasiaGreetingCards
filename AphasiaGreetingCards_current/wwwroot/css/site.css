@@ -22,13 +22,14 @@
     width: 100%;
 }
 
-#defaultRecipientBtn, #defaultRecipientBtnGreetingCard{
+#defaultRecipientBtn, #defaultRecipientBtnGreetingCard {
     color: red;
 }
 
 #defaultImageGreetingCard {
     color: red;
 }
+
 .list-group-item > a {
     color: black;
 }
@@ -53,6 +54,10 @@
     color: mediumpurple !important;
 }
 
+#navItemFacebook {
+    color: royalblue !important;
+}
+
 .loginImg {
     width: 80%;
     height: auto;
@@ -60,10 +65,15 @@
 
 .container {
     padding-right: 0;
-    padding-left: 0;
+    padding-left: 10px !important;
+    padding-top: 10px;
     margin-right: 0;
     margin-left: 0;
     max-width: none;
+}
+
+#toFacebookPage {
+    padding-top: 10px;
 }
 
 #ContentContainer {
@@ -87,8 +97,8 @@
 }
 
     .navbar-nav > li {
-        padding-left: 30px;
-        padding-right: 30px;
+        padding-left: 15px;
+        padding-right: 15px;
     }
 
     .navbar-nav a {
@@ -132,12 +142,6 @@
     width: 100px !important;
 }
 
-#quoteOfTheDay {
-    width: 70% !important;
-    height: 700px;
-    border-width: 7px !important;
-}
-
 .navbar-dark .navbar-nav .nav-link {
     color: white;
 }
@@ -162,5 +166,3 @@
     src: url("//db.onlinewebfonts.com/t/460e8698563db983434874f8f371a7d1.eot");
     src: url("//db.onlinewebfonts.com/t/460e8698563db983434874f8f371a7d1.eot?#iefix") format("embedded-opentype"), url("//db.onlinewebfonts.com/t/460e8698563db983434874f8f371a7d1.woff2") format("woff2"), url("//db.onlinewebfonts.com/t/460e8698563db983434874f8f371a7d1.woff") format("woff"), url("//db.onlinewebfonts.com/t/460e8698563db983434874f8f371a7d1.ttf") format("truetype"), url("//db.onlinewebfonts.com/t/460e8698563db983434874f8f371a7d1.svg#Museo") format("svg");
 }
-
-
