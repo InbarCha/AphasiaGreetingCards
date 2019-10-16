@@ -26,6 +26,11 @@
     color: red;
 }
 
+#greetingCardDisplayDiv {
+    text-shadow: 2px 2px;
+}
+
+
 #defaultImageGreetingCard {
     color: red;
 }
@@ -127,7 +132,11 @@
 #purpose {
     margin-left: 30vw;
     margin-right: 30vw;
-    border-width: 7px !important;
+    border-radius: 7px !important;
+}
+
+#purposeFirst {
+    column-count: 2;
 }
 
 .width-lg {
