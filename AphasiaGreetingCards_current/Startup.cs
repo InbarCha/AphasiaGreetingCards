@@ -48,8 +48,8 @@ namespace AphasiaGreetingCards
 
             services.AddAuthentication().AddFacebook(facebookOptions =>
             {
-                facebookOptions.AppId = Configuration["Authentication:Facebook:AppId"];
-                facebookOptions.AppSecret = Configuration["Authentication:Facebook:AppSecret"];
+                facebookOptions.AppId = "554918138654302";
+                facebookOptions.AppSecret = "d5bbb4f7a5505eaf793eae001f73417e";
             });
 
             services.AddMvc().SetCompatibilityVersion(CompatibilityVersion.Version_2_1);
