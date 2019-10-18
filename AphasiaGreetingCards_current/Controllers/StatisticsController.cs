@@ -17,21 +17,41 @@ namespace AphasiaGreetingCards.Controllers
         }
         public IActionResult Index()
         {
-            var all = _context.GreetingCards.ToList();
-            string[] strings = new string[all.Count];
-            for (int i = 0; i < all.Count; i++)
+            Dictionary<string, int> map = CountWords();
+            string[] keys = new string[map.Count];
+            int[] vals = new int[map.Count];
+            int i = 0;
+            foreach (var item in map)
             {
-                strings[i] = all.ElementAt(i).fullSentence;
+                keys[i] = item.Key;
+                vals[i++] = item.Value;
             }
-            ViewData["Strings"] = strings;
-            ViewBag.StringsCount = all.Count;
+            ViewData["keys"] = keys;
+            ViewData["vals"] = vals;
+            ViewBag.StringsCount = keys.Count();
             return View();
         }
         private Dictionary<string,int> CountWords()
         {
-
-
-            return null;
+            Dictionary<string, int> map = new Dictionary<string, int>();
+            var sentences = _context.GreetingCards.Select(p => p.fullSentence).ToArray();
+            foreach(var s in sentences)
+            {
+               var punctuation = s.Where(Char.IsPunctuation).Distinct().ToArray();
+               var words = s.Split().Select(x => x.Trim(punctuation));
+               foreach(var ss in words)
+                {
+                    if (map.ContainsKey(ss))
+                    {
+                        map[ss]++;
+                    }
+                    else
+                    {
+                        map.Add(ss, 1);
+                    }
+                }
+            }
+            return map;
         }
     }
 }
