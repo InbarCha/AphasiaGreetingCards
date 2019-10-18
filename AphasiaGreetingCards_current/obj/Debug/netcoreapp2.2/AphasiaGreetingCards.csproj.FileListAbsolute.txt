@@ -342,3 +342,4 @@ C:\Users\arik\Source\Repos\InbarChanew\AphasiaGreetingCards\AphasiaGreetingCards
 C:\Users\arik\Source\Repos\InbarChanew\AphasiaGreetingCards\AphasiaGreetingCards_current\obj\Debug\netcoreapp2.2\AphasiaGreetingCards.RazorTargetAssemblyInfo.cs
 C:\Users\arik\Source\Repos\InbarChanew\AphasiaGreetingCards\AphasiaGreetingCards_current\obj\Debug\netcoreapp2.2\AphasiaGreetingCards.Views.pdb
 C:\Users\arik\Source\Repos\InbarChanew\AphasiaGreetingCards\AphasiaGreetingCards_current\obj\Debug\netcoreapp2.2\AphasiaGreetingCards.csproj.CopyComplete
+C:\Users\arik\Source\Repos\InbarChanew\AphasiaGreetingCards\AphasiaGreetingCards_current\obj\Debug\netcoreapp2.2\Razor\Views\Statistics\Pie.g.cshtml.cs
