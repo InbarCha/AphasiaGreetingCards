@@ -3,13 +3,39 @@
     ViewData["Title"] = "Index";
     Layout = "~/Views/Shared/_Layout.cshtml";
 }
+<style>
+    .label {
+        font-size: 15.5px;
+        fill: #ffffff;
+        text-anchor: middle;
+        alignment-baseline: middle;
+    }
+
+    .face {
+        stroke: #c8c8c8;
+        stroke-width: 2;
+    }
+
+    .minorTicks {
+        stroke-width: 2;
+        stroke: white;
+    }
+
+    .majorTicks {
+        stroke: white;
+        stroke-width: 3;
+    }
+</style>
 <div class="Page">
     <div class="display-4 text-center"> Statistics </div>
     <hr />
     <div class="row">
+        <h3>Number of Users</h3>
+        <h3 style="padding-left:28em">Most Used Words</h3>
+    </div>
+    <div class="row">
+        <svg width="950" height="500"></svg>
         <div id="words"></div>
-        <!--<div id="pie">Html.Partial("Pie")</div>-->
-        <div id="my_dataviz"></div>
     </div>
 
     <script src="~/js/d3.js"></script>
@@ -51,70 +77,24 @@
             }
         })();</script>
     <!--End of Script For Word Counting-->
-    <script src="https://d3js.org/d3-scale-chromatic.v1.min.js"></script>
-    <script src="https://d3js.org/d3.v5.min.js"></script>
+    <script src="https://d3js.org/d3.v3.min.js"></script>
+    <script src="~/js/viz.v1.0.0.min.js"></script>
     <script>
+        var svg = d3.select("svg");
+        var g = svg.append("g").attr("transform", "translate(230,280)");
+        var domain = [0, 100];
 
-        // set the dimensions and margins of the graph
-        var width = 500
-        height = 500
-        margin = 50
+        var gg = viz.gg()
+            .domain(domain)
+            .outerRadius(215)
+            .innerRadius(30)
+            .value(0)
+            .duration(1000);
 
-        // The radius of the pieplot is half the width or half the height (smallest one). I subtract a bit of margin.
-        var radius = Math.min(width, height) / 2 - margin
+        gg.defs(svg);
+        g.call(gg);
 
-        // append the svg object to the div called 'my_dataviz'
-        var svg = d3.select("#my_dataviz")
-            .append("svg")
-            .attr("width", width)
-            .attr("height", height)
-            .append("g")
-            .attr("transform", "translate(" + width / 2 + "," + height / 2 + ")");
-
-        // Create dummy data
-        var names = @Html.Raw(Json.Serialize(ViewData["names"]));
-        var quan = @Html.Raw(Json.Serialize(ViewData["quan"]));
-        var data = { "Birthday": quan[0], "Bar Mitzva": 0, "Boy": 30, "Girl": 8, "Daily": 12, "Holiday": 35, "Love": 24, "Valentine": 21, "Wedding": 32 }
-
-        // set the color scale
-        var color = d3.scaleOrdinal()
-            .domain(data)
-            .range(d3.schemeSet2);
-
-        // Compute the position of each group on the pie:
-        var pie = d3.pie()
-            .value(function (d) { return d.value; })
-        var data_ready = pie(d3.entries(data))
-        // Now I know that group A goes from 0 degrees to x degrees and so on.
-
-        // shape helper to build arcs:
-        var arcGenerator = d3.arc()
-            .innerRadius(0)
-            .outerRadius(radius)
-
-        // Build the pie chart: Basically, each part of the pie is a path that we build using the arc function.
-        svg
-            .selectAll('mySlices')
-            .data(data_ready)
-            .enter()
-            .append('path')
-            .attr('d', arcGenerator)
-            .attr('fill', function (d) { return (color(d.data.key)) })
-            .attr("stroke", "black")
-            .style("stroke-width", "3px")
-            .style("opacity", 0.7)
-
-        // Now add the annotation. Use the centroid method to get the best coordinates
-        svg
-            .selectAll('mySlices')
-            .data(data_ready)
-            .enter()
-            .append('text')
-            .text(function (d) { return d.data.key + "\n" + d.data.value})
-            .attr("transform", function (d) { return "translate(" + arcGenerator.centroid(d) + ")"; })
-            .style("text-anchor", "middle")
-            .style("font-size", 12)
-
-
+        d3.select(self.frameElement).style("height", "700px");
+        setInterval(function () { gg.setNeedle(@ViewBag.numOfUsers); }, 1500);
     </script>
 </div>

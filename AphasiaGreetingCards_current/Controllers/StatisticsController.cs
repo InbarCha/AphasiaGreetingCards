@@ -42,7 +42,12 @@ namespace AphasiaGreetingCards.Controllers
             ViewData["names"] = names;
             ViewData["quan"] = quan;
             CountThemes();
+            CountUsers();
             return View();
+        }
+        private void CountUsers()
+        {
+            ViewBag.numOfUsers = _context.Users.ToList().Count();
         }
         private Dictionary<string, int> CountWords()
         {

@@ -498,7 +498,6 @@ C:\Users\arik\Source\Repos\InbarChanewnew\AphasiaGreetingCards\AphasiaGreetingCa
 C:\Users\arik\Source\Repos\InbarChanewnew\AphasiaGreetingCards\AphasiaGreetingCards_current\obj\Debug\netcoreapp2.2\Razor\Views\Shared\_LoginPartial.g.cshtml.cs
 C:\Users\arik\Source\Repos\InbarChanewnew\AphasiaGreetingCards\AphasiaGreetingCards_current\obj\Debug\netcoreapp2.2\Razor\Views\Shared\_ValidationScriptsPartial.g.cshtml.cs
 C:\Users\arik\Source\Repos\InbarChanewnew\AphasiaGreetingCards\AphasiaGreetingCards_current\obj\Debug\netcoreapp2.2\Razor\Views\Statistics\Index.g.cshtml.cs
-C:\Users\arik\Source\Repos\InbarChanewnew\AphasiaGreetingCards\AphasiaGreetingCards_current\obj\Debug\netcoreapp2.2\Razor\Views\Statistics\Pie.g.cshtml.cs
 C:\Users\arik\Source\Repos\InbarChanewnew\AphasiaGreetingCards\AphasiaGreetingCards_current\obj\Debug\netcoreapp2.2\Razor\Views\Users\Details.g.cshtml.cs
 C:\Users\arik\Source\Repos\InbarChanewnew\AphasiaGreetingCards\AphasiaGreetingCards_current\obj\Debug\netcoreapp2.2\Razor\Views\Users\Index.g.cshtml.cs
 C:\Users\arik\Source\Repos\InbarChanewnew\AphasiaGreetingCards\AphasiaGreetingCards_current\obj\Debug\netcoreapp2.2\Razor\Views\_ViewImports.g.cshtml.cs
