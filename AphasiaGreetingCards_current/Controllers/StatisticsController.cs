@@ -1,4 +1,6 @@
-﻿using System;
+﻿
+
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
@@ -39,6 +41,7 @@ namespace AphasiaGreetingCards.Controllers
             }
             ViewData["names"] = names;
             ViewData["quan"] = quan;
+            CountThemes();
             return View();
         }
         private Dictionary<string, int> CountWords()
@@ -51,7 +54,7 @@ namespace AphasiaGreetingCards.Controllers
                 var words = s.Split().Select(x => x.Trim(punctuation));
                 foreach (var ss in words)
                 {
-                    if (_context.Users.Where(n=>n.FirstName.ToLower().Equals(ss.ToLower())).Count() > 0)
+                    if (_context.Users.Where(n => n.FirstName.ToLower().Equals(ss.ToLower())).Count() > 0)
                     {
                         continue;
                     }
@@ -67,19 +70,34 @@ namespace AphasiaGreetingCards.Controllers
             }
             return map;
         }
-        public PartialViewResult CountTypes()
+        private void CountThemes()
         {
-            var types = _context.GreetingCards.Select(n => n.theme).Distinct();
+            var types = _context.GreetingCards.Select(n => n.theme).Distinct().ToList();
             string[] names = new string[types.Count()];
             int[] quan = new int[types.Count()];
-            for(int i = 0; i < types.Count(); i++)
+            for (int i = 0; i < types.Count(); i++)
             {
                 names[i] = types.ElementAt(i);
                 quan[i] = _context.GreetingCards.Where(n => n.theme.Equals(names[i])).Count();
             }
             ViewData["names"] = names;
             ViewData["quan"] = quan;
-            return PartialView("Pie", null);
+
         }
+
+        //public PartialViewResult CountTypes()
+        //{
+        //    var types = _context.GreetingCards.Select(n => n.theme).Distinct();
+        //    string[] names = new string[types.Count()];
+        //    int[] quan = new int[types.Count()];
+        //    for(int i = 0; i < types.Count(); i++)
+        //    {
+        //        names[i] = types.ElementAt(i);
+        //        quan[i] = _context.GreetingCards.Where(n => n.theme.Equals(names[i])).Count();
+        //    }
+        //    ViewData["names"] = names;
+        //    ViewData["quan"] = quan;
+        //    return PartialView("Pie", null);
+        //}
     }
 }
