@@ -22,7 +22,7 @@
     width: 100%;
 }
 
-#defaultRecipientBtn, #defaultRecipientBtnGreetingCard {
+#defaultRecipientBtn, .defaultRecipientBtnGreetingCard {
     color: red;
 }
 
