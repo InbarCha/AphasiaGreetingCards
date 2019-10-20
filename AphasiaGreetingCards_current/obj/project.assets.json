@@ -13805,11 +13805,11 @@
   "project": {
     "version": "1.0.0",
     "restore": {
-      "projectUniqueName": "C:\\Users\\Inbar\\Source\\Repos\\AphasiaGreetingCards3\\AphasiaGreetingCards_current\\AphasiaGreetingCards.csproj",
+      "projectUniqueName": "C:\\Users\\Inbar\\Source\\Repos\\AphasiaGreetingCards\\AphasiaGreetingCards_current\\AphasiaGreetingCards.csproj",
       "projectName": "AphasiaGreetingCards",
-      "projectPath": "C:\\Users\\Inbar\\Source\\Repos\\AphasiaGreetingCards3\\AphasiaGreetingCards_current\\AphasiaGreetingCards.csproj",
+      "projectPath": "C:\\Users\\Inbar\\Source\\Repos\\AphasiaGreetingCards\\AphasiaGreetingCards_current\\AphasiaGreetingCards.csproj",
       "packagesPath": "C:\\Users\\Inbar\\.nuget\\packages\\",
-      "outputPath": "C:\\Users\\Inbar\\Source\\Repos\\AphasiaGreetingCards3\\AphasiaGreetingCards_current\\obj\\",
+      "outputPath": "C:\\Users\\Inbar\\Source\\Repos\\AphasiaGreetingCards\\AphasiaGreetingCards_current\\obj\\",
       "projectStyle": "PackageReference",
       "fallbackFolders": [
         "C:\\Program Files\\dotnet\\sdk\\NuGetFallbackFolder"
