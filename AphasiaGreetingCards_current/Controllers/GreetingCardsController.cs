@@ -185,7 +185,7 @@ namespace AphasiaGreetingCards.Controllers
                 await _context.SaveChangesAsync();
                 if(greetingCard.publishedToFacebook)
                 {
-                    await postToFacebook(greetingCard.senderUserFullName, greetingCard.sentencePrefix, greetingCard.recipientUserFullName, greetingCard.sentenceSuffix);
+                    postToFacebook(greetingCard.senderUserFullName, greetingCard.sentencePrefix, greetingCard.recipientUserFullName, greetingCard.sentenceSuffix);
                 }
                 return RedirectToAction(nameof(Index));
             }
@@ -572,8 +572,7 @@ namespace AphasiaGreetingCards.Controllers
 
             return -1;
         }
-
-        private async Task<bool> postToFacebook(string senderUserFullName, string prefix, string recipientUserFullName, string suffix)
+        private async void postToFacebook(string senderUserFullName, string prefix, string recipientUserFullName, string suffix)
         {
             var values = new Dictionary<string, string>
             {
@@ -583,8 +582,6 @@ namespace AphasiaGreetingCards.Controllers
             string url = "https://graph.facebook.com/100564308037278/feed" + "?access_token=" + FacebookPageAccessToken;
             var content = new FormUrlEncodedContent(values);
             var response = await client.PostAsync(url, content);
-
-            return false;
         }
     }
 }
