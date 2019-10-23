@@ -3,6 +3,7 @@
 <head>
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
     <title>@ViewData["Title"] - Greeting Cards for Aphasics</title>
 
     <environment include="Development">
@@ -10,6 +11,7 @@
         <meta name="viewport" content="width=device-width, initial-scale=1">
         <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css">
         <link rel="stylesheet" href="~/css/site.css" />
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/3.7.2/animate.min.css">
         <link href="//db.onlinewebfonts.com/c/460e8698563db983434874f8f371a7d1?family=Museo" rel="stylesheet" type="text/css" />
         <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
         <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js"></script>
@@ -34,7 +36,7 @@
 
     <div id="greetings_card_display" class="jumbotron jumbotron-fluid text-center">
         <div id="primaryDisplayBorder">
-            <div id="primaryDisplayContent"> Greeting Gards for People with Aphasia </div>
+            <div id="primaryDisplayContent">Greeting Gards for People with Aphasia </div>
             <p>Create a specialized Greeting Card, in accessible and simple way!</p>
         </div>
     </div>
@@ -50,8 +52,11 @@
                         <a class="nav-link" asp-area="" asp-controller="Home" asp-action="Index">Home</a>
                     </li>
                     <class id="grad1">
-                        <li class="nav-item">
-                            <a class="nav-link" asp-area="" asp-controller="GreetingCards" asp-action="Index">Greeting Cards</a>
+                        <li class="nav-item animated shake delay-2s">
+                            <a class="nav-link" asp-area="" asp-controller="GreetingCards" asp-action="Index">
+                             
+                                Greeting Cards
+                            </a>
                         </li>
                     </class>
                     <li class="nav-item">

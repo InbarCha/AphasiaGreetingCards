@@ -764,7 +764,6 @@ C:\Users\Yuval\Source\Repos\AphasiaGreetingCards3\AphasiaGreetingCards_current\b
 C:\Users\Yuval\Source\Repos\AphasiaGreetingCards3\AphasiaGreetingCards_current\bin\Debug\netcoreapp2.2\AphasiaGreetingCards.pdb
 C:\Users\Yuval\Source\Repos\AphasiaGreetingCards3\AphasiaGreetingCards_current\bin\Debug\netcoreapp2.2\AphasiaGreetingCards.Views.dll
 C:\Users\Yuval\Source\Repos\AphasiaGreetingCards3\AphasiaGreetingCards_current\bin\Debug\netcoreapp2.2\AphasiaGreetingCards.Views.pdb
-C:\Users\Yuval\Source\Repos\AphasiaGreetingCards3\AphasiaGreetingCards_current\obj\Debug\netcoreapp2.2\AphasiaGreetingCards.csprojAssemblyReference.cache
 C:\Users\Yuval\Source\Repos\AphasiaGreetingCards3\AphasiaGreetingCards_current\obj\Debug\netcoreapp2.2\AphasiaGreetingCards.dll.config
 C:\Users\Yuval\Source\Repos\AphasiaGreetingCards3\AphasiaGreetingCards_current\obj\Debug\netcoreapp2.2\AphasiaGreetingCards.RazorAssemblyInfo.cache
 C:\Users\Yuval\Source\Repos\AphasiaGreetingCards3\AphasiaGreetingCards_current\obj\Debug\netcoreapp2.2\AphasiaGreetingCards.RazorAssemblyInfo.cs
@@ -836,3 +835,4 @@ C:\Users\Yuval\Source\Repos\AphasiaGreetingCards3\AphasiaGreetingCards_current\o
 C:\Users\Yuval\Source\Repos\AphasiaGreetingCards3\AphasiaGreetingCards_current\obj\Debug\netcoreapp2.2\AphasiaGreetingCards.dll
 C:\Users\Yuval\Source\Repos\AphasiaGreetingCards3\AphasiaGreetingCards_current\obj\Debug\netcoreapp2.2\AphasiaGreetingCards.pdb
 C:\Users\Yuval\Source\Repos\AphasiaGreetingCards3\AphasiaGreetingCards_current\obj\Debug\netcoreapp2.2\AphasiaGreetingCards.csproj.CopyComplete
+C:\Users\Yuval\Source\Repos\AphasiaGreetingCards3\AphasiaGreetingCards_current\bin\Debug\netcoreapp2.2\package-lock.json
