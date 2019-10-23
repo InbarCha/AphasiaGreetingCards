@@ -34,8 +34,8 @@
 
     <div id="greetings_card_display" class="jumbotron jumbotron-fluid text-center">
         <div id="primaryDisplayBorder">
-            <div id="primaryDisplayContent"> Greeting Gards for Aphasics </div>
-            <p>Create a specialized Greeting Card, in varied and colorful themes!</p>
+            <div id="primaryDisplayContent"> Greeting Gards for People with Aphasia </div>
+            <p>Create a specialized Greeting Card, in accessible and simple way!</p>
         </div>
     </div>
 
@@ -49,23 +49,26 @@
                     <li class="nav-item">
                         <a class="nav-link" asp-area="" asp-controller="Home" asp-action="Index">Home</a>
                     </li>
+                    <class id="grad1">
+                        <li class="nav-item">
+                            <a class="nav-link" asp-area="" asp-controller="GreetingCards" asp-action="Index">Greeting Cards</a>
+                        </li>
+                    </class>
                     <li class="nav-item">
-                        <a class="nav-link" asp-area="" asp-controller="GreetingCards" asp-action="Index">Greeting Cards</a>
+                        <a class="nav-link" asp-area="" asp-controller="SentimentSentences" asp-action="Index"> Explore Sentences </a>
                     </li>
+
                     <li class="nav-item">
-                        <a class="nav-link" asp-area="" asp-controller="SentimentSentences" asp-action="Index"> Sentiment Sentences </a>
-                    </li>
-                    <li class="nav-item">
-                        <a class="nav-link" a asp-area="" asp-controller="Users" asp-action="Index"> Users </a>
-                    </li>
-                    <li class="nav-item">
-                        <a class="nav-link" asp-area="" asp-controller="Images" asp-action="Index"> Our Images </a>
+                        <a class="nav-link" asp-area="" asp-controller="Images" asp-action="Index"> Explore Images </a>
                     </li>
                     <li class="nav-item">
                         <a class="nav-link" asp-area="" asp-controller="Statistics" asp-action="Index"> Statistics </a>
                     </li>
                     <li class="nav-item">
-                        <a  id="navItemFacebook" class="nav-link" href="https://www.facebook.com/Greeting-Cards-for-Aphasics-100564308037278"> Facebook Page </a>
+                        <a class="nav-link" a asp-area="" asp-controller="Users" asp-action="Index"> Users </a>
+                    </li>
+                    <li class="nav-item">
+                        <a id="navItemFacebook" class="nav-link" href="https://www.facebook.com/Greeting-Cards-for-Aphasics-100564308037278"> Facebook </a>
                     </li>
                     <partial name="_LoginPartial" />
                 </ul>

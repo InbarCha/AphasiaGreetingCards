@@ -60,8 +60,8 @@ function codeAddress(address) {
 function initializeCanvas() {
     var c = document.getElementById("myCanvas");
     var ctx = c.getContext("2d");
-    ctx.font = "30px Arial";
-    ctx.fillText("Welcome!", 10, 50);
+    ctx.font = "23px Verdana";
+    ctx.fillText("*Aphasia - an inability to comprehend or formulate language", 40, 50);
 }
 
 //--------WORDS API (Web API)---------
