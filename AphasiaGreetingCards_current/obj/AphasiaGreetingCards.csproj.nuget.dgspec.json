@@ -1,23 +1,23 @@
 {
   "format": 1,
   "restore": {
-    "C:\\Users\\Yuval\\Source\\Repos\\AphasiaGreetingCards3\\AphasiaGreetingCards_current\\AphasiaGreetingCards.csproj": {}
+    "C:\\Users\\Yuvalsp\\Source\\Repos\\NewRepo2\\AphasiaGreetingCards_current\\AphasiaGreetingCards.csproj": {}
   },
   "projects": {
-    "C:\\Users\\Yuval\\Source\\Repos\\AphasiaGreetingCards3\\AphasiaGreetingCards_current\\AphasiaGreetingCards.csproj": {
+    "C:\\Users\\Yuvalsp\\Source\\Repos\\NewRepo2\\AphasiaGreetingCards_current\\AphasiaGreetingCards.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "C:\\Users\\Yuval\\Source\\Repos\\AphasiaGreetingCards3\\AphasiaGreetingCards_current\\AphasiaGreetingCards.csproj",
+        "projectUniqueName": "C:\\Users\\Yuvalsp\\Source\\Repos\\NewRepo2\\AphasiaGreetingCards_current\\AphasiaGreetingCards.csproj",
         "projectName": "AphasiaGreetingCards",
-        "projectPath": "C:\\Users\\Yuval\\Source\\Repos\\AphasiaGreetingCards3\\AphasiaGreetingCards_current\\AphasiaGreetingCards.csproj",
-        "packagesPath": "C:\\Users\\Yuval\\.nuget\\packages\\",
-        "outputPath": "C:\\Users\\Yuval\\Source\\Repos\\AphasiaGreetingCards3\\AphasiaGreetingCards_current\\obj\\",
+        "projectPath": "C:\\Users\\Yuvalsp\\Source\\Repos\\NewRepo2\\AphasiaGreetingCards_current\\AphasiaGreetingCards.csproj",
+        "packagesPath": "C:\\Users\\Yuvalsp\\.nuget\\packages\\",
+        "outputPath": "C:\\Users\\Yuvalsp\\Source\\Repos\\NewRepo2\\AphasiaGreetingCards_current\\obj\\",
         "projectStyle": "PackageReference",
         "fallbackFolders": [
           "C:\\Program Files\\dotnet\\sdk\\NuGetFallbackFolder"
         ],
         "configFilePaths": [
-          "C:\\Users\\Yuval\\AppData\\Roaming\\NuGet\\NuGet.Config",
+          "C:\\Users\\Yuvalsp\\AppData\\Roaming\\NuGet\\NuGet.Config",
           "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
         ],
         "originalTargetFrameworks": [
