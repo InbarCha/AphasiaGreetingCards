@@ -59,7 +59,7 @@ namespace AphasiaGreetingCards.Controllers
                 var words = s.Split().Select(x => x.Trim(punctuation));
                 foreach (var ss in words)
                 {
-                    if (_context.Users.Where(n => n.FirstName.ToLower().Equals(ss.ToLower())).Count() > 0)
+                    if (_context.GreetingCards.Where(n => n.recipientUserFullName.ToLower().Contains(ss.ToLower())).Count() > 0)
                     {
                         continue;
                     }
