@@ -176,6 +176,7 @@ namespace AphasiaGreetingCards.Controllers
             return _context.SentimentSentences.Any(e => e.ID == id);
         }
 
+        [AllowAnonymous]
         public async Task<IActionResult> Search(string theme, string prefix, string suffix)
         {
             var selectedSentimentSentences = from s in _context.SentimentSentences

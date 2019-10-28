@@ -50,6 +50,7 @@ namespace AphasiaGreetingCards.Controllers
             return View(user);
         }
 
+        [AllowAnonymous]
         public async Task<IActionResult> Search(string firstName, string lastName, string city)
         {
             var selectedUsers = from u in _context.Users

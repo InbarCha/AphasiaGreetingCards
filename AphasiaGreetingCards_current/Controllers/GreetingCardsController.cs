@@ -485,7 +485,6 @@ namespace AphasiaGreetingCards.Controllers
             }
         }
 
-        [AllowAnonymous]
         private List<double[]> kMeansGetObservations()
         {
             List<double[]> observations = new List<double[]>();
@@ -578,6 +577,7 @@ namespace AphasiaGreetingCards.Controllers
 
             return -1;
         }
+
         private async void postToFacebook(string senderUserFullName, string prefix, string recipientUserFullName, string suffix)
         {
             var values = new Dictionary<string, string>
