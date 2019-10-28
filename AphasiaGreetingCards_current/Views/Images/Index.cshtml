@@ -11,7 +11,7 @@
         <button type="button" class="btn btn-primary btnToggleSearch"> Search Form </button>
     </div>
     <div class="searhFormForGreetingCard" style="display: none;">
-        <form asp-action="search" class="col-md-4 offset-md-4">
+        <form asp-controller="Images" asp-action="search" class="col-md-4 offset-md-4">
             <div class="form-group">
                 <label class="control-label">Image Name</label>
                 <input class="form-control" name="imageName" />

@@ -15,7 +15,7 @@ namespace AphasiaGreetingCards.Controllers
     public class GreetingCardsController : Controller
     {
         private readonly ApplicationDbContext _context;
-        private readonly string FacebookPageAccessToken = "EAAH4sfKIrl4BAHsNfcmDtehCg7NJgoytpLR84gkZBOvSqQCdkZCPexcNCJ7bdqRAtsz6KZA6F1cKUIlD0uIUfYR4qIWjW0nLVQcOhRx1FZBIbgSkyeJwZAsB5kaOO57t0MnHSXLkR0RTlTZCVCZCFL9YMtKzpfG2lzLg4vVP7LO2QZDZD";
+        private readonly string FacebookPageAccessToken = "EAAH4sfKIrl4BAEIZA87sdE7CRdYsmgm3Kzss0ubOr4vNkjg2ggOjUHbxsODZCz0wAfGZAAeTFWXTlV5ZCTN3ZAk954zQ9ZBzTYrWxuZBaWUSMtWenb1FLk99bOlFwebTv94F1KcYOHW6ZBfbKjermr0u9NcFubl5FnFxIJgrvpf1puMjVYHCKs7MLcVXkDuMUln3SnopgciR5QZDZD";
         private static readonly HttpClient client = new HttpClient();
 
         public GreetingCardsController(ApplicationDbContext context)
@@ -322,7 +322,9 @@ namespace AphasiaGreetingCards.Controllers
         {
             return _context.GreetingCards.Any(e => e.ID == id);
         }
-
+        
+        [HttpPost]
+        [AllowAnonymous]
         public async Task<IActionResult> Search(string theme, string fullSentence, string image)
         {
             var selectedGreetingCards = from g in _context.GreetingCards
@@ -390,6 +392,7 @@ namespace AphasiaGreetingCards.Controllers
         }
 
         //GROUP BY
+        [AllowAnonymous]
         public async Task<IActionResult> CountGreetingCardsPerTheme()
         {
             var selectedGreetingCards = from g in _context.GreetingCards
@@ -417,6 +420,7 @@ namespace AphasiaGreetingCards.Controllers
         }
 
         //join 1
+        [AllowAnonymous]
         public IActionResult WithImageResolution()
         {
             var selectedGreetingCards = from g in _context.GreetingCards
@@ -449,6 +453,7 @@ namespace AphasiaGreetingCards.Controllers
         }
 
         //join 2
+        [AllowAnonymous]
         public IActionResult WithImageDigitalSize()
         {
             var selectedGreetingCards = from g in _context.GreetingCards
@@ -480,6 +485,7 @@ namespace AphasiaGreetingCards.Controllers
             }
         }
 
+        [AllowAnonymous]
         private List<double[]> kMeansGetObservations()
         {
             List<double[]> observations = new List<double[]>();

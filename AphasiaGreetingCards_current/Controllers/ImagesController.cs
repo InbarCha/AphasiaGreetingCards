@@ -28,11 +28,7 @@ namespace AphasiaGreetingCards.Controllers
             return View(await _context.Images.ToListAsync());
         }
 
-        private bool ImageExists(int id)
-        {
-            return _context.Images.Any(e => e.ID == id);
-        }
-
+        [AllowAnonymous]
         public async Task<IActionResult> Search(string imageName, string resolution, string theme)
         {
             var selectedImages = from im in _context.Images

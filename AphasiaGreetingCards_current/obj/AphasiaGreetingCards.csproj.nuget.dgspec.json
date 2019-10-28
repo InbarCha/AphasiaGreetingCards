@@ -1,23 +1,23 @@
 {
   "format": 1,
   "restore": {
-    "C:\\Users\\Yuvalsp\\Source\\Repos\\NewRepo2\\AphasiaGreetingCards_current\\AphasiaGreetingCards.csproj": {}
+    "C:\\Users\\Inbar\\Source\\Repos\\AphasiaGreetingCards5\\AphasiaGreetingCards_current\\AphasiaGreetingCards.csproj": {}
   },
   "projects": {
-    "C:\\Users\\Yuvalsp\\Source\\Repos\\NewRepo2\\AphasiaGreetingCards_current\\AphasiaGreetingCards.csproj": {
+    "C:\\Users\\Inbar\\Source\\Repos\\AphasiaGreetingCards5\\AphasiaGreetingCards_current\\AphasiaGreetingCards.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "C:\\Users\\Yuvalsp\\Source\\Repos\\NewRepo2\\AphasiaGreetingCards_current\\AphasiaGreetingCards.csproj",
+        "projectUniqueName": "C:\\Users\\Inbar\\Source\\Repos\\AphasiaGreetingCards5\\AphasiaGreetingCards_current\\AphasiaGreetingCards.csproj",
         "projectName": "AphasiaGreetingCards",
-        "projectPath": "C:\\Users\\Yuvalsp\\Source\\Repos\\NewRepo2\\AphasiaGreetingCards_current\\AphasiaGreetingCards.csproj",
-        "packagesPath": "C:\\Users\\Yuvalsp\\.nuget\\packages\\",
-        "outputPath": "C:\\Users\\Yuvalsp\\Source\\Repos\\NewRepo2\\AphasiaGreetingCards_current\\obj\\",
+        "projectPath": "C:\\Users\\Inbar\\Source\\Repos\\AphasiaGreetingCards5\\AphasiaGreetingCards_current\\AphasiaGreetingCards.csproj",
+        "packagesPath": "C:\\Users\\Inbar\\.nuget\\packages\\",
+        "outputPath": "C:\\Users\\Inbar\\Source\\Repos\\AphasiaGreetingCards5\\AphasiaGreetingCards_current\\obj\\",
         "projectStyle": "PackageReference",
         "fallbackFolders": [
           "C:\\Program Files\\dotnet\\sdk\\NuGetFallbackFolder"
         ],
         "configFilePaths": [
-          "C:\\Users\\Yuvalsp\\AppData\\Roaming\\NuGet\\NuGet.Config",
+          "C:\\Users\\Inbar\\AppData\\Roaming\\NuGet\\NuGet.Config",
           "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
         ],
         "originalTargetFrameworks": [
@@ -80,16 +80,10 @@
             }
           },
           "imports": [
-            "net461",
-            "net462",
-            "net47",
-            "net471",
-            "net472",
-            "net48"
+            "net461"
           ],
           "assetTargetFallback": true,
-          "warn": true,
-          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\3.0.100\\RuntimeIdentifierGraph.json"
+          "warn": true
         }
       }
     }
