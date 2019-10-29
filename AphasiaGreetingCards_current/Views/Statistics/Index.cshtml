@@ -49,7 +49,7 @@
             var layout = d3.layout.cloud()
                 .size([500, 500])
                 .words(d3.zip(keys, vals).map(function (d) {
-                    return { text: d[0], size: 10 + d[1] * 2.7 };
+                    return { text: d[0], size: 10 + d[1] * 2.3 };
                 }))
                 .padding(5)
                 .rotate(function () { return ~~(Math.random() * 2) * 90; })

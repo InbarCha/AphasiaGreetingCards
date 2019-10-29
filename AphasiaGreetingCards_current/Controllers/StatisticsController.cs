@@ -31,17 +31,6 @@ namespace AphasiaGreetingCards.Controllers
             ViewData["keys"] = keys;
             ViewData["vals"] = vals;
             ViewBag.StringsCount = keys.Count();
-            var types = _context.GreetingCards.Select(n => n.theme).Distinct().ToList();
-            string[] names = new string[types.Count()];
-            int[] quan = new int[types.Count()];
-            for (int j = 0; j < types.Count(); j++)
-            {
-                names[j] = types.ElementAt(j).ToString();
-                quan[j] = _context.GreetingCards.Where(n => n.theme.Equals(names[j])).Count();
-            }
-            ViewData["names"] = names;
-            ViewData["quan"] = quan;
-            CountThemes();
             CountUsers();
             return View();
         }
@@ -75,34 +64,5 @@ namespace AphasiaGreetingCards.Controllers
             }
             return map;
         }
-        private void CountThemes()
-        {
-            var types = _context.GreetingCards.Select(n => n.theme).Distinct().ToList();
-            string[] names = new string[types.Count()];
-            int[] quan = new int[types.Count()];
-            for (int i = 0; i < types.Count(); i++)
-            {
-                names[i] = types.ElementAt(i);
-                quan[i] = _context.GreetingCards.Where(n => n.theme.Equals(names[i])).Count();
-            }
-            ViewData["names"] = names;
-            ViewData["quan"] = quan;
-
-        }
-
-        //public PartialViewResult CountTypes()
-        //{
-        //    var types = _context.GreetingCards.Select(n => n.theme).Distinct();
-        //    string[] names = new string[types.Count()];
-        //    int[] quan = new int[types.Count()];
-        //    for(int i = 0; i < types.Count(); i++)
-        //    {
-        //        names[i] = types.ElementAt(i);
-        //        quan[i] = _context.GreetingCards.Where(n => n.theme.Equals(names[i])).Count();
-        //    }
-        //    ViewData["names"] = names;
-        //    ViewData["quan"] = quan;
-        //    return PartialView("Pie", null);
-        //}
     }
 }
