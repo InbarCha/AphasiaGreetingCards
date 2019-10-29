@@ -15,7 +15,7 @@ namespace AphasiaGreetingCards.Controllers
     public class GreetingCardsController : Controller
     {
         private readonly ApplicationDbContext _context;
-        private readonly string FacebookPageAccessToken = "EAAH4sfKIrl4BAEIZA87sdE7CRdYsmgm3Kzss0ubOr4vNkjg2ggOjUHbxsODZCz0wAfGZAAeTFWXTlV5ZCTN3ZAk954zQ9ZBzTYrWxuZBaWUSMtWenb1FLk99bOlFwebTv94F1KcYOHW6ZBfbKjermr0u9NcFubl5FnFxIJgrvpf1puMjVYHCKs7MLcVXkDuMUln3SnopgciR5QZDZD";
+        private readonly string FacebookPageAccessToken = "EAAH4sfKIrl4BACPodLb8StInuVjBE21J7lTC0dF08SZAnhFeN0ksG6LXLCV95zZBNeJ1SA1P8NwyU1tyk0UqG45WJtdfShrTjFScZCdhmu7IJdYBzEKHSaEDH9KidS039kiBskhZC0x6sAxPBaHjuVTDuuc2QcOKZBdaNLd6MgI5Dto4BSWrFZAAZBGDrcemdBKs0EfWKiThAZDZD";
         private static readonly HttpClient client = new HttpClient();
 
         public GreetingCardsController(ApplicationDbContext context)
